@@ -14,6 +14,11 @@ namespace Fixture02.Controllers
     {
         private fixtureEntities db = new fixtureEntities();
 
+        public int god()
+        {
+            return 1;
+        }
+
         // GET: Jigitems
         public ActionResult Index(String code, String name, String location , String model, String partNo)
         {
