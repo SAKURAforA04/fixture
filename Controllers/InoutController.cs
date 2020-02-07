@@ -15,9 +15,14 @@ namespace Fixture02.Controllers
         private fixtureEntities db = new fixtureEntities();
 
 
+
         public ActionResult Hello()
         {
             return View();
+        }
+        public int god()
+        {
+            return 1;
         }
 
         // GET: Jigitems
