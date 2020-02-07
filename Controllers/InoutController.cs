@@ -27,6 +27,7 @@ namespace Fixture02.Controllers
             {
                 jigitem = jigitem.Where(h => h.Location.Contains(location));
             }
+            //xiagaide
 
             OutJigList outJigList = new OutJigList();
             outJigList.OutModelList = new List<OutJig>();
