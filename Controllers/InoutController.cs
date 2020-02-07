@@ -14,6 +14,12 @@ namespace Fixture02.Controllers
     {
         private fixtureEntities db = new fixtureEntities();
 
+
+        public ActionResult Hello()
+        {
+            return View();
+        }
+
         // GET: Jigitems
         public ActionResult Index(String code, String name, String location , String model, String partNo)
         {
@@ -28,6 +34,7 @@ namespace Fixture02.Controllers
                 jigitem = jigitem.Where(h => h.Location.Contains(location));
             }
             //lgx
+
 
             OutJigList outJigList = new OutJigList();
             outJigList.OutModelList = new List<OutJig>();
