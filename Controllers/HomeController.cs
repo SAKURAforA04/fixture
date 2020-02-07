@@ -7,7 +7,17 @@ using System.Web.Mvc;
 
 namespace Fixture02.Controllers
 {
-   
+    //public class HomeController : Controller
+    //{
+    //    Razor.Models.Product myProduct = new Models.Product { ProductID = 1, Name = "Book" };
+    //    Razor.Models.Person myPerson = new Models.Person { PersonID = "1", Name = "Jack" };
+
+    //    public ActionResult Index()
+    //    {
+    //        return View(Tuple.Create(myProduct, myPerson));  // 返回一个Tuple对象，Item1代表Product、Item2代表Person
+    //    }
+    //}
+
     public class HomeController : Controller
     {
         private fixtureEntities db = new fixtureEntities();

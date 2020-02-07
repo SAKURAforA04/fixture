@@ -133,12 +133,14 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InoutController.cs" />
     <Compile Include="Controllers\JigitemsController.cs" />
+    <Compile Include="Controllers\JigOrJigitemsController.cs" />
     <Compile Include="Controllers\JigsController.cs" />
     <Compile Include="Controllers\repairsController.cs" />
     <Compile Include="Controllers\WorkcellsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\JigOrJigitems.cs" />
     <Compile Include="Models\Employee.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

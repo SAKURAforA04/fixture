@@ -41,11 +41,13 @@ namespace Fixture02.Controllers
         // GET: Jigitems/Create
         public ActionResult Create()
         {
-            return View();
+            JigOrJigitems all = new JigOrJigitems();
+            //all = all.Jig.Where(h=>h.WorkcellID=="101");
+            return View(all);
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ItemID,Code,SeqID,BillNo,RegDate,Location,State,Pic,AddDate,AddUserID,AddUserName")] Jigitem jigitem)
         {
             if (ModelState.IsValid)

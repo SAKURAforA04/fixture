@@ -14,26 +14,6 @@ namespace Fixture02.Controllers
     {
         private fixtureEntities db = new fixtureEntities();
 
-
-        public ActionResult lgx()
-        {
-            return View();
-        }
-
-
-        public ActionResult Hello()
-        {
-            return View();
-        }
-        public int god()
-        {
-            return 1;
-        }
-        public int play()
-        {
-            return 2;
-        }
-
         // GET: Jigitems
         public ActionResult Index(String code, String name, String location , String model, String partNo)
         {
