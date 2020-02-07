@@ -18,6 +18,10 @@ namespace Fixture02.Controllers
         {
             return 1;
         }
+        public int play()
+        {
+            return 2;
+        }
 
         // GET: Jigitems
         public ActionResult Index(String code, String name, String location , String model, String partNo)
