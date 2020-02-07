@@ -15,6 +15,11 @@ namespace Fixture02.Controllers
         private fixtureEntities db = new fixtureEntities();
 
 
+        public ActionResult lgx()
+        {
+            return View();
+        }
+
 
         public ActionResult Hello()
         {
