@@ -1,0 +1,171 @@
+﻿@model Fixture02.Models.Jig
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/FixtureMaster.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Jig</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FamilyID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FamilyID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FamilyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FamilyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Model)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PartNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PartNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkcellID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkcellID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkcellName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkcellName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsedFor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsedFor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UPL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UPL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OwnerID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OwnerID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OwnerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OwnerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PMPeriod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PMPeriod)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddUserID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddUserID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddUserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddUserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EditDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EditDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EditUserID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EditUserID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EditUserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EditUserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Remark)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Remark)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Code }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

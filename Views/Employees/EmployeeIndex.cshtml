@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Fixture02.Models.Employee>
+
+@{
+    Layout = "~/Views/Shared/FixtureMaster.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span3">
+                <button class="btn" type="button"> @Html.ActionLink("新增", "Create")</button>
+            </div>
+            
+                @using (Html.BeginForm("EmployeeIndex", "Employees", FormMethod.Get))
+                {
+                    <p>员工姓名:@Html.TextBox("searchString")</p>
+                    <p>员工权限:@Html.TextBox("userLevel")</p>
+                    <p>员工部门:@Html.TextBox("workcellID")</p>
+
+                    <input type="submit" value="查询" />
+                }
+            
+        </div>
+    </div>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserLevel)
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.WorkcellID)*@
+                @Html.DisplayNameFor(model => model.Workcell.WorkcellName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Job)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserLevel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Workcell.WorkcellName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Job)
+                </td>
+                <td>
+                    @Html.ActionLink("编辑", "Edit", new { id = item.EmployeeID }) |
+                    @Html.ActionLink("详情", "Details", new { id = item.EmployeeID }) |
+                    @Html.ActionLink("删除", "Delete", new { id = item.EmployeeID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>

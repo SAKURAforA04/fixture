@@ -1,0 +1,175 @@
+﻿@model Fixture02.Models.Inout
+
+@{
+ Layout = "~/Views/Shared/FixtureMaster.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>你确定删除这条进出库的信息吗？</h3>
+    <div>
+        <h4>Inout</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ItemID)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ItemID)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ViaUserName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ViaUserName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.State)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.State)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LineID)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LineID)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LineName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LineName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Code)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Code)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Location)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Location)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Model)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Model)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PartNo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PartNo)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FamilyID)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FamilyID)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FamilyName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FamilyName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AddDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AddDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AddUserID)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AddUserID)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AddUserName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AddUserName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ReviewDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ReviewDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ReviewUserID)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ReviewUserID)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ReviewUserName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ReviewUserName)
+            </dd>
+
+
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="删除" class="btn btn-default" /> |
+                @Html.ActionLink("返回", "SearchInoutMessage")
+            </div>
+        }
+    </div>
+</body>
+</html>

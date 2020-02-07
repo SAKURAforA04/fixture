@@ -1,0 +1,524 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="fixtureModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="EmployeeName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="20" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="UserLevel" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="WorkcellID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Job" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Family">
+          <Key>
+            <PropertyRef Name="FamilyID" />
+          </Key>
+          <Property Name="FamilyID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="FamilyName" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Inout">
+          <Key>
+            <PropertyRef Name="IinOutID" />
+          </Key>
+          <Property Name="IinOutID" Type="int" Nullable="false" />
+          <Property Name="ItemID" Type="int" Nullable="false" />
+          <Property Name="ViaUserName" Type="varchar" MaxLength="100" />
+          <Property Name="State" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="LineID" Type="varchar" MaxLength="20" />
+          <Property Name="LineName" Type="varchar" MaxLength="100" />
+          <Property Name="Code" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Location" Type="varchar" MaxLength="100" />
+          <Property Name="Model" Type="varchar" MaxLength="100" />
+          <Property Name="PartNo" Type="varchar" MaxLength="100" />
+          <Property Name="FamilyID" Type="varchar" MaxLength="20" />
+          <Property Name="FamilyName" Type="varchar" MaxLength="100" />
+          <Property Name="AddDate" Type="datetime" Nullable="false" />
+          <Property Name="AddUserID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="AddUserName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ReviewDate" Type="datetime" />
+          <Property Name="ReviewUserID" Type="varchar" MaxLength="20" />
+          <Property Name="ReviewUserName" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Jig">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="FamilyID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="FamilyName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Model" Type="varchar" MaxLength="100" />
+          <Property Name="PartNo" Type="varchar" MaxLength="100" />
+          <Property Name="WorkcellID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="WorkcellName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="UsedFor" Type="varchar" MaxLength="100" />
+          <Property Name="UPL" Type="int" />
+          <Property Name="OwnerID" Type="varchar" MaxLength="20" />
+          <Property Name="OwnerName" Type="varchar" MaxLength="100" />
+          <Property Name="PMPeriod" Type="int" />
+          <Property Name="AddDate" Type="datetime" Nullable="false" />
+          <Property Name="AddUserID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="AddUserName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="EditDate" Type="datetime" />
+          <Property Name="EditUserID" Type="varchar" MaxLength="100" />
+          <Property Name="EditUserName" Type="varchar" MaxLength="100" />
+          <Property Name="Remark" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Jigitem">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SeqID" Type="int" Nullable="false" />
+          <Property Name="BillNo" Type="varchar" MaxLength="100" />
+          <Property Name="RegDate" Type="datetime" Nullable="false" />
+          <Property Name="UsedCount" Type="int" />
+          <Property Name="Location" Type="varchar" MaxLength="100" />
+          <Property Name="State" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Pic" Type="varchar" MaxLength="100" />
+          <Property Name="AddDate" Type="datetime" Nullable="false" />
+          <Property Name="AddUserID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="AddUserName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="FirstReviewDate" Type="datetime" />
+          <Property Name="FirstReviewUserID" Type="varchar" MaxLength="20" />
+          <Property Name="FirstReviewUserName" Type="varchar" MaxLength="100" />
+          <Property Name="SecondReviewDate" Type="datetime" />
+          <Property Name="SecondReviewUserID" Type="varchar" MaxLength="20" />
+          <Property Name="SecondReviewUserName" Type="varchar" MaxLength="100" />
+          <Property Name="WaitTime" Type="datetime" />
+          <Property Name="BackNote" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Line">
+          <Key>
+            <PropertyRef Name="LineID" />
+          </Key>
+          <Property Name="LineID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="LineName" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="repair">
+          <Key>
+            <PropertyRef Name="RepairID" />
+          </Key>
+          <Property Name="RepairID" Type="int" Nullable="false" />
+          <Property Name="CheckID" Type="int" />
+          <Property Name="ItemID" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="FamilyID" Type="varchar" MaxLength="20" />
+          <Property Name="FamilyName" Type="varchar" MaxLength="100" />
+          <Property Name="Model" Type="varchar" MaxLength="100" />
+          <Property Name="PartNo" Type="varchar" MaxLength="100" />
+          <Property Name="Problem" Type="varchar" MaxLength="100" />
+          <Property Name="Pic" Type="varchar" MaxLength="100" />
+          <Property Name="AddDate" Type="datetime" Nullable="false" />
+          <Property Name="AddUserID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="AddUserName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="RepairDate" Type="datetime" />
+          <Property Name="RepairUserName" Type="varchar" MaxLength="100" />
+          <Property Name="RepairState" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Workcell">
+          <Key>
+            <PropertyRef Name="WorkcellID" />
+          </Key>
+          <Property Name="WorkcellID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="WorkcellName" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Employee_Workcell">
+          <End Role="Workcell" Type="Self.Workcell" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workcell">
+              <PropertyRef Name="WorkcellID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="WorkcellID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Jigitem_Code">
+          <End Role="Jig" Type="Self.Jig" Multiplicity="1" />
+          <End Role="Jigitem" Type="Self.Jigitem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Jig">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="Jigitem">
+              <PropertyRef Name="Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="fixtureModelStoreContainer">
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Family" EntityType="Self.Family" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inout" EntityType="Self.Inout" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Jig" EntityType="Self.Jig" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Jigitem" EntityType="Self.Jigitem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Line" EntityType="Self.Line" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="repair" EntityType="Self.repair" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Workcell" EntityType="Self.Workcell" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Employee_Workcell" Association="Self.FK_Employee_Workcell">
+            <End Role="Workcell" EntitySet="Workcell" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Jigitem_Code" Association="Self.FK_Jigitem_Code">
+            <End Role="Jig" EntitySet="Jig" />
+            <End Role="Jigitem" EntitySet="Jigitem" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="fixtureModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmployeeName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UserLevel" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WorkcellID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Job" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Workcell" Relationship="fixtureModel.FK_Employee_Workcell" FromRole="Employee" ToRole="Workcell" />
+        </EntityType>
+        <EntityType Name="Workcell">
+          <Key>
+            <PropertyRef Name="WorkcellID" />
+          </Key>
+          <Property Name="WorkcellID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WorkcellName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="fixtureModel.FK_Employee_Workcell" FromRole="Workcell" ToRole="Employee" />
+        </EntityType>
+        <EntityContainer Name="fixtureEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="Workcell" EntityType="Self.Workcell" />
+          <EntitySet Name="Family" EntityType="fixtureModel.Family" />
+          <EntitySet Name="Jig" EntityType="fixtureModel.Jig" />
+          <EntitySet Name="Jigitem" EntityType="fixtureModel.Jigitem" />
+          <EntitySet Name="Inout" EntityType="fixtureModel.Inout" />
+          <AssociationSet Name="FK_Jigitem_Code" Association="fixtureModel.FK_Jigitem_Code">
+            <End Role="Jig" EntitySet="Jig" />
+            <End Role="Jigitem" EntitySet="Jigitem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Workcell" Association="fixtureModel.FK_Employee_Workcell">
+            <End Role="Workcell" EntitySet="Workcell" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <EntitySet Name="Line" EntityType="fixtureModel.Line" />
+          <EntitySet Name="repair" EntityType="fixtureModel.repair" />
+        </EntityContainer>
+        <EntityType Name="Family">
+          <Key>
+            <PropertyRef Name="FamilyID" />
+          </Key>
+          <Property Name="FamilyID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FamilyName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Jig">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FamilyID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FamilyName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Model" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PartNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="WorkcellID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="WorkcellName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsedFor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UPL" Type="Int32" />
+          <Property Name="OwnerID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PMPeriod" Type="Int32" />
+          <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AddUserID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AddUserName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EditDate" Type="DateTime" Precision="3" />
+          <Property Name="EditUserID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EditUserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Jigitem" Relationship="fixtureModel.FK_Jigitem_Code" FromRole="Jig" ToRole="Jigitem" />
+        </EntityType>
+        <EntityType Name="Jigitem">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SeqID" Type="Int32" Nullable="false" />
+          <Property Name="BillNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RegDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsedCount" Type="Int32" />
+          <Property Name="Location" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Pic" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AddUserID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AddUserName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FirstReviewDate" Type="DateTime" Precision="3" />
+          <Property Name="FirstReviewUserID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FirstReviewUserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SecondReviewDate" Type="DateTime" Precision="3" />
+          <Property Name="SecondReviewUserID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SecondReviewUserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="WaitTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Jig" Relationship="fixtureModel.FK_Jigitem_Code" FromRole="Jigitem" ToRole="Jig" />
+          <Property Name="BackNote" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Inout">
+          <Key>
+            <PropertyRef Name="IinOutID" />
+          </Key>
+          <Property Name="IinOutID" Type="Int32" Nullable="false" />
+          <Property Name="ItemID" Type="Int32" Nullable="false" />
+          <Property Name="ViaUserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="LineID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LineName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Model" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PartNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FamilyID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FamilyName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AddUserID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AddUserName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ReviewDate" Type="DateTime" Precision="3" />
+          <Property Name="ReviewUserID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ReviewUserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Jigitem_Code">
+          <End Type="fixtureModel.Jig" Role="Jig" Multiplicity="1" />
+          <End Type="fixtureModel.Jigitem" Role="Jigitem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Jig">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="Jigitem">
+              <PropertyRef Name="Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Workcell">
+          <End Type="fixtureModel.Workcell" Role="Workcell" Multiplicity="1" />
+          <End Type="fixtureModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workcell">
+              <PropertyRef Name="WorkcellID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="WorkcellID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Line">
+          <Key>
+            <PropertyRef Name="LineID" />
+          </Key>
+          <Property Name="LineID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LineName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="repair">
+          <Key>
+            <PropertyRef Name="RepairID" />
+          </Key>
+          <Property Name="RepairID" Type="Int32" Nullable="false" />
+          <Property Name="CheckID" Type="Int32" />
+          <Property Name="ItemID" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FamilyID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FamilyName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Model" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PartNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Problem" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Pic" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AddUserID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AddUserName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RepairDate" Type="DateTime" Precision="3" />
+          <Property Name="RepairUserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RepairState" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="fixtureModelStoreContainer" CdmEntityContainer="fixtureEntities">
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="fixtureModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserLevel" ColumnName="UserLevel" />
+                <ScalarProperty Name="WorkcellID" ColumnName="WorkcellID" />
+                <ScalarProperty Name="Job" ColumnName="Job" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Workcell">
+            <EntityTypeMapping TypeName="fixtureModel.Workcell">
+              <MappingFragment StoreEntitySet="Workcell">
+                <ScalarProperty Name="WorkcellID" ColumnName="WorkcellID" />
+                <ScalarProperty Name="WorkcellName" ColumnName="WorkcellName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Family">
+            <EntityTypeMapping TypeName="fixtureModel.Family">
+              <MappingFragment StoreEntitySet="Family">
+                <ScalarProperty Name="FamilyName" ColumnName="FamilyName" />
+                <ScalarProperty Name="FamilyID" ColumnName="FamilyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Jig">
+            <EntityTypeMapping TypeName="fixtureModel.Jig">
+              <MappingFragment StoreEntitySet="Jig">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="EditUserName" ColumnName="EditUserName" />
+                <ScalarProperty Name="EditUserID" ColumnName="EditUserID" />
+                <ScalarProperty Name="EditDate" ColumnName="EditDate" />
+                <ScalarProperty Name="AddUserName" ColumnName="AddUserName" />
+                <ScalarProperty Name="AddUserID" ColumnName="AddUserID" />
+                <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+                <ScalarProperty Name="PMPeriod" ColumnName="PMPeriod" />
+                <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+                <ScalarProperty Name="UPL" ColumnName="UPL" />
+                <ScalarProperty Name="UsedFor" ColumnName="UsedFor" />
+                <ScalarProperty Name="WorkcellName" ColumnName="WorkcellName" />
+                <ScalarProperty Name="WorkcellID" ColumnName="WorkcellID" />
+                <ScalarProperty Name="PartNo" ColumnName="PartNo" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="FamilyName" ColumnName="FamilyName" />
+                <ScalarProperty Name="FamilyID" ColumnName="FamilyID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Jigitem">
+            <EntityTypeMapping TypeName="fixtureModel.Jigitem">
+              <MappingFragment StoreEntitySet="Jigitem">
+                <ScalarProperty Name="BackNote" ColumnName="BackNote" />
+                <ScalarProperty Name="WaitTime" ColumnName="WaitTime" />
+                <ScalarProperty Name="SecondReviewUserName" ColumnName="SecondReviewUserName" />
+                <ScalarProperty Name="SecondReviewUserID" ColumnName="SecondReviewUserID" />
+                <ScalarProperty Name="SecondReviewDate" ColumnName="SecondReviewDate" />
+                <ScalarProperty Name="FirstReviewUserName" ColumnName="FirstReviewUserName" />
+                <ScalarProperty Name="FirstReviewUserID" ColumnName="FirstReviewUserID" />
+                <ScalarProperty Name="FirstReviewDate" ColumnName="FirstReviewDate" />
+                <ScalarProperty Name="AddUserName" ColumnName="AddUserName" />
+                <ScalarProperty Name="AddUserID" ColumnName="AddUserID" />
+                <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+                <ScalarProperty Name="Pic" ColumnName="Pic" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="UsedCount" ColumnName="UsedCount" />
+                <ScalarProperty Name="RegDate" ColumnName="RegDate" />
+                <ScalarProperty Name="BillNo" ColumnName="BillNo" />
+                <ScalarProperty Name="SeqID" ColumnName="SeqID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inout">
+            <EntityTypeMapping TypeName="fixtureModel.Inout">
+              <MappingFragment StoreEntitySet="Inout">
+                <ScalarProperty Name="ReviewUserName" ColumnName="ReviewUserName" />
+                <ScalarProperty Name="ReviewUserID" ColumnName="ReviewUserID" />
+                <ScalarProperty Name="ReviewDate" ColumnName="ReviewDate" />
+                <ScalarProperty Name="AddUserName" ColumnName="AddUserName" />
+                <ScalarProperty Name="AddUserID" ColumnName="AddUserID" />
+                <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+                <ScalarProperty Name="FamilyName" ColumnName="FamilyName" />
+                <ScalarProperty Name="FamilyID" ColumnName="FamilyID" />
+                <ScalarProperty Name="PartNo" ColumnName="PartNo" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="LineName" ColumnName="LineName" />
+                <ScalarProperty Name="LineID" ColumnName="LineID" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ViaUserName" ColumnName="ViaUserName" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="IinOutID" ColumnName="IinOutID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Line">
+            <EntityTypeMapping TypeName="fixtureModel.Line">
+              <MappingFragment StoreEntitySet="Line">
+                <ScalarProperty Name="LineName" ColumnName="LineName" />
+                <ScalarProperty Name="LineID" ColumnName="LineID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="repair">
+            <EntityTypeMapping TypeName="fixtureModel.repair">
+              <MappingFragment StoreEntitySet="repair">
+                <ScalarProperty Name="RepairState" ColumnName="RepairState" />
+                <ScalarProperty Name="RepairUserName" ColumnName="RepairUserName" />
+                <ScalarProperty Name="RepairDate" ColumnName="RepairDate" />
+                <ScalarProperty Name="AddUserName" ColumnName="AddUserName" />
+                <ScalarProperty Name="AddUserID" ColumnName="AddUserID" />
+                <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+                <ScalarProperty Name="Pic" ColumnName="Pic" />
+                <ScalarProperty Name="Problem" ColumnName="Problem" />
+                <ScalarProperty Name="PartNo" ColumnName="PartNo" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="FamilyName" ColumnName="FamilyName" />
+                <ScalarProperty Name="FamilyID" ColumnName="FamilyID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="CheckID" ColumnName="CheckID" />
+                <ScalarProperty Name="RepairID" ColumnName="RepairID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

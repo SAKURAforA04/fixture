@@ -1,0 +1,147 @@
+﻿@model Fixture02.Models.repair
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/FixtureMaster.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>repair</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CheckID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CheckID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FamilyID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FamilyID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FamilyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FamilyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Model)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PartNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PartNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Problem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Problem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddUserID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddUserID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddUserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddUserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RepairDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RepairDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RepairUserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RepairUserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RepairState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RepairState)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RepairID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

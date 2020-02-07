@@ -1,0 +1,142 @@
+﻿@model IEnumerable<Fixture02.Models.Jig>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/FixtureMaster.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FamilyID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FamilyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PartNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkcellID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkcellName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UsedFor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UPL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OwnerID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OwnerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PMPeriod)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AddDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AddUserID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AddUserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EditDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EditUserID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EditUserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Remark)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FamilyID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FamilyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PartNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkcellID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkcellName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UsedFor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UPL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OwnerID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OwnerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PMPeriod)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AddDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AddUserID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AddUserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EditDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EditUserID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EditUserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Remark)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Code }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Code }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Code })
+        </td>
+    </tr>
+}
+
+</table>

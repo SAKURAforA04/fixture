@@ -1,0 +1,129 @@
+﻿@model IEnumerable<Fixture02.Models.repair>
+
+@{
+    ViewBag.Title = "RepairHandling";
+    Layout = "~/Views/Shared/FixtureMaster.cshtml";
+}
+
+<h2>报修处理</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FamilyID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FamilyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PartNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Problem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AddDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AddUserID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AddUserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RepairDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RepairUserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RepairState)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.RepairState == "新增")
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CheckID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FamilyID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FamilyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PartNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Problem)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pic)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AddDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AddUserID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AddUserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RepairDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RepairUserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RepairState)
+                </td>
+                <td>
+                    @Html.ActionLink("维修成功", "RepairSuccess", new { id = item.RepairID }) |
+                    @Html.ActionLink("维修失败", "RepairFail", new { id = item.RepairID }) 
+                    @*@Html.ActionLink("Delete", "Delete", new { id = item.RepairID })*@
+                </td>
+            </tr>
+                
+          }
+
+                
+      }
+
+</table>
+

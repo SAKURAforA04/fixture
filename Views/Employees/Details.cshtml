@@ -1,0 +1,74 @@
+﻿@model Fixture02.Models.Employee
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Employee</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.EmployeeName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.EmployeeName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Password)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.UserLevel)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.UserLevel)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Workcell.WorkcellID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Workcell.WorkcellName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Job)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Job)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("修改", "Edit", new { id = Model.EmployeeID }) |
+        @Html.ActionLink("返回", "EmployeeIndex")
+    </p>
+</body>
+</html>

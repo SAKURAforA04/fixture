@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>智能工夹具管理系统</title>
+
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <h3 class="text-center">
+                    工夹具智能管理系统
+                </h3>
+            </div>
+        </div>
+
+
+        <div class="row clearfix">
+            <div class="col-md-2 column">
+                <div class="panel-group" id="panel-756431">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                          
+                            @Html.ActionLink("首页", "Index", "Home")
+                        </div>
+                    </div>
+
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-528672">采购入库</a>
+                        </div>
+
+                        <div id="panel-element-528672" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                @Html.ActionLink("采购入库登记", "Index", "Jigitems")
+                            </div>
+
+                            <div class="panel-body">
+                                @Html.ActionLink("采购入库初审", "FirstReview", "Jigitems")
+                            </div>
+
+                            <div class="panel-body">
+                                @Html.ActionLink("采购入库终审", "SecondReview", "Jigitems")
+                            </div>
+
+                            <div class="panel-body">
+                                @Html.ActionLink("采购入库查询", "FixtureItemFind", "Jigitems")
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21442">进/出库</a>
+                        </div>
+
+                        <div id="panel-element-21442" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                @Html.ActionLink("入库管理", "InIndex", "Inout")
+                            </div>
+
+                            <div class="panel-body">
+                                @Html.ActionLink("出库管理", "Index", "Inout")
+                            </div>
+
+                            <div class="panel-body">
+                                @Html.ActionLink("信息查询", "SearchInoutMessage", "Inout")
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21443">工夹具报修</a>
+                        </div>
+
+
+                        <div id="panel-element-21443" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                @Html.ActionLink("报修提交", "create", "Repairs")
+                            </div>
+
+                            <div class="panel-body">
+                                @Html.ActionLink("报修处理", "RepairHandling", "Repairs")
+                            </div>
+
+                            <div class="panel-body">
+                                @Html.ActionLink("报修查询", "index", "Repairs")
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21444">工夹具报废</a>
+                        </div>
+
+
+                        <div id="panel-element-21444" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <a href="#">报废提交</a>
+                            </div>
+
+                            <div class="panel-body">
+                                <a href="#">报废初审</a>
+                            </div>
+
+                            <div class="panel-body">
+                                <a href="#">报废终审</a>
+                            </div>
+
+                            <div class="panel-body">
+                                <a href="#">报废查询</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21445">系统管理</a>
+                        </div>
+
+
+                        <div id="panel-element-21445" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                @Html.ActionLink("用户管理", "EmployeeIndex", "Employees")
+                            </div>
+
+                            <div class="panel-body">
+                                @Html.ActionLink("部门管理", "Index", "Workcells")
+                            </div>
+
+                            <div class="panel-body">
+                                <a href="#">权限管理</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-md-10 column">
+                @RenderBody()
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

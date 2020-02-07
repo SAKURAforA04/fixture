@@ -1,0 +1,107 @@
+﻿@model IEnumerable<Fixture02.Models.Jigitem>
+
+@{
+    Layout = "~/Views/Shared/FixtureMaster.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h2>FixtureItemFind</h2>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            @*<div class="span3">
+            <button class="btn" type="button"> @Html.ActionLink("新增", "Create")</button>
+        </div>*@
+            <p>
+                @using (Html.BeginForm("FixtureItemFind", "Jigitems", FormMethod.Get))
+                {
+                <p>夹具代码:@Html.TextBox("code")</p>
+                <p>所在位置:@Html.TextBox("location")</p>
+                <p>夹具状态:@Html.TextBox("state")</p>
+
+                <input type="submit" value="查询" />
+            }
+
+            </div>
+        </div>
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ItemID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Code)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SeqID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BillNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RegDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UsedCount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Location)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.State)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AddDate)
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SeqID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UsedCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddDate)
+            </td>
+            <td>
+                @Html.ActionLink("详情", "Details", new { id = item.ItemID })
+            </td>
+                        @*@Html.ActionLink("编辑", "Edit", new { id = item.ItemID }) |
+                        |
+                        @Html.ActionLink("删除", "Delete", new { id = item.ItemID })*@
+                    
+        </tr>
+            }
+
+        </table>
+    </body>
+</html>

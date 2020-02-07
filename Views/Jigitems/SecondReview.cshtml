@@ -1,0 +1,133 @@
+﻿@model IEnumerable<Fixture02.Models.Jigitem>
+
+@{
+    ViewBag.Title = "SecondReview";
+    Layout = "~/Views/Shared/FixtureMaster.cshtml";
+}
+
+<h2>采购入库终审</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SeqID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BillNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegDate)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.UsedCount)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.State)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AddDate)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SeqID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegDate)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.UsedCount)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddDate)
+            </td>
+
+            <td>
+                @using (Html.BeginForm("SecondReview", "Jigitems", new { id = item.ItemID, state = "同意" }, FormMethod.Post))
+                {
+                    <input type="submit" class="btn btn-primary" value="同意" class="btn btn-default" />
+                }
+
+
+                <div class="container">
+                    <input type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="Values(@item.ItemID)" value="不同意" />
+
+                    <!--  定义模态框触发器，此处为按钮触发  -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <!--  定义模态框，过渡效果为淡入，id为myModal,tabindex=-1可以禁用使用tab切换，aria-labelledby用于引用模态框的标题，aria-hidden=true保持模态框在触发前窗口不可见  -->
+                        <div class="modal-dialog">
+                            <!--  显示模态框对话框模型（若不写下一个div则没有颜色）  -->
+                            <div class="modal-content">
+                                <!--  显示模态框白色背景，所有内容都写在这个div里面  -->
+
+                                <div class="btn-info modal-header">
+                                    <!--  模态框标题  -->
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <!--  关闭按钮  -->
+                                    <h4>问题反馈</h4>
+                                    <!--  标题内容  -->
+                                </div>
+                                @using (Html.BeginForm("SecondReview", "Jigitems", new { state = "不同意" }, FormMethod.Post))
+                                {
+                                    <div class="modal-body">
+                                        <!--  模态框内容，我在此处添加一个表单 -->
+                                        @*这里id 和 name两个属性必须同时存在且一致*@
+                                        <input type="hidden" id="id" name="id" value="" />
+
+                                        <div class="form-group">
+                                            @*<label for="uname" class="col-sm-2 control-label">用户名</label>*@
+                                            <div class="col-sm-9">
+                                                <input type="text" id="backNote" name="backNote" class="form-control well" placeholder="请输入审批退回意见" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <!--  模态框底部样式，一般是提交或者确定按钮 -->
+                                        <input type="submit" value="提交" class="btn btn-warning" />
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    }
+</table>
+
+<script>
+    $('#myModal').modal("hide");
+    function Values(ID) {
+        $("#id").val(ID);
+    }
+</script>

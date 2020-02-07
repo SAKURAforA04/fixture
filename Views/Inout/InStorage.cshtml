@@ -1,0 +1,71 @@
+﻿@model Fixture02.Controllers.OutJig
+
+@{
+    Layout = "~/Views/Shared/FixtureMaster.cshtml";
+}
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="tabbable" id="tabs-383386">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#panel-156784" data-toggle="tab">入库</a>
+                    </li>
+                    <li>
+                        <a href="#panel-466615" data-toggle="tab">入缓冲区</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="panel-156784">
+                        <div class="container">
+                            <div class="row clearfix">
+                                <div class="col-md-12 column">
+                                    @using (Html.BeginForm("InStorageToSql", "Inout"))
+                                    {
+                                        DateTime DT = System.DateTime.Now;
+                                        string dt = DT.ToString();               //获取当前时间
+                                        <label>夹具编码</label>@Html.TextBox("Code", "", new { @class = "form-control" })
+                                        <label>夹具名称</label>@Html.TextBox("Name", "", new { @class = "form-control" })
+                                        <label>夹具位置</label>@Html.TextBox("Location", "", new { @class = "form-control" })
+                                        <label>经手人</label>@Html.TextBox("ViaUserName")<label>创建人</label>@Html.TextBox("AddUserName")<label>审核人</label>@Html.TextBox("ReviewUserName")
+                                        <br><label>夹具生产线</label>@Html.TextBox("LineName", "", new { @class = "form-control" })
+                                        @Html.Hidden("ItemID", Model.ItemID)
+                                        <input type="hidden" name="State" id="State" value="进库" />
+                                        @Html.Hidden("AddUserId", 123)
+                                        @Html.Hidden("Model", Model.Model)
+                                        @Html.Hidden("PartNo", Model.PartNo)
+                                        <button type="submit" class="btn btn-default">操作并记录</button>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="panel-466615">
+                        <div class="container">
+                            <div class="row clearfix">
+                                <div class="col-md-12 column">
+                                    @using (Html.BeginForm("InStorageToSql", "Inout"))
+                                    {
+                                        DateTime DT = System.DateTime.Now;
+                                        string dt = DT.ToString();               //获取当前时间
+                                        <label>夹具编码</label>@Html.TextBox("Code", "", new { @class = "form-control" })
+                                        <label>夹具名称</label>@Html.TextBox("Name", "", new { @class = "form-control" })
+                                        <label>夹具位置</label>@Html.TextBox("Location", "", new { @class = "form-control" })
+                                        <label>经手人</label>@Html.TextBox("ViaUserName")<label>创建人</label>@Html.TextBox("AddUserName")<label>审核人</label>@Html.TextBox("ReviewUserName")
+                                        <br><label>领用地点</label>@Html.TextBox("LineName", "", new { @class = "form-control" })
+                                        @Html.Hidden("ItemID", Model.ItemID)
+                                        <input type="hidden" name="State" id="State" value="缓冲" />
+                                        @Html.Hidden("AddUserId", 123)
+                                        @Html.Hidden("Model", Model.Model)
+                                        @Html.Hidden("PartNo", Model.PartNo)
+                                        <button type="submit" class="btn btn-default">操作并记录</button>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

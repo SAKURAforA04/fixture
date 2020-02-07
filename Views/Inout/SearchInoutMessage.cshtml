@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Fixture02.Models.Inout>
+
+@{
+    Layout = "~/Views/Shared/FixtureMaster.cshtml";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row-fluid">
+
+            <p>
+
+                @using (Html.BeginForm("Index", "Inout", FormMethod.Get))
+                {
+                    <table class="table">
+                        <tr>
+                            <th>夹具编号:@Html.TextBox("code")</th>
+                            <th>夹具名称:@Html.TextBox("name")</th>
+                            <th>夹具库位:@Html.TextBox("location")</th>
+                            <th>夹具模组:@Html.TextBox("model")</th>
+                            <th>夹具料号:@Html.TextBox("partNO")</th>
+                            <th> <button class="btn" type="submit">查询</button></th>
+                        </tr>
+                    </table>
+                }
+            </p>
+
+        </div>
+    </div>
+    <table class="table">
+        <tr>
+            <th>
+                Code
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Location
+            </th>
+            <th>
+                Model
+            </th>
+            <th>
+                PartNo
+            </th>
+            <th>
+                state
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PartNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.State)
+                </td>
+                <td>
+                    @Html.ActionLink("编辑", "Edit", new { id = item.IinOutID }) |
+                    @Html.ActionLink("详情", "Details", new { id = item.IinOutID }) |
+                    @Html.ActionLink("删除", "Delete", new { id = item.IinOutID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>
+

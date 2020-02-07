@@ -1,0 +1,163 @@
+﻿@model Fixture02.Models.Jigitem
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/FixtureMaster.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Jigitem</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SeqID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SeqID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BillNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BillNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsedCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsedCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.State)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddUserID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddUserID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddUserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddUserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstReviewDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstReviewDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstReviewUserID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstReviewUserID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstReviewUserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstReviewUserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SecondReviewDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SecondReviewDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SecondReviewUserID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SecondReviewUserID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SecondReviewUserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SecondReviewUserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WaitTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WaitTime)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.ItemID }) |*@
+    @Html.ActionLink("返回", "Index")
+</p>
