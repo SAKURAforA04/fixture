@@ -293,6 +293,7 @@
     <Content Include="Views\Inout\InStorage.cshtml" />
     <Content Include="Views\Inout\OutStorage.cshtml" />
     <Content Include="Views\Inout\SearchInoutMessage.cshtml" />
+    <Content Include="Views\Repairs\repairSubmit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

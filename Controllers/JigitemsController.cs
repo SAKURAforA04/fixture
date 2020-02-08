@@ -185,7 +185,7 @@ namespace Fixture02.Controllers
 
             if (state == "同意")
             {
-                jigitem.State = "终审";
+                jigitem.State = "库存";
             }
             else
             {
