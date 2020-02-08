@@ -11,7 +11,8 @@ namespace Fixture02.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Data.Entity;
+
     public partial class Jig
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +20,17 @@ namespace Fixture02.Models
         {
             this.Jigitem = new HashSet<Jigitem>();
         }
-    
+
+        //public virtual DbSet<Jig> Jigs { get; set; }
+
+
+
+        //protected override void Jig(DbModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Jig>().Property(e => e.Code).IsFixedLength();
+        //}
+
+
         public string Code { get; set; }
         public string Name { get; set; }
         public string FamilyID { get; set; }

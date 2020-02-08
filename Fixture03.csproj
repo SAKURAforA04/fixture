@@ -128,12 +128,14 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InoutController.cs" />
     <Compile Include="Controllers\JigitemsController.cs" />
+    <Compile Include="Controllers\JigOrJigitemsController.cs" />
     <Compile Include="Controllers\JigsController.cs" />
     <Compile Include="Controllers\repairsController.cs" />
     <Compile Include="Controllers\WorkcellsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\JigOrJigitems.cs" />
     <Compile Include="Models\Employee.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -286,9 +288,11 @@
     <Content Include="Views\Inout\InStorage.cshtml" />
     <Content Include="Views\Inout\OutStorage.cshtml" />
     <Content Include="Views\Inout\SearchInoutMessage.cshtml" />
+    <Content Include="Views\Repairs\repairSubmit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Upload\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

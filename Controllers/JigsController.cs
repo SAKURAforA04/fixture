@@ -9,6 +9,15 @@ using Fixture02.Models;
 
 namespace Fixture02.Controllers
 {
+    //public virtual DbSet<Jig> Jigs { get; set; }
+
+    //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+    //{
+    //    modelBuilder.Entity<Jig>().Property(e => e.Code).IsFixedLength();
+    //}
+
+
+
     public class JigsController : Controller
     {
         private fixtureEntities db = new fixtureEntities();
