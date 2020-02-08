@@ -30,6 +30,7 @@ namespace Fixture02.Controllers
             }
             //lgx
 
+
             OutJigList outJigList = new OutJigList();
             outJigList.OutModelList = new List<OutJig>();
             foreach(var jigmodel in jigitem)
