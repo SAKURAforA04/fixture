@@ -41,11 +41,13 @@ namespace Fixture02.Controllers
         // GET: Jigitems/Create
         public ActionResult Create()
         {
-            return View();
+            JigOrJigitems all = new JigOrJigitems();
+            //all = all.Jig.Where(h=>h.WorkcellID=="101");
+            return View(all);
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ItemID,Code,SeqID,BillNo,RegDate,Location,State,Pic,AddDate,AddUserID,AddUserName")] Jigitem jigitem)
         {
             if (ModelState.IsValid)
@@ -183,7 +185,7 @@ namespace Fixture02.Controllers
 
             if (state == "同意")
             {
-                jigitem.State = "终审";
+                jigitem.State = "库存";
             }
             else
             {
@@ -247,6 +249,33 @@ namespace Fixture02.Controllers
             jigitem.State = statename;
             db.SaveChanges();
             return null;
+        }
+
+
+
+        //public ActionResult Create()
+        //{
+        //    return View();
+        //}
+
+
+        [HttpPost]
+        //创建一个与图片上传有关的控制器,HttpPostedFileBase主要库接收上传的复杂数据文件，然后再控制器保存到服务器上
+        public ActionResult UpLoad(HttpPostedFileBase files)
+        {
+            //接收，定义一个文件路径
+            //保证每一次的文件名都不一样
+            Guid g = Guid.NewGuid();
+            string strurl = "../Upload/"+g+files.FileName; //存储文件的地址和名称
+
+            files.SaveAs(HttpContext.Server.MapPath(strurl)); //保存到服务器
+            ViewBag.imgurl = strurl;
+
+            JigOrJigitems all = new JigOrJigitems();
+            //all = all.Jig.Where(h=>h.WorkcellID=="101");
+            //return View(all);
+
+            return View("Create",all);
         }
     }
 }

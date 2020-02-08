@@ -1,70 +1,128 @@
-﻿@model Fixture02.Models.Jigitem
+﻿@using Fixture02.Models
+@model JigOrJigitems
 
 @{
-    ViewBag.Title = "Create";
+    //ViewBag.Title = "Create";
     Layout = "~/Views/Shared/FixtureMaster.cshtml";
 }
-
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Jigitem</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="form-horizontal">
+    <h4>Jigitem</h4>
+    <hr />
+    @*=============================================用来查询夹具定义表中的数据===================================*@
+    <table class="table">
+        <tr>
+            <th>夹具编码</th>
+            <th>夹具名称</th>
+            <th>大类名称</th>
+            <th>模组</th>
+            <th>料号</th>
+            <th>用途</th>
+            <th>数量</th>
+            <th>点检周期</th>
+            <th></th>
+        </tr>
 
+        @foreach (var item in Model.Jig)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FamilyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PartNo)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.UsedFor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UPL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PMPeriod)
+                </td>
+                <td>
+                    <input type="button" class="btn btn-primary" onclick="Values(this)" selectcode="@item.Code" selectname="@item.Name" value="选择" />
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <div class="container-fluid">
+        <div class="row-no-gutters">
+            <div class="col-lg-push-8">
+                @*//多文本的这种格式（enctype="multipart/form-data"）*@
+                @using (Html.BeginForm("UpLoad", "Jigitems", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    //用于图片的上传 lgx 2.8 13:00===========================================================================================
+                    //1.添加文件控件和提交按钮
+
+                    <input type="file" name="files" id="files" />
+                    <input type="submit" value="上传" />
+                }
+                @*//Razor视图传地址就行*@
+                <img src="@ViewBag.imgurl" style="width:100px;height:100px" />
+            </div>
+        </div>
+    </div>
+    @using (Html.BeginForm())
+    {
         <div class="form-group">
-            @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" id="myModal">
+                <b>夹具编码：</b><input type="text" name="Code" id="Code" readonly="readonly" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10" id="myModal">
+                <b>夹具名称：</b><input type="text" name="Name" id="Name" readonly="readonly" />
+            </div>
+        </div>
+        <div class="form-group">
+
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
+                <b> 夹具序列号：</b><input type="text" name="SeqID" />
+
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.SeqID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.SeqID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.SeqID, "", new { @class = "text-danger" })
+                <b> 采购单据号:</b><input type="text" name="BillNo" />
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.BillNo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.BillNo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.BillNo, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.RegDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.RegDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.RegDate, "", new { @class = "text-danger" })
+                <b>入库日期:</b><input type="text" name="RegDate" />
             </div>
         </div>
 
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Location, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
+                <b>存放库位：</b><input type="text" name="Location" />
             </div>
         </div>
 
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Pic, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Pic, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Pic, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        @*<div class="form-group">
+                <div class="col-md-10">
+                    <b>图片：</b><input type="text" name="Pic" />
+                </div>
+            </div>*@
+
 
 
 
@@ -73,9 +131,20 @@
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
-    </div>
-}
+    }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
 </div>
+
+
+<script>
+    function Values(obj) {
+        var thisobj = $(obj);
+        var selectcode = thisobj.attr("selectcode");
+        var selectname = thisobj.attr("selectname");
+        $("#Code").val(selectcode);
+        $("#Name").val(selectname);
+    }
+</script>
