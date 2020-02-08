@@ -1,5 +1,8 @@
 ﻿@model IEnumerable<Fixture02.Models.Employee>
 
+@using PagedList
+@using PagedList.Mvc
+
 @{
     Layout = "~/Views/Shared/FixtureMaster.cshtml";
 }
@@ -18,16 +21,16 @@
             <div class="span3">
                 <button class="btn" type="button"> @Html.ActionLink("新增", "Create")</button>
             </div>
-            
-                @using (Html.BeginForm("EmployeeIndex", "Employees", FormMethod.Get))
-                {
-                    <p>员工姓名:@Html.TextBox("searchString")</p>
-                    <p>员工权限:@Html.TextBox("userLevel")</p>
-                    <p>员工部门:@Html.TextBox("workcellID")</p>
 
-                    <input type="submit" value="查询" />
-                }
-            
+            @using (Html.BeginForm("EmployeeIndex", "Employees", FormMethod.Get))
+            {
+                <p>员工姓名:@Html.TextBox("searchString")</p>
+                <p>员工权限:@Html.TextBox("userLevel")</p>
+                <p>员工部门:@Html.TextBox("workcellID")</p>
+
+                <input type="submit" value="查询" />
+            }
+
         </div>
     </div>
 
@@ -43,7 +46,6 @@
                 @Html.DisplayNameFor(model => model.UserLevel)
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.WorkcellID)*@
                 @Html.DisplayNameFor(model => model.Workcell.WorkcellName)
             </th>
             <th>
@@ -79,5 +81,6 @@
         }
 
     </table>
+    @Html.PagedListPager((IPagedList)Model, x => Url.Action("EmployeeIndex", new { page = x }))
 </body>
 </html>

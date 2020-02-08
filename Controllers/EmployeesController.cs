@@ -6,6 +6,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Fixture02.Models;
+using PagedList;
 
 namespace Fixture02.Controllers
 {
@@ -13,10 +14,8 @@ namespace Fixture02.Controllers
     {
         private fixtureEntities db = new fixtureEntities();
 
-        
-        public ActionResult EmployeeIndex(String searchString,String userLevel,String workcellID)
+        public ActionResult EmployeeIndex(String searchString, String userLevel, String workcellID, int page = 1, int pageSize = 4)
         {
-            //var name = from m in this.db.Employee select m;
             var name = db.Employee.Include(e => e.Workcell);
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -30,7 +29,9 @@ namespace Fixture02.Controllers
             {
                 name = name.Where(h => h.WorkcellID.Contains(workcellID));
             }
-            return View(name);
+            //用于分页，顺便跳转
+
+            return View(name.OrderBy(x => x.EmployeeID).ToPagedList(page, pageSize));
         }
 
 

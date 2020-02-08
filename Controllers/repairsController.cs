@@ -52,6 +52,10 @@ namespace Fixture02.Controllers
             {
                 repair.AddDate = DateTime.Now;
                 repair.RepairState = "新增";
+                //repair.AddUserID = Session.user.userid;
+                //repair.AddUserName = Session.user.username;
+                repair.AddUserID = "Session.user.userid";
+                repair.AddUserName = "Session.user.username";
                 db.repair.Add(repair);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -173,7 +177,7 @@ namespace Fixture02.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult changeJigitemState(int? itemid,string statename)
+        public ActionResult changeJigitemState(int? itemid, string statename)
         {
             if (itemid == null)
             {
@@ -185,8 +189,13 @@ namespace Fixture02.Controllers
                 return HttpNotFound();
             }
             var otherController = DependencyResolver.Current.GetService<JigitemsController>();
-            var action = otherController.changeItemState(itemid,statename);
+            var action = otherController.changeItemState(itemid, statename);
             return action;
+        }
+
+        public ActionResult repairSubmit()
+        {
+            return View(db.repair.ToList());
         }
     }
 }
