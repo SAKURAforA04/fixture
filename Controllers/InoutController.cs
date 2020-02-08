@@ -7,7 +7,6 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Fixture02.Models;
-//10hangdaima
 namespace Fixture02.Controllers
 {
     public class InoutController : Controller
