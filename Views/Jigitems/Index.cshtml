@@ -1,11 +1,15 @@
 ﻿@model IEnumerable<Fixture02.Models.Jigitem>
 
+@using PagedList;
+@using PagedList.Mvc;
+
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/FixtureMaster.cshtml";
 }
 
-    <h2>采购入库申请</h2>
+<h2>采购入库申请</h2>
 
 <p>
     @Html.ActionLink("新增申请", "Create")
@@ -43,44 +47,50 @@
         </th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Code)
-    </td>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
 
-    @*工夹具Code对应的Name*@
-    <th>
-        @Html.DisplayFor(modelItem => item.Jig.Name)
-    </th>
+            @*工夹具Code对应的Name*@
+            <th>
+                @Html.DisplayFor(modelItem => item.Jig.Name)
+            </th>
 
-    <td>
-        @Html.DisplayFor(modelItem => item.SeqID)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.BillNo)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.RegDate)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Location)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.State)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.AddDate)
-    </td>
-    <th>
-        @Html.DisplayFor(modelItem => item.BackNote)
-    </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.SeqID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddDate)
+            </td>
+            <th>
+                @Html.DisplayFor(modelItem => item.BackNote)
+            </th>
 
-    <td>
-        @Html.ActionLink("编辑", "Edit", new { id = item.ItemID }) |
-        @Html.ActionLink("明细", "Details", new { id = item.ItemID }) |
-        @Html.ActionLink("删除", "Delete", new { id = item.ItemID })
-    </td>
-</tr>
-}
+            <td>
+                @Html.ActionLink("编辑", "Edit", new { id = item.ItemID }) |
+                @Html.ActionLink("明细", "Details", new { id = item.ItemID }) |
+                @Html.ActionLink("删除", "Delete", new { id = item.ItemID })
+            </td>
+        </tr>
+    }
 </table>
+
+@Html.PagedListPager((IPagedList)Model, x => Url.Action("Index", new { page = x }))
+
+
+
