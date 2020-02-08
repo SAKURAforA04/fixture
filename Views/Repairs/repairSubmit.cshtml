@@ -1,38 +1,34 @@
 ﻿@model IEnumerable<Fixture02.Models.repair>
 
 @{
-    ViewBag.Title = "RepairHandling";
+    ViewBag.Title = "repairSubmit";
     Layout = "~/Views/Shared/FixtureMaster.cshtml";
 }
 
-<h2>报修处理</h2>
+<h2>报修提交</h2>
 
+<p>
+    @Html.ActionLink("新增报修", "Create")
+</p>
 <table class="table">
     <tr>
-        @*<th>
-                @Html.DisplayNameFor(model => model.CheckID)
-            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.ItemID)
         </th>
         <th>
-            @*@Html.DisplayNameFor(model => model.Code)*@夹具代码
+            夹具代码
         </th>
         <th>
-            @*@Html.DisplayNameFor(model => model.Name)*@夹具名称
+            夹具名称
         </th>
-        @*<th>
-                @Html.DisplayNameFor(model => model.FamilyID)
-            </th>*@
+      
         <th>
-            @*@Html.DisplayNameFor(model => model.FamilyName)*@所属大类名称
+            所属大类名称
         </th>
         <th>
-            @*@Html.DisplayNameFor(model => model.Model)*@夹具模组
+            夹具模组
         </th>
-        @*<th>
-                @Html.DisplayNameFor(model => model.PartNo)
-            </th>*@
+
         <th>
             @*@Html.DisplayNameFor(model => model.Problem)*@问题描述
         </th>
@@ -62,7 +58,7 @@
 
     @foreach (var item in Model)
     {
-        if (item.RepairState == "新增" || item.RepairState == "未修复")
+        if (item.RepairState == "新增")
         {
             <tr>
                 @*<td>
@@ -114,16 +110,12 @@
                     @Html.DisplayFor(modelItem => item.RepairState)
                 </td>
                 <td>
-                    @Html.ActionLink("维修成功", "RepairSuccess", new { id = item.RepairID }) |
-                    @Html.ActionLink("维修失败", "RepairFail", new { id = item.RepairID })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.RepairID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.RepairID })
                     @*@Html.ActionLink("Delete", "Delete", new { id = item.RepairID })*@
                 </td>
             </tr>
-
         }
-
-
     }
 
 </table>
-

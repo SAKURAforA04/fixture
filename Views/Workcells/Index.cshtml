@@ -1,5 +1,8 @@
 ﻿@model IEnumerable<Fixture02.Models.Workcell>
 
+@using PagedList;
+@using PagedList.Mvc;
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/FixtureMaster.cshtml";
@@ -18,17 +21,19 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.WorkcellName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.WorkcellID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.WorkcellID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.WorkcellID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkcellName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.WorkcellID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.WorkcellID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.WorkcellID })
+            </td>
+        </tr>
+    }
 
 </table>
+@Html.PagedListPager((IPagedList)Model, x => Url.Action("Index", new { page = x }))
