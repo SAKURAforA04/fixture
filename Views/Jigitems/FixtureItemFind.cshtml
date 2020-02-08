@@ -1,5 +1,8 @@
 ﻿@model IEnumerable<Fixture02.Models.Jigitem>
 
+@using PagedList;
+@using PagedList.Mvc;
+
 @{
     Layout = "~/Views/Shared/FixtureMaster.cshtml";
 }
@@ -15,9 +18,6 @@
     <h2>FixtureItemFind</h2>
     <div class="container-fluid">
         <div class="row-fluid">
-            @*<div class="span3">
-            <button class="btn" type="button"> @Html.ActionLink("新增", "Create")</button>
-        </div>*@
             <p>
                 @using (Html.BeginForm("FixtureItemFind", "Jigitems", FormMethod.Get))
                 {
@@ -64,44 +64,41 @@
 
             @foreach (var item in Model)
             {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ItemID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Code)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SeqID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BillNo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RegDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UsedCount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.State)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AddDate)
-            </td>
-            <td>
-                @Html.ActionLink("详情", "Details", new { id = item.ItemID })
-            </td>
-                        @*@Html.ActionLink("编辑", "Edit", new { id = item.ItemID }) |
-                        |
-                        @Html.ActionLink("删除", "Delete", new { id = item.ItemID })*@
-                    
-        </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ItemID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Code)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SeqID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BillNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RegDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UsedCount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Location)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.State)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AddDate)
+                    </td>
+                    <td>
+                        @Html.ActionLink("详情", "Details", new { id = item.ItemID })
+                    </td>
+                </tr>
             }
 
         </table>
+        @Html.PagedListPager((IPagedList)Model, x => Url.Action("FixtureItemFind", new { page = x }))
     </body>
 </html>
