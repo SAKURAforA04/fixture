@@ -77,9 +77,17 @@
     </th>
 
     <td>
-        @Html.ActionLink("编辑", "Edit", new { id = item.ItemID }) |
-        @Html.ActionLink("明细", "Details", new { id = item.ItemID }) |
-        @Html.ActionLink("删除", "Delete", new { id = item.ItemID })
+
+        @Html.ActionLink("编辑", "Edit", new { id = item.ItemID }, new { @class = "btn btn-warning btn-xs" })
+    </td>
+
+    <td>
+        @Html.ActionLink("明细", "Details", new { id = item.ItemID }, new { @class = "btn btn-warning btn-xs" })
+    </td>
+
+    <td>
+        @Html.ActionLink("删除", "Delete", new { id = item.ItemID }, new { @class = "btn btn-warning btn-xs" })
+
     </td>
 </tr>
 }
