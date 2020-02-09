@@ -6,6 +6,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Fixture02.Models;
+using PagedList;
 
 namespace Fixture02.Controllers
 {
@@ -14,9 +15,9 @@ namespace Fixture02.Controllers
         private fixtureEntities db = new fixtureEntities();
 
         // GET: Workcells
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, int pageSize = 4)
         {
-            return View(db.Workcell.ToList());
+            return View(db.Workcell.ToList().OrderBy(x => x.WorkcellID).ToPagedList(page, pageSize));
         }
 
         // GET: Workcells/Details/5
@@ -40,9 +41,6 @@ namespace Fixture02.Controllers
             return View();
         }
 
-        // POST: Workcells/Create
-        // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
-        // 详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "WorkcellID,WorkcellName")] Workcell workcell)
@@ -72,9 +70,6 @@ namespace Fixture02.Controllers
             return View(workcell);
         }
 
-        // POST: Workcells/Edit/5
-        // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
-        // 详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "WorkcellID,WorkcellName")] Workcell workcell)
