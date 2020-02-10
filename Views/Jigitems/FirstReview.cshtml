@@ -8,36 +8,68 @@
     Layout = "~/Views/Shared/FixtureMaster.cshtml";
 }
 
-<h2>采购入库初审</h2>
+<style>
+    table {
+        border: 1px;
+        border-style: solid;
+    }
 
-<table class="table">
+    td {
+        border: 1px;
+        border-style: solid;
+        height: 30px;
+    }
+
+    th {
+        border: 1px;
+        border-style: solid;
+        text-align: center;
+        background-color: #508da3;
+        color: white;
+    }
+</style>
+
+<h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :18px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-528672">采购入库</a>>>采购入库初审</h4>
+<br />
+<table class="table" border="0" cellspacing="0" cellpadding="0" style=" width :auto ;text-align :center ;">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ItemID)
+        <th style=" width:120px;text-align :center ;">
+            @*@Html.DisplayNameFor(model => model.Code)*@
+            夹具实体编号
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Code)
+        <th style=" width:80px;text-align :center ;">
+            @*@Html.DisplayNameFor(model => model.Code)*@
+            夹具代码
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SeqID)
+        <th style=" width:100px;text-align :center ;">
+            @* @Html.DisplayNameFor(model => model.SeqID)*@
+            夹具序列号
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BillNo)
+        <th style=" width:180px;text-align :center ;">
+            @*@Html.DisplayNameFor(model => model.BillNo)*@
+            采购单据号
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RegDate)
+        <th style=" width:120px;text-align :center ;">
+            @* @Html.DisplayNameFor(model => model.RegDate)*@
+            入库日期
         </th>
         @*<th>
                 @Html.DisplayNameFor(model => model.UsedCount)
             </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.Location)
+        <th style=" width:100px;text-align :center ;">
+            @*  @Html.DisplayNameFor(model => model.Location)*@
+            存放库位
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.State)
+        <th style=" width:60px;text-align :center ;">
+            @*@Html.DisplayNameFor(model => model.State)*@
+            状态
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AddDate)
+        <th style=" width:120px;text-align :center ;">
+            @* @Html.DisplayNameFor(model => model.AddDate)*@
+            创建日期
+        </th>
+        <th style=" width:160px;text-align :center ;">
+            操作
         </th>
 
     </tr>
@@ -73,16 +105,16 @@
             <td>
                 @Html.DisplayFor(modelItem => item.AddDate)
             </td>
-            <td>
+            <td style=" text-align :left ;">
 
                 @using (Html.BeginForm("FirstReview", "Jigitems", new { id = item.ItemID, state = "同意" }, FormMethod.Post))
                 {
-                    <input type="submit" value="同意" class="btn btn-default" />
+                    <input type="submit" value="同意" class="btn btn-default" style=" position :relative ;" />
                     @*@Html.ActionLink("审核", "FirstReview", new { id = item.ItemID })  //此方式执行Get模式*@
                 }
 
 
-                <div class="container">
+                <div class="container" style=" width :20px;height :10px;position :relative ;top :-34px;">
                     <input type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="Values(@item.ItemID)" value="不同意" />
 
                     <!--  定义模态框触发器，此处为按钮触发  -->
@@ -113,6 +145,7 @@
                                                 <input type="text" id="backNote" name="backNote" class="form-control well" placeholder="请输入审批退回意见" />
                                             </div>
                                         </div>
+
                                     </div>
 
                                     <div class="modal-footer">
@@ -122,6 +155,7 @@
                                     </div>
                                 }
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -130,9 +164,7 @@
         </tr>
     }
 </table>
-
 @Html.PagedListPager((IPagedList)Model, x => Url.Action("FirstReview", new { page = x }))
-
 <script>
     $('#myModal').modal("hide");
     function Values(ID) {

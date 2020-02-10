@@ -22,6 +22,11 @@
     td {
         border: 1px;
         border-style: solid;
+        height: 20px;
+        text-align: center;
+        vertical-align: central;
+        left: 50%;
+        top: 50%;
     }
 
     th {
@@ -47,7 +52,7 @@
     }
 </style>
 
-<h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>>采购入库>>采购入库登记</h4>
+<h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :18px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-528672">采购入库</a>>>采购入库登记</h4>
 <!-- 搜索区域  -->
 <div class="row" style="padding-bottom: 20px;margin-top:20px;">
     <!-- 搜索框的长度为该行的3/4  -->
@@ -65,7 +70,7 @@
 </div>
 
 <p style=" position :relative ;left :870px;">
-    <button style="background-color: orange ;">@Html.ActionLink("新增申请", "Create")</button>
+    <button style="background-color: orange ;">@Html.ActionLink("新增申请", "Create", new { }, new { style = "color:white;font-size:14px;" })</button>
 </p>
 <table class="table" border="0" cellspacing="0" cellpadding="0" style=" width :auto ;text-align :center ;">
     <tr>
