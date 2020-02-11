@@ -3,12 +3,15 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>智能工夹具管理系统</title>
 
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <script src="~/Scripts/sweet-alert.min.js"></script>
+    <link href="~/Scripts/sweet-alert.css" rel="stylesheet" />
 </head>
 <body>
     <div class="container">
@@ -26,7 +29,7 @@
                 <div class="panel-group" id="panel-756431">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                          
+
                             @Html.ActionLink("首页", "Index", "Home")
                         </div>
                     </div>
@@ -137,6 +140,32 @@
                         <div id="panel-element-21445" class="panel-collapse collapse">
                             <div class="panel-body">
                                 @Html.ActionLink("用户管理", "EmployeeIndex", "Employees")
+                            </div>
+
+                            <div class="panel-body">
+                                @Html.ActionLink("部门管理", "Index", "Workcells")
+                            </div>
+
+                            <div class="panel-body">
+                                @Html.ActionLink("工夹具定义管理", "Index", "Jigs")
+                            </div>
+
+                            <div class="panel-body">
+                                <a href="#">权限管理</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21446">文件导入</a>
+                        </div>
+
+
+                        <div id="panel-element-21446" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                @Html.ActionLink("文件导入", "Index", "File")
                             </div>
 
                             <div class="panel-body">

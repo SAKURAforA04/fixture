@@ -1,0 +1,47 @@
+﻿
+
+@{
+    Layout = "~/Views/Shared/FixtureMaster.cshtml";
+}
+<div class="well">
+    <form class="form-inline" id="gameGroup">
+        <div>
+            <input name="file" type="file" id="file" />
+            <input name="submit" type="button" id="btn-excel" class="btn btn-info" value="批量导入" />
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $("#btn-excel")
+            .click(function () {
+                var formData = new FormData();
+                var filename = $("#file")[0].files[0];
+                if (filename == null || filename == "") {
+                    swal("请选择要导入的文件");
+                    return;
+                }
+                if (filename != null) {
+                    formData.append('file', $("#file")[0].files[0]); //将文件转成二进制形式
+                    $.ajax({
+                        type: "post",
+                        url: "/File/ExcelToUpload",//"/文件名/控制器名/控制器内方法"
+                        async: false,
+                        contentType: false, //这个一定要写
+                        processData: false, //这个也一定要写，不然会报错
+                        data: formData,
+                        dataType: 'json', //返回类型，有json，text，HTML。这里并没有jsonp格式，所以别妄想能用jsonp做跨域了。
+                        success: function (data) {
+                            swal(data);
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown, data) {
+                           
+                            swal(errorThrown);
+                        }
+                    });
+                } else {
+
+                }
+            });
+    })
+</script>
