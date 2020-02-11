@@ -27,6 +27,14 @@
         background-color: #508da3;
         color: white;
     }
+    #footer {
+        position: relative ;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        color: blue;
+        text-align: center;
+    }
 </style>
 
 <h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :18px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-528672">采购入库</a>>>采购入库终审</h4>
@@ -105,14 +113,14 @@
 
             @using (Html.BeginForm("SecondReview", "Jigitems", new { id = item.ItemID, state = "同意" }, FormMethod.Post))
             {
-                <input type="submit" value="同意" class="btn btn-default" style=" position :relative ;" />
+                <input type="submit" value="同意" class="btn btn-primary " style=" position :relative ;" />
                 @*@Html.ActionLink("审核", "FirstReview", new { id = item.ItemID })  //此方式执行Get模式*@
             }
 
 
 
             <div class="container" style=" width :20px;height :10px;position :relative ;top :-34px;">
-                <input type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="Values(@item.ItemID)" value="不同意" />
+                <input type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal" onclick="Values(@item.ItemID)" value="不同意" />
 
                 <!--  定义模态框触发器，此处为按钮触发  -->
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -161,8 +169,9 @@
     </tr>
     }
 </table>
-
-@Html.PagedListPager((IPagedList)Model, x => Url.Action("SecondReview", new { page = x }))
+<div id="footer">
+    @Html.PagedListPager((IPagedList)Model, x => Url.Action("SecondReview", new { page = x }))
+</div>
 <script>
     $('#myModal').modal("hide");
     function Values(ID) {

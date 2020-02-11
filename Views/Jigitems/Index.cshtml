@@ -50,26 +50,35 @@
         line-height: 10px;
         padding-right: 40px;
     }
+
+    #footer {
+        position: relative;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        color: blue;
+        text-align: center;
+    }
 </style>
 
 <h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :18px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-528672">采购入库</a>>>采购入库登记</h4>
 <!-- 搜索区域  -->
-<div class="row" style="padding-bottom: 20px;margin-top:20px;">
-    <!-- 搜索框的长度为该行的3/4  -->
-    <div class="col-md-5 " style=" left :550px;">
-        <div class="input-group">
-            <input id="searchString" type="text" style="height:28px;" class="form-control" placeholder="请输入想要搜索的内容">
-            <span class="input-group-btn">
-                <button type="button" class="btn btn-info" onclick="search()" onkeypress="Enter()" style=" left :10px;top :-2px;width :80px;height :30px;text-align :center ;padding-bottom :25px;">
-                    <span class="glyphicon glyphicon-search" aria-hidden="true" />
-                    搜索
-                </button>
-            </span>
+@*<div class="row" style="padding-bottom: 20px;margin-top:20px;">
+        <!-- 搜索框的长度为该行的3/4  -->
+        <div class="col-md-5 " style=" left :550px;">
+            <div class="input-group">
+                <input id="searchString" type="text" style="height:28px;" class="form-control" placeholder="请输入想要搜索的内容">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-info" onclick="search()" onkeypress="Enter()" style=" left :10px;top :-2px;width :80px;height :30px;text-align :center ;padding-bottom :25px;">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true" />
+                        搜索
+                    </button>
+                </span>
+            </div>
         </div>
-    </div>
-</div>
+    </div>*@
 
-<p style=" position :relative ;left :870px;">
+<p style=" position :relative ;left :1040px;">
     <button style="background-color: orange ;">@Html.ActionLink("新增申请", "Create", new { }, new { style = "color:white;font-size:14px;" })</button>
 </p>
 <table class="table" border="0" cellspacing="0" cellpadding="0" style=" width :auto ;text-align :center ;">
@@ -92,7 +101,7 @@
             @*@Html.DisplayNameFor(model => model.BillNo)*@
             采购单据号
         </th>
-        <th style=" width:60px;text-align :center ;">
+        <th style=" width:100px;text-align :center ;">
             @* @Html.DisplayNameFor(model => model.RegDate)*@
             入库日期
         </th>
@@ -104,7 +113,7 @@
             @*@Html.DisplayNameFor(model => model.State)*@
             状态
         </th>
-        <th style=" width:60px;text-align :center ;">
+        <th style=" width:100px;text-align :center ;">
             @* @Html.DisplayNameFor(model => model.AddDate)*@
             创建日期
         </th>
@@ -112,7 +121,7 @@
             @* @Html.DisplayNameFor(model => model.BackNote)*@
             退回原因
         </th>
-        <th style=" width:200px;text-align :center  ;">
+        <th style=" width:180px;text-align :center  ;">
             操作
         </th>
     </tr>
@@ -151,7 +160,7 @@
                 @Html.DisplayFor(modelItem => item.BackNote)
             </td>
 
-            <td style=" text-align :left ;">
+            <td style=" text-align :center  ;">
                 @*<input type="button" value="注册" οnclick="window.location.href= @Html.ActionLink("编辑", "Edit", new { id = item.ItemID }) ">|*@
                 @*<button class="layui-btn layui-btn-radius layui-btn-primary" onclick="skip()">添加</button>*@
                 @Html.ActionLink("编辑", "Edit", new { id = item.ItemID }, new { @class = "btn btn-success" })|
@@ -164,10 +173,9 @@
     }
 </table>
 
-
-
-
-@Html.PagedListPager((IPagedList)Model, x => Url.Action("Index", new { page = x }))
+<div id="footer">
+    @Html.PagedListPager((IPagedList)Model, x => Url.Action("Index", new { page = x }))
+</div>
 
 
 
