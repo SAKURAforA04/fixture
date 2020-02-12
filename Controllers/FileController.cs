@@ -1,4 +1,5 @@
 ﻿using Fixture02.Models;
+using Microsoft.SqlServer.Server;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
@@ -26,8 +27,10 @@ namespace Fixture02.Controllers
         /// </summary>
         /// <param name="file"></param>
         /// <returns></returns>
+        ///   
+        
         [HttpPost]
-        public JsonResult ExcelToUpload(HttpPostedFileBase file)
+        public JsonResult ExcelToUpload(HttpPostedFileBase file, String table)
         {
             DataTable excelTable = new DataTable();
             string msg = string.Empty;
@@ -37,6 +40,7 @@ namespace Fixture02.Controllers
                 {
                     HttpPostedFileBase mypost = Request.Files[0];
                     string fileName = Request.Files[0].FileName;
+                    //string table = fileModel.table;
                     string serverpath = Server.MapPath(string.Format("~/{0}",""));
                     string path = Path.Combine(serverpath, fileName);
                     mypost.SaveAs(path);
@@ -44,8 +48,8 @@ namespace Fixture02.Controllers
 
                     ////注意Excel表内容格式，第一行必须为列名与数据库列名匹配
                     ////接下来为各列名对应下来的内容  
-
-                    msg = SaveExcelToDB.InsertDataToDB(excelTable, "Line");// 写入基础数据
+                    
+                    msg = SaveExcelToDB.InsertDataToDB(excelTable,table);// 写入基础数据
                     //msg = SaveExcelToDB.InsAndDelDataToDB(excelTable, "Key", 1, ”Table“);// 写入基础数据，并删除其中的重复的项目                 
                     //msg = SaveExcelToDB.UpdateDataToDB(excelTable, "[GamesList]");// 修改对应列
                 }
@@ -104,7 +108,26 @@ namespace Fixture02.Controllers
             //循环添加标题列
             for (int i = headerRow.FirstCellNum; i < cellCount; i++)
             {
-                DataColumn column = new DataColumn(headerRow.GetCell(i).StringCellValue);
+                //IRow row = sheet.GetRow(i);
+                //ICell cell = row.GetCell(i);
+                DataColumn column;
+                //if (cell.CellType == CellType.Numeric)
+                //{
+                //    //NPOI中数字和日期都是NUMERIC类型的，这里对其进行判断是否是日期类型
+                //    if (HSSFDateUtil.IsCellDateFormatted(cell))//日期类型
+                //    {
+
+                //        column = new DataColumn(headerRow.GetCell(i).StringCellValue, typeof(DateTime));
+
+                //    }
+                //    else//其他数字类型
+                //    {
+
+                //        column = new DataColumn(headerRow.GetCell(i).StringCellValue, typeof(int));
+                //    }
+                //}
+                //else
+                    column = new DataColumn(headerRow.GetCell(i).StringCellValue);
                 table.Columns.Add(column);
             }
 
@@ -119,7 +142,23 @@ namespace Fixture02.Controllers
                     {
                         if (row.GetCell(j) != null)
                         {
-                            dataRow[j] = GetCellValue(row.GetCell(j));
+                            ICell cell = row.GetCell(j);
+                            if (cell.CellType == CellType.Numeric)
+                            {
+                                //NPOI中数字和日期都是NUMERIC类型的，这里对其进行判断是否是日期类型
+                                if (HSSFDateUtil.IsCellDateFormatted(cell))//日期类型
+                                {
+                                    dataRow[j] = cell.DateCellValue;
+                                    
+                                }
+                                else//其他数字类型
+                                {
+                                    dataRow[j] = cell.NumericCellValue;
+                                  
+                                }
+                            }
+                            else
+                                dataRow[j] = GetCellValue(row.GetCell(j));
                         }
                     }
                 }
@@ -143,7 +182,7 @@ namespace Fixture02.Controllers
                     return cell.BooleanCellValue.ToString();
                 case CellType.Error:
                     return cell.ErrorCellValue.ToString();
-                case CellType.Numeric:
+         
                 case CellType.Unknown:
                 default:
                     return cell.ToString();
@@ -197,11 +236,20 @@ namespace Fixture02.Controllers
             colNames = colNames.TrimEnd(',');
             //定义SQL语句
             string cmd = "";
+            
+
             //定义获取对应列的内容变量
             string colValues;
             //初始SQL语句
             string cmdmode = string.Format("insert into {0}({1}) values({{0}});", tname, colNames);
+            string cmdbegin = string.Format(" set identity_insert {0} ON ", tname);
+            string cmdend = string.Format(" set identity_insert {0} OFF ", tname);
             //第一个循环，遍历每一行
+
+
+
+
+
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 colValues = "";
@@ -215,16 +263,18 @@ namespace Fixture02.Controllers
                         continue;
                     }
                     //接下来可调试寻找规律，如有不解，欢迎留言
-                    if (dt.Columns[j].DataType == typeof(string))
-                        colValues += string.Format("'{0}',", dt.Rows[i][j]);
-                    else if (dt.Columns[j].DataType == typeof(int) || dt.Columns[j].DataType == typeof(float) || dt.Columns[j].DataType == typeof(double))
-                    {
-                        colValues += string.Format("{0},", dt.Rows[i][j]);
-                    }
-                    else if (dt.Columns[j].DataType == typeof(DateTime))
+                    if (dt.Columns[j].DataType == typeof(DateTime))
                     {
                         colValues += string.Format("cast('{0}' as datetime),", dt.Rows[i][j]);
                     }
+
+                    else if (dt.Columns[j].DataType == typeof(int) || dt.Columns[j].DataType == typeof(float) || dt.Columns[j].DataType == typeof(double))
+                    {
+                        colValues += string.Format("{0},", dt.Rows[i][j] +"111");
+                    }
+                    else
+                    if (dt.Columns[j].DataType == typeof(string))
+                        colValues += string.Format("'{0}',", dt.Rows[i][j]);
                     else if (dt.Columns[j].DataType == typeof(bool))
                     {
                         colValues += string.Format("{0},", dt.Rows[i][j].ToString());
@@ -238,7 +288,14 @@ namespace Fixture02.Controllers
                     SqlConnection conn = new SqlConnection(@"Data Source=(local);Initial Catalog=fixture;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework");
                     conn.Open();
                     SqlCommand cmd1 = new SqlCommand(cmd, conn);
+                    SqlCommand cmdbegin1 = new SqlCommand(cmdbegin, conn);
+                    SqlCommand cmdend1 = new SqlCommand(cmdend, conn);
+    
+                    if(tname.Equals("Jigitem"))
+                    cmdbegin1.ExecuteNonQuery();
                     ret = cmd1.ExecuteNonQuery();
+                    if (tname.Equals("Jigitem"))
+                        cmdend1.ExecuteNonQuery();
                         //执行SQL插入语句（即cmd），获取结果（次方法有各自系统或框架决定）；
                     if (ret <= 0)
                     {
@@ -427,4 +484,5 @@ namespace Fixture02.Controllers
         }
         #endregion
     }
+
 }
