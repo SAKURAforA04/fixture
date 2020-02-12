@@ -4,6 +4,14 @@
 @{
     Layout = "~/Views/Shared/FixtureMaster.cshtml";
 }
+
+<script>
+    window.onload = function () {
+        var link_cgrk = document.getElementById("cgrk");
+        link_cgrk.click();
+    }
+</script>
+
 <style>
     table {
         border: 1px;
@@ -46,7 +54,7 @@
     <title>Index</title>
 </head>
 <body>
-    <h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :16px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-528672">采购入库</a>>>采购入库查询</h4>
+    <h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :16px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-528672"  id="cgrk">采购入库</a>>>采购入库查询</h4>
     <br />
     <div class="container-fluid" style=" text-align :center ;">
         <div class="row-fluid">
