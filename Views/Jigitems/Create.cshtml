@@ -77,7 +77,7 @@
             </div>
         </div>
     </div>
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Create","Jigitems",FormMethod.Post))
     {
         <div class="form-group">
             <div class="col-md-10" id="myModal">
@@ -115,16 +115,6 @@
                 <b>存放库位：</b><input type="text" name="Location" />
             </div>
         </div>
-
-
-        @*<div class="form-group">
-                <div class="col-md-10">
-                    <b>图片：</b><input type="text" name="Pic" />
-                </div>
-            </div>*@
-
-
-
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

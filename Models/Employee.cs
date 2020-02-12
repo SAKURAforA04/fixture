@@ -21,6 +21,7 @@ namespace Fixture02.Models
         public string UserLevel { get; set; }
         public string WorkcellID { get; set; }
         public string Job { get; set; }
+        public string JobDepartmentID { get; set; }
     
         public virtual Workcell Workcell { get; set; }
     }
