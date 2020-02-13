@@ -13,7 +13,7 @@ using PagedList;
 
 namespace Fixture02.Controllers
 {
-    public class JigitemsController : Controller
+    public class JigitemsController : BaseController
     {
         private fixtureEntities db = new fixtureEntities();
 

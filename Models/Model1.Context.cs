@@ -33,5 +33,7 @@ namespace Fixture02.Models
         public virtual DbSet<Inout> Inout { get; set; }
         public virtual DbSet<Line> Line { get; set; }
         public virtual DbSet<repair> repair { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Authority> Authorities { get; set; }
     }
 }

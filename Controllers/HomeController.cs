@@ -18,7 +18,7 @@ namespace Fixture02.Controllers
     //    }
     //}
 
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private fixtureEntities db = new fixtureEntities();
 
@@ -59,6 +59,7 @@ namespace Fixture02.Controllers
                 }
                 else
                 {
+                    System.Web.HttpContext.Current.Session.Add("user", userID);
                     return RedirectToAction("Index", "Home");
                 }
             }

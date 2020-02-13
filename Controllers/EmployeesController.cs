@@ -10,7 +10,7 @@ using PagedList;
 
 namespace Fixture02.Controllers
 {
-    public class EmployeesController : Controller
+    public class EmployeesController : BaseController
     {
         private fixtureEntities db = new fixtureEntities();
 

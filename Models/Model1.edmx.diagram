@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="209451a9176d4751b338fa636aeb0151" Name="Diagram1">
+      <Diagram DiagramId="209451a9176d4751b338fa636aeb0151" Name="Diagram1" ZoomLevel="67">
         <EntityTypeShape EntityType="fixtureModel.Employee" Width="1.5" PointX="1" PointY="3" IsExpanded="true" />
         <EntityTypeShape EntityType="fixtureModel.Workcell" Width="1.5" PointX="0.875" PointY="0.625" IsExpanded="true" />
         <EntityTypeShape EntityType="fixtureModel.Family" Width="1.5" PointX="2.75" PointY="2.5" />
@@ -15,6 +15,8 @@
         <AssociationConnector Association="fixtureModel.FK_Employee_Workcell" />
         <EntityTypeShape EntityType="fixtureModel.Line" Width="1.5" PointX="0.75" PointY="6.75" />
         <EntityTypeShape EntityType="fixtureModel.repair" Width="1.5" PointX="2.75" PointY="6.75" />
+        <EntityTypeShape EntityType="fixtureModel.sysdiagrams" Width="1.5" PointX="5.375" PointY="6.75" />
+        <EntityTypeShape EntityType="fixtureModel.Authority" Width="1.5" PointX="7.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

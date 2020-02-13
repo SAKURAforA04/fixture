@@ -10,7 +10,7 @@ using Fixture02.Models;
 
 namespace Fixture02.Controllers
 {
-    public class InoutController : Controller
+    public class InoutController : BaseController
     {
         private fixtureEntities db = new fixtureEntities();
 

@@ -7,10 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Fixture02.Models;
+using PagedList;
 
 namespace Fixture02.Controllers
 {
-    public class RepairsController : Controller
+    public class RepairsController : BaseController
     {
         private fixtureEntities db = new fixtureEntities();
 
@@ -52,10 +53,9 @@ namespace Fixture02.Controllers
             {
                 repair.AddDate = DateTime.Now;
                 repair.RepairState = "新增";
-                //repair.AddUserID = Session.user.userid;
-                //repair.AddUserName = Session.user.username;
-                repair.AddUserID = "Session.user.userid";
-                repair.AddUserName = "Session.user.username";
+                Employee user = (Employee)System.Web.HttpContext.Current.Session["user"];
+                repair.AddUserID = user.EmployeeID;
+                repair.AddUserName = user.EmployeeName;
                 db.repair.Add(repair);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -171,8 +171,8 @@ namespace Fixture02.Controllers
             }
             repair.RepairState = "未修复";
             repair.RepairDate = DateTime.Now;
-            //repair.RepairUserName = Session.User.username;
-            repair.RepairUserName = "session.user.username";
+            Employee user = (Employee)System.Web.HttpContext.Current.Session["user"];
+            repair.RepairUserName = user.EmployeeName;
             db.SaveChanges();
             changeJigitemState(repair.ItemID, "报废");
             return RedirectToAction("Index");
@@ -197,6 +197,22 @@ namespace Fixture02.Controllers
         public ActionResult repairSubmit()
         {
             return View(db.repair.ToList());
+        }
+
+        public ActionResult repairSearch(String addUserName,String repairState, int page = 1, int pageSize = 4)
+        {
+            var name = db.repair.Include(e => e.AddUserID);
+            if (!String.IsNullOrEmpty(addUserName))
+            {
+                name = name.Where(h => h.AddUserName.Contains(addUserName));
+            }
+            if (!String.IsNullOrEmpty(repairState))
+            {
+                name = name.Where(h => h.RepairState.Contains(repairState));
+            }
+            //用于分页，顺便跳转
+
+            return View(name.OrderBy(x => x.AddUserID).ToPagedList(page, pageSize));
         }
     }
 }

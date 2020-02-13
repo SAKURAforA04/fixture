@@ -18,7 +18,7 @@ namespace Fixture02.Controllers
 
 
 
-    public class JigsController : Controller
+    public class JigsController : BaseController
     {
         private fixtureEntities db = new fixtureEntities();
 
