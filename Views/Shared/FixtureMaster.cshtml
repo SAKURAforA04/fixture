@@ -41,7 +41,6 @@
                 <div class="panel-group" id="panel-756431">
                     <div class="panel panel-default panel-primary">
                         <div class="panel-heading">
-
                             <span class="glyphicon glyphicon-home " /> @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:#fff" })
                         </div>
                     </div>
@@ -100,6 +99,34 @@
                     </div>
 
 
+
+
+                    <div class="panel panel-default panel-primary">
+                        <div class="panel-heading">
+                            <span class="glyphicon glyphicon-trash  " />
+                            <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21144">工夹具点检</a>
+                        </div>
+
+
+                        <div id="panel-element-21144" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                @Html.ActionLink("上线点检", "OnlineCheck", "checks")
+                            </div>
+
+                            <div class="panel-body">
+                                @Html.ActionLink("下线点检", "OfflineCheck", "checks")
+                            </div>
+
+                            <div class="panel-body">
+                                @Html.ActionLink("库存点检", "InStockCheck", "checks")
+                            </div>
+
+                            <div class="panel-body">
+                                @Html.ActionLink("点检查询", "Index", "checks")
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="panel panel-default panel-primary">
                         <div class="panel-heading">
                             <span class="glyphicon glyphicon-wrench  " />
@@ -132,7 +159,7 @@
 
                         <div id="panel-element-21444" class="panel-collapse collapse">
                             <div class="panel-body">
-                                @Html.ActionLink("报废提交", "SubmitScrap", "Scraps")
+                                @Html.ActionLink("报废提交", "Index", "Scraps")
                             </div>
 
                             <div class="panel-body">
@@ -145,6 +172,34 @@
 
                             <div class="panel-body">
                                 @Html.ActionLink("报废查询", "FindScrap", "Scraps")
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="panel panel-default panel-primary">
+                        <div class="panel-heading">
+                            <span class="glyphicon glyphicon-trash  " />
+                            <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21744">流程记录</a>
+                        </div>
+
+
+                        <div id="panel-element-21744" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                @Html.ActionLink("流程记录", "", "")
+                            </div>
+
+                            <div class="panel-body">
+                                @Html.ActionLink("流程", "", "")
+                            </div>
+
+                            <div class="panel-body">
+                                @Html.ActionLink("流程", "", "")
+                            </div>
+
+                            <div class="panel-body">
+                                @Html.ActionLink("流程", "", "")
                             </div>
                         </div>
                     </div>

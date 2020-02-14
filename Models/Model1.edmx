@@ -5,13 +5,14 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="fixtureModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="check">
+        <EntityType Name="Check">
           <Key>
             <PropertyRef Name="CheckID" />
           </Key>
-          <Property Name="CheckID" Type="int" Nullable="false" />
+          <Property Name="CheckID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ItemID" Type="int" />
           <Property Name="Code" Type="varchar" MaxLength="20" />
+          <Property Name="SeqID" Type="int" />
           <Property Name="Name" Type="varchar" MaxLength="100" />
           <Property Name="FamilyID" Type="varchar" MaxLength="20" />
           <Property Name="FamilyName" Type="varchar" MaxLength="100" />
@@ -145,6 +146,7 @@
           <Property Name="WaitTime" Type="datetime" />
           <Property Name="BackNote" Type="varchar" MaxLength="200" />
           <Property Name="WorkcellID" Type="varchar" MaxLength="20" />
+          <Property Name="FinalCheckDate" Type="date" />
         </EntityType>
         <EntityType Name="JobDepartment">
           <Key>
@@ -187,10 +189,11 @@
           <Key>
             <PropertyRef Name="ScrapID" />
           </Key>
-          <Property Name="ScrapID" Type="int" Nullable="false" />
+          <Property Name="ScrapID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RepairID" Type="int" />
           <Property Name="ItemID" Type="int" />
           <Property Name="Code" Type="varchar" MaxLength="20" />
+          <Property Name="SeqID" Type="int" />
           <Property Name="Name" Type="varchar" MaxLength="100" />
           <Property Name="FamilyID" Type="varchar" MaxLength="20" />
           <Property Name="FamilyName" Type="varchar" MaxLength="100" />
@@ -243,7 +246,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="fixtureModelStoreContainer">
-          <EntitySet Name="check" EntityType="Self.check" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Check" EntityType="Self.Check" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmployeeFunction" EntityType="Self.EmployeeFunction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Family" EntityType="Self.Family" Schema="dbo" store:Type="Tables" />
@@ -311,8 +314,8 @@
           <EntitySet Name="EmployeeFunction" EntityType="fixtureModel.EmployeeFunction" />
           <EntitySet Name="Function" EntityType="fixtureModel.Function" />
           <EntitySet Name="JobDepartment" EntityType="fixtureModel.JobDepartment" />
-          <EntitySet Name="check" EntityType="fixtureModel.check" />
           <EntitySet Name="ScrapSet" EntityType="fixtureModel.Scrap" />
+          <EntitySet Name="Check" EntityType="fixtureModel.Check" />
         </EntityContainer>
         <EntityType Name="Family">
           <Key>
@@ -373,6 +376,7 @@
           <NavigationProperty Name="Jig" Relationship="fixtureModel.FK_Jigitem_Code" FromRole="Jigitem" ToRole="Jig" />
           <Property Name="BackNote" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="WorkcellID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FinalCheckDate" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Inout">
           <Key>
@@ -476,35 +480,6 @@
           <Property Name="JobDepartmentID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="JobDepartmentName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="check">
-          <Key>
-            <PropertyRef Name="CheckID" />
-          </Key>
-          <Property Name="CheckID" Type="Int32" Nullable="false" />
-          <Property Name="ItemID" Type="Int32" />
-          <Property Name="Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="FamilyID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="FamilyName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Model" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="PartNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="AddDate" Type="DateTime" Precision="3" />
-          <Property Name="AddUserID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="AddUserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CheckUserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CheckType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="CheckState" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="CheckResult1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CheckResult2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CheckResult3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CheckResult4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CheckResult5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CheckResult6" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CheckResult7" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CheckResult8" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Problem" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="WorkcellID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="Scrap">
           <Key>
             <PropertyRef Name="ScrapID" />
@@ -532,6 +507,37 @@
           <Property Name="WorkcellID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="ScrapState" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="BackNote" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SeqID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Check">
+          <Key>
+            <PropertyRef Name="CheckID" />
+          </Key>
+          <Property Name="CheckID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemID" Type="Int32" />
+          <Property Name="Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FamilyID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FamilyName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Model" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PartNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AddDate" Type="DateTime" Precision="3" />
+          <Property Name="AddUserID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AddUserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CheckUserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CheckType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CheckState" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CheckResult1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CheckResult2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CheckResult3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CheckResult4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CheckResult5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CheckResult6" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CheckResult7" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CheckResult8" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Problem" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="WorkcellID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SeqID" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -598,6 +604,7 @@
           <EntitySetMapping Name="Jigitem">
             <EntityTypeMapping TypeName="fixtureModel.Jigitem">
               <MappingFragment StoreEntitySet="Jigitem">
+                <ScalarProperty Name="FinalCheckDate" ColumnName="FinalCheckDate" />
                 <ScalarProperty Name="WorkcellID" ColumnName="WorkcellID" />
                 <ScalarProperty Name="BackNote" ColumnName="BackNote" />
                 <ScalarProperty Name="WaitTime" ColumnName="WaitTime" />
@@ -706,9 +713,40 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="check">
-            <EntityTypeMapping TypeName="fixtureModel.check">
-              <MappingFragment StoreEntitySet="check">
+          <EntitySetMapping Name="ScrapSet">
+            <EntityTypeMapping TypeName="fixtureModel.Scrap">
+              <MappingFragment StoreEntitySet="Scrap">
+                <ScalarProperty Name="SeqID" ColumnName="SeqID" />
+                <ScalarProperty Name="BackNote" ColumnName="BackNote" />
+                <ScalarProperty Name="ScrapState" ColumnName="ScrapState" />
+                <ScalarProperty Name="WorkcellID" ColumnName="WorkcellID" />
+                <ScalarProperty Name="SecondReviewUserName" ColumnName="SecondReviewUserName" />
+                <ScalarProperty Name="SecondReviewUserID" ColumnName="SecondReviewUserID" />
+                <ScalarProperty Name="SecondReviewDate" ColumnName="SecondReviewDate" />
+                <ScalarProperty Name="FirstReviewUserName" ColumnName="FirstReviewUserName" />
+                <ScalarProperty Name="FirstReviewUserID" ColumnName="FirstReviewUserID" />
+                <ScalarProperty Name="FirstReviewDate" ColumnName="FirstReviewDate" />
+                <ScalarProperty Name="AddUserName" ColumnName="AddUserName" />
+                <ScalarProperty Name="AddUserID" ColumnName="AddUserID" />
+                <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+                <ScalarProperty Name="Problem" ColumnName="Problem" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="PartNo" ColumnName="PartNo" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="FamilyName" ColumnName="FamilyName" />
+                <ScalarProperty Name="FamilyID" ColumnName="FamilyID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="RepairID" ColumnName="RepairID" />
+                <ScalarProperty Name="ScrapID" ColumnName="ScrapID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Check">
+            <EntityTypeMapping TypeName="fixtureModel.Check">
+              <MappingFragment StoreEntitySet="Check">
+                <ScalarProperty Name="SeqID" ColumnName="SeqID" />
                 <ScalarProperty Name="WorkcellID" ColumnName="WorkcellID" />
                 <ScalarProperty Name="Problem" ColumnName="Problem" />
                 <ScalarProperty Name="CheckResult8" ColumnName="CheckResult8" />
@@ -733,35 +771,6 @@
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="ItemID" ColumnName="ItemID" />
                 <ScalarProperty Name="CheckID" ColumnName="CheckID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ScrapSet">
-            <EntityTypeMapping TypeName="fixtureModel.Scrap">
-              <MappingFragment StoreEntitySet="Scrap">
-                <ScalarProperty Name="BackNote" ColumnName="BackNote" />
-                <ScalarProperty Name="ScrapState" ColumnName="ScrapState" />
-                <ScalarProperty Name="WorkcellID" ColumnName="WorkcellID" />
-                <ScalarProperty Name="SecondReviewUserName" ColumnName="SecondReviewUserName" />
-                <ScalarProperty Name="SecondReviewUserID" ColumnName="SecondReviewUserID" />
-                <ScalarProperty Name="SecondReviewDate" ColumnName="SecondReviewDate" />
-                <ScalarProperty Name="FirstReviewUserName" ColumnName="FirstReviewUserName" />
-                <ScalarProperty Name="FirstReviewUserID" ColumnName="FirstReviewUserID" />
-                <ScalarProperty Name="FirstReviewDate" ColumnName="FirstReviewDate" />
-                <ScalarProperty Name="AddUserName" ColumnName="AddUserName" />
-                <ScalarProperty Name="AddUserID" ColumnName="AddUserID" />
-                <ScalarProperty Name="AddDate" ColumnName="AddDate" />
-                <ScalarProperty Name="Problem" ColumnName="Problem" />
-                <ScalarProperty Name="Count" ColumnName="Count" />
-                <ScalarProperty Name="PartNo" ColumnName="PartNo" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
-                <ScalarProperty Name="FamilyName" ColumnName="FamilyName" />
-                <ScalarProperty Name="FamilyID" ColumnName="FamilyID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
-                <ScalarProperty Name="RepairID" ColumnName="RepairID" />
-                <ScalarProperty Name="ScrapID" ColumnName="ScrapID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

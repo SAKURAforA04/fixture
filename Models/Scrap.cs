@@ -12,18 +12,20 @@ namespace Fixture02.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Jigitem
+    public partial class Scrap
     {
-        public int ItemID { get; set; }
+        public int ScrapID { get; set; }
+        public Nullable<int> RepairID { get; set; }
+        public Nullable<int> ItemID { get; set; }
         public string Code { get; set; }
-        public int SeqID { get; set; }
-        public string BillNo { get; set; }
-        public System.DateTime RegDate { get; set; }
-        public Nullable<int> UsedCount { get; set; }
-        public string Location { get; set; }
-        public string State { get; set; }
-        public string Pic { get; set; }
-        public System.DateTime AddDate { get; set; }
+        public string Name { get; set; }
+        public string FamilyID { get; set; }
+        public string FamilyName { get; set; }
+        public string Model { get; set; }
+        public string PartNo { get; set; }
+        public Nullable<int> Count { get; set; }
+        public string Problem { get; set; }
+        public Nullable<System.DateTime> AddDate { get; set; }
         public string AddUserID { get; set; }
         public string AddUserName { get; set; }
         public Nullable<System.DateTime> FirstReviewDate { get; set; }
@@ -32,11 +34,9 @@ namespace Fixture02.Models
         public Nullable<System.DateTime> SecondReviewDate { get; set; }
         public string SecondReviewUserID { get; set; }
         public string SecondReviewUserName { get; set; }
-        public Nullable<System.DateTime> WaitTime { get; set; }
-        public string BackNote { get; set; }
         public string WorkcellID { get; set; }
-        public Nullable<System.DateTime> FinalCheckDate { get; set; }
-    
-        public virtual Jig Jig { get; set; }
+        public string ScrapState { get; set; }
+        public string BackNote { get; set; }
+        public Nullable<int> SeqID { get; set; }
     }
 }

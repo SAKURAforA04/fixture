@@ -77,6 +77,9 @@
             </div>
         </div>
     </div>
+
+
+
     @using (Html.BeginForm("Create","Jigitems",FormMethod.Post))
     {
         <div class="form-group">
@@ -84,16 +87,16 @@
                 <b>夹具编码：</b><input type="text" name="Code" id="Code" readonly="readonly" />
             </div>
         </div>
+
         <div class="form-group">
             <div class="col-md-10" id="myModal">
                 <b>夹具名称：</b><input type="text" name="Name" id="Name" readonly="readonly" />
             </div>
         </div>
-        <div class="form-group">
 
+        <div class="form-group">
             <div class="col-md-10">
                 <b> 夹具序列号：</b><input type="text" name="SeqID" />
-
             </div>
         </div>
 
@@ -108,7 +111,6 @@
                 <b>入库日期:</b><input type="text" name="RegDate" />
             </div>
         </div>
-
 
         <div class="form-group">
             <div class="col-md-10">

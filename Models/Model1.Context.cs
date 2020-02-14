@@ -36,7 +36,7 @@ namespace Fixture02.Models
         public virtual DbSet<EmployeeFunction> EmployeeFunction { get; set; }
         public virtual DbSet<Function> Function { get; set; }
         public virtual DbSet<JobDepartment> JobDepartment { get; set; }
-        public virtual DbSet<check> check { get; set; }
         public virtual DbSet<Scrap> ScrapSet { get; set; }
+        public virtual DbSet<Check> Check { get; set; }
     }
 }

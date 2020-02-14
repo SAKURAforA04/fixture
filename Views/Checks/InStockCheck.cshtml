@@ -1,0 +1,198 @@
+﻿@model  IEnumerable<Fixture02.Models.JigitemModel>
+@{
+    ViewBag.Title = "InStockCheck";
+    Layout = "~/Views/Shared/FixtureMaster.cshtml";
+}
+
+<h2>InStockCheck</h2>
+
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Code)</th>
+        <th>@Html.DisplayNameFor(model => model.Name)</th>
+        <th>@Html.DisplayNameFor(model => model.Location)</th>
+        <th>已使用次数</th>
+        <th>状态</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.JigitemCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UsedCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+
+            @*//点检无问题按钮*@
+            <td>
+            <!-- 按钮触发模态框 -->
+            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" onclick="Values(this)"
+             itemid1="@item.ItemID" code="@item.Code" seqid="@item.SeqID" name="@item.Name" model="@item.Model"
+                    partno="@item.PartNo" workcellid="@item.WorkcellID" familyid="@item.FamilyID" familyname="@item.FamilyName" >
+
+                无问题
+            </button>
+            <!-- 模态框（Modal） -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                &times;
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">
+                                请核实以下操作是否均已执行并无问题
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            1.夹具是否有螺丝松动.
+                            2.夹具是否有部件损坏.
+                            3.夹具是否有钢套损坏掉落等不良.
+                            4.夹具是否有机械部件松动.
+                            5.夹具电路是否正常工作.
+                            6.夹具是否有不正常的响声.
+                            7.夹具是否牢固的固定在对应位置.
+                            8.使用抹布或者刷子进行夹具清洁.
+                        </div>
+                        <div class="modal-footer">
+                            @using (Html.BeginForm("InStockCheck", "Checks", FormMethod.Post))
+                            {
+                                <input type="text" id="ItemID" name="ItemID" value="" />
+                                <input type="text" id="Code" name="Code" value="" />
+                                <input type="text" id="SeqID" name="SeqID" value="" />
+                                <input type="text" id="Name" name="Name" value="" />
+                                <input type="text" id="Model" name="Model" value="" />
+                                <input type="text" id="PartNo" name="PartNo" value="" />
+                                <input type="text" id="WorkcellID" name="WorkcellID" value="" />
+                                <input type="text" id="FamilyID" name="FamilyID" value="" />
+                                <input type="text" id="FamilyName" name="FamilyName" value="" />
+
+                                <input type="text" id="CheckType" name="CheckType" value="库存" />
+                                <input type="text" id="CheckState" name="CheckState" value="完成" />
+
+                                <input type="submit" value="同意" class="btn btn-default" />
+                            }
+
+                            <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                关闭
+                            </button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal -->
+            </div>
+
+            @*=======================================================================================================================================*@
+
+            @*@using (Html.BeginForm("FirstReview", "Jigitems", new { id = item.ItemID, state = "同意" }, FormMethod.Post))
+        {
+            <input type="submit" value="同意" class="btn btn-default" />
+        }*@
+
+
+
+            <div class="container">
+                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" onclick="Values(this)"
+                        itemid1="@item.ItemID" code="@item.Code" seqid="@item.SeqID" name="@item.Name" model="@item.Model"
+                        partno="@item.PartNo" workcellid="@item.WorkcellID" familyid="@item.FamilyID" familyname="@item.FamilyName">
+                    有问题
+                </button>
+
+                <!--  定义模态框触发器，此处为按钮触发  -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <!--  定义模态框，过渡效果为淡入，id为myModal,tabindex=-1可以禁用使用tab切换，aria-labelledby用于引用模态框的标题，aria-hidden=true保持模态框在触发前窗口不可见  -->
+                    <div class="modal-dialog">
+                        <!--  显示模态框对话框模型（若不写下一个div则没有颜色）  -->
+                        <div class="modal-content">
+                            <!--  显示模态框白色背景，所有内容都写在这个div里面  -->
+
+                            <div class="btn-info modal-header">
+                                <!--  模态框标题  -->
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <!--  关闭按钮  -->
+                                <h4>问题反馈</h4>
+                                <!--  标题内容  -->
+                            </div>
+                            @using (Html.BeginForm("InStockCheck", "Checks", new { state = "有问题" }, FormMethod.Post))
+                            {
+                                <div class="modal-body">
+                                    <!--  模态框内容，我在此处添加一个表单 -->
+                                    @*这里id 和 name两个属性必须同时存在且一致*@
+                                    <input type="hidden" id="id" name="id" value="" />
+
+                                    <div class="form-group">
+                                        @*<label for="uname" class="col-sm-2 control-label">用户名</label>*@
+                                        <div class="col-sm-9">
+                                            <div class="modal-body">
+
+                                                @Html.CheckBox("Problems", new { value = "1" }) 1.夹具是否有螺丝松动.
+
+
+                                                2.夹具是否有部件损坏.
+                                                3.夹具是否有钢套损坏掉落等不良.
+                                                4.夹具是否有机械部件松动.
+                                                5.夹具电路是否正常工作.
+                                                6.夹具是否有不正常的响声.
+                                                7.夹具是否牢固的固定在对应位置.
+                                                8.使用抹布或者刷子进行夹具清洁.
+
+
+                                            </div>
+                                            <input type="text" id="backNote" name="backNote" class="form-control well" placeholder="请输入审批退回意见" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <!--  模态框底部样式，一般是提交或者确定按钮 -->
+                                    <input type="submit" value="提交" class="btn btn-warning" />
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        </tr>
+        }
+    </table>
+
+<script>
+    //$('#myModal').modal("hide");
+    function Values(obj) {
+        var thisobj = $(obj);
+
+        var itemid = thisobj.attr("itemid1");
+        var code = thisobj.attr("code");
+        var seqid = thisobj.attr("seqid");
+        var name = thisobj.attr("name");
+        var model = thisobj.attr("model");
+        var partno = thisobj.attr("partno");
+        var workcellid = thisobj.attr("workcellid");
+        var workcellid = thisobj.attr("workcellid");
+        var familyname = thisobj.attr("familyname");
+
+        $("#ItemID").val(itemid);
+        $("#Code").val(code);
+        $("#SeqID").val(seqid);
+        $("#Name").val(name);
+        $("#Model").val(model);
+        $("#PartNo").val(partno);
+        $("#WorkcellID").val(workcellid);
+        $("#FamilyID").val(workcellid);
+        $("#FamilyName").val(familyname);
+    }
+</script>

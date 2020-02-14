@@ -130,6 +130,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ChecksController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InoutController.cs" />
@@ -142,9 +143,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\check.cs">
+    <Compile Include="Models\Check.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\JigitemModel.cs" />
     <Compile Include="Models\EmployeeFunction.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -318,8 +320,16 @@
     <Content Include="Views\Scraps\Delete.cshtml" />
     <Content Include="Views\Scraps\Details.cshtml" />
     <Content Include="Views\Scraps\Edit.cshtml" />
-    <Content Include="Views\Scraps\SubmitScrap.cshtml" />
+    <Content Include="Views\Scraps\Index.cshtml" />
     <Content Include="Views\Scraps\FirstScrap.cshtml" />
+    <Content Include="Views\Scraps\SecondScrap.cshtml" />
+    <Content Include="Views\Scraps\FindScrap.cshtml" />
+    <Content Include="Views\Checks\Create.cshtml" />
+    <Content Include="Views\Checks\Delete.cshtml" />
+    <Content Include="Views\Checks\Details.cshtml" />
+    <Content Include="Views\Checks\Edit.cshtml" />
+    <Content Include="Views\Checks\Index.cshtml" />
+    <Content Include="Views\Checks\InStockCheck.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
