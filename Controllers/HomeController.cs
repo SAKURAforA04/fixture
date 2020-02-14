@@ -24,7 +24,9 @@ namespace Fixture02.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var jigitem = from m in this.db.Jigitem select m;
+            jigitem = jigitem.Where(p => p.State == "新增" || p.State == "初审");
+            return View(jigitem);
         }
         
 
