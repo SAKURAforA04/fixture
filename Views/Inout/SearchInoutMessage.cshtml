@@ -6,85 +6,120 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <div class="container-fluid">
-        <div class="row-fluid">
-
-            <p>
-
-                @using (Html.BeginForm("Index", "Inout", FormMethod.Get))
-                {
-                    <table class="table">
-                        <tr>
-                            <th>夹具编号:@Html.TextBox("code")</th>
-                            <th>夹具名称:@Html.TextBox("name")</th>
-                            <th>夹具库位:@Html.TextBox("location")</th>
-                            <th>夹具模组:@Html.TextBox("model")</th>
-                            <th>夹具料号:@Html.TextBox("partNO")</th>
-                            <th> <button class="btn" type="submit">查询</button></th>
-                        </tr>
-                    </table>
-                }
-            </p>
-
-        </div>
-    </div>
-    <table class="table">
-        <tr>
-            <th>
-                Code
-            </th>
-            <th>
-                Name
-            </th>
-            <th>
-                Location
-            </th>
-            <th>
-                Model
-            </th>
-            <th>
-                PartNo
-            </th>
-            <th>
-                state
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Code)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Location)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Model)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PartNo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.State)
-                </td>
-                <td>
-                    @Html.ActionLink("编辑", "Edit", new { id = item.IinOutID }) |
-                    @Html.ActionLink("详情", "Details", new { id = item.IinOutID }) |
-                    @Html.ActionLink("删除", "Delete", new { id = item.IinOutID })
-                </td>
-            </tr>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>SearchMessage</title>
+    <style>
+        .container-fluid {
+            background-color: #C1CDC1;
+            border-radius: 30px;
+            position: relative;
         }
 
-    </table>
+        .panel {
+            background-color: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+    <ul class="breadcrumb">
+        <li>您好，欢迎来到工夹具智能管理系统----进出库>>信息查询</li>
+    </ul>
+    <div class="container-fluid">
+        <br />        <br />
+        @using (Html.BeginForm("Index", "Inout", FormMethod.Get))
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">查询条件</h3>
+                </div>
+                <div class="panel-body">
+                    <form id="queryFrom" class="search-form form-horizontal">
+                        <div class="form-group row">
+                            <label class="col-md-2 control-label" style="text-align:right; font-size:large;">夹具代码</label>
+                            <div class="col-md-2">
+                                @Html.TextBox("code", "", new { @class = "input-sm form-control" })
+                            </div>
+                            <label class="col-md-2 control-label" style="text-align:right; font-size:large;">夹具名称</label>
+                            <div class="col-md-2">
+                                @Html.TextBox("name", "", new { @class = "input-sm form-control" })
+                            </div>
+                            <label class="col-md-2 control-label" style="text-align:right; font-size:large;">夹具库位</label>
+                            <div class="col-md-2">
+                                @Html.TextBox("location", "", new { @class = "input-sm form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-2 control-label" style="text-align:right; font-size:large;">夹具模组</label>
+                            <div class="col-md-2">
+                                @Html.TextBox("model", "", new { @class = "input-sm form-control" })
+                            </div>
+                            <label class="col-md-2 control-label" style="text-align:right; font-size:large;">夹具料号</label>
+                            <div class="col-md-2">
+                                @Html.TextBox("partNO", "", new { @class = "input-sm form-control" })
+                            </div>
+                            <div class="col-md-4" style="text-align:center;">
+                                <button class="btn btn-info" type="submit">查询</button>
+                                <button type="reset" class="btn default reset">重置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        }
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">工夹具列表</h3>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>夹具代码</th>
+                                <th>夹具名称</th>
+                                <th>夹具库位</th>
+                                <th>夹具模组</th>
+                                <th>夹具料号</th>
+                                <th>夹具状态</th>
+                            </tr>
+                        </thead>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Code)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Location)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Model)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PartNo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.State)
+                                </td>
+                                <td>
+                                    <button class="btn btn-default btn-sm">@Html.ActionLink("编辑", "Edit", new { id = item.IinOutID }) </button>|
+                                    <button class="btn btn-default btn-sm">@Html.ActionLink("详情", "Details", new { id = item.IinOutID }) </button>|
+                                    <button class="btn btn-danger btn-sm"> @Html.ActionLink("删除", "Delete", new { id = item.IinOutID }, new { style = "color:white;" })</button>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+        <br />
+    </div>
 </body>
 </html>
 
