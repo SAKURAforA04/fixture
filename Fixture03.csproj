@@ -1,4 +1,4 @@
-ï»¿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -148,6 +148,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ChecksController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -156,9 +157,20 @@
     <Compile Include="Controllers\JigOrJigitemsController.cs" />
     <Compile Include="Controllers\JigsController.cs" />
     <Compile Include="Controllers\repairsController.cs" />
+    <Compile Include="Controllers\ScrapsController.cs" />
     <Compile Include="Controllers\WorkcellsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Check.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\JigitemModel.cs" />
+    <Compile Include="Models\EmployeeFunction.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Function.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\JigOrJigitems.cs" />
     <Compile Include="Models\Employee.cs">
@@ -174,6 +186,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Jigitem.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\JobDepartment.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Line.cs">
@@ -195,6 +210,9 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\repair.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Scrap.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Workcell.cs">
@@ -323,6 +341,20 @@
     <Content Include="Views\Inout\SearchInoutMessage.cshtml" />
     <Content Include="Views\Repairs\repairSubmit.cshtml" />
     <Content Include="Views\File\Index.cshtml" />
+    <Content Include="Views\Scraps\Create.cshtml" />
+    <Content Include="Views\Scraps\Delete.cshtml" />
+    <Content Include="Views\Scraps\Details.cshtml" />
+    <Content Include="Views\Scraps\Edit.cshtml" />
+    <Content Include="Views\Scraps\Index.cshtml" />
+    <Content Include="Views\Scraps\FirstScrap.cshtml" />
+    <Content Include="Views\Scraps\SecondScrap.cshtml" />
+    <Content Include="Views\Scraps\FindScrap.cshtml" />
+    <Content Include="Views\Checks\Create.cshtml" />
+    <Content Include="Views\Checks\Delete.cshtml" />
+    <Content Include="Views\Checks\Details.cshtml" />
+    <Content Include="Views\Checks\Edit.cshtml" />
+    <Content Include="Views\Checks\Index.cshtml" />
+    <Content Include="Views\Checks\InStockCheck.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -374,7 +406,7 @@
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-      <ErrorText>è¿™å°è®¡ç®—æœºä¸Šç¼ºå°‘æ­¤é¡¹ç›®å¼•ç”¨çš„ NuGet ç¨‹åºåŒ…ã€‚ä½¿ç”¨â€œNuGet ç¨‹åºåŒ…è¿˜åŸâ€å¯ä¸‹è½½è¿™äº›ç¨‹åºåŒ…ã€‚æœ‰å…³æ›´å¤šä¿¡æ¯ï¼Œè¯·å‚è§ http://go.microsoft.com/fwlink/?LinkID=322105ã€‚ç¼ºå°‘çš„æ–‡ä»¶æ˜¯ {0}ã€‚</ErrorText>
+      <ErrorText>ÕâÌ¨¼ÆËã»úÉÏÈ±ÉÙ´ËÏîÄ¿ÒıÓÃµÄ NuGet ³ÌĞò°ü¡£Ê¹ÓÃ¡°NuGet ³ÌĞò°ü»¹Ô­¡±¿ÉÏÂÔØÕâĞ©³ÌĞò°ü¡£ÓĞ¹Ø¸ü¶àĞÅÏ¢£¬Çë²Î¼û http://go.microsoft.com/fwlink/?LinkID=322105¡£È±ÉÙµÄÎÄ¼şÊÇ {0}¡£</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>

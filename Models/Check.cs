@@ -12,25 +12,32 @@ namespace Fixture02.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class repair
+    public partial class Check
     {
-        public int RepairID { get; set; }
-        public Nullable<int> CheckID { get; set; }
-        public int ItemID { get; set; }
+        public int CheckID { get; set; }
+        public Nullable<int> ItemID { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
         public string FamilyID { get; set; }
         public string FamilyName { get; set; }
         public string Model { get; set; }
         public string PartNo { get; set; }
-        public string Problem { get; set; }
-        public string Pic { get; set; }
-        public System.DateTime AddDate { get; set; }
+        public Nullable<System.DateTime> AddDate { get; set; }
         public string AddUserID { get; set; }
         public string AddUserName { get; set; }
-        public Nullable<System.DateTime> RepairDate { get; set; }
-        public string RepairUserName { get; set; }
-        public string RepairState { get; set; }
+        public string CheckUserName { get; set; }
+        public string CheckType { get; set; }
+        public string CheckState { get; set; }
+        public string CheckResult1 { get; set; }
+        public string CheckResult2 { get; set; }
+        public string CheckResult3 { get; set; }
+        public string CheckResult4 { get; set; }
+        public string CheckResult5 { get; set; }
+        public string CheckResult6 { get; set; }
+        public string CheckResult7 { get; set; }
+        public string CheckResult8 { get; set; }
+        public string Problem { get; set; }
         public string WorkcellID { get; set; }
+        public Nullable<int> SeqID { get; set; }
     }
 }

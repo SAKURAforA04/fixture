@@ -12,6 +12,22 @@
 
     <script src="~/Scripts/sweet-alert.min.js"></script>
     <link href="~/Scripts/sweet-alert.css" rel="stylesheet" />
+    <style>
+        h3 {
+            height: auto;
+            border-style: inset;
+            border-radius: 10px;
+            border-color: #508da3;
+            color: white;
+            background-color: #5b7fa7;
+        }
+
+        .panel {
+            background-color: #a5def1;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -27,26 +43,29 @@
         <div class="row clearfix">
             <div class="col-md-2 column">
                 <div class="panel-group" id="panel-756431">
-                    <div class="panel panel-default">
+                    <div class="panel panel-default panel-primary">
                         <div class="panel-heading">
 
-                            @Html.ActionLink("首页", "Index", "Home")
+                            <span class="glyphicon glyphicon-home " /> @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:#fff" })
                         </div>
                     </div>
 
 
-                    <div class="panel panel-default">
+                    <div class="panel panel-default panel-primary">
                         <div class="panel-heading">
+                            <span class="glyphicon glyphicon-log-in  " />
                             <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-528672">采购入库</a>
                         </div>
 
                         <div id="panel-element-528672" class="panel-collapse collapse">
+
                             <div class="panel-body">
                                 @Html.ActionLink("采购入库登记", "Index", "Jigitems")
                             </div>
 
                             <div class="panel-body">
                                 @Html.ActionLink("采购入库初审", "FirstReview", "Jigitems")
+
                             </div>
 
                             <div class="panel-body">
@@ -61,10 +80,12 @@
                     </div>
 
 
-                    <div class="panel panel-default">
+                    <div class="panel panel-default panel-primary">
                         <div class="panel-heading">
+                            <span class="glyphicon glyphicon-resize-horizontal  " />
                             <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21442">进/出库</a>
                         </div>
+
 
                         <div id="panel-element-21442" class="panel-collapse collapse">
                             <div class="panel-body">
@@ -78,12 +99,42 @@
                             <div class="panel-body">
                                 @Html.ActionLink("信息查询", "SearchInoutMessage", "Inout")
                             </div>
+
                         </div>
                     </div>
 
 
-                    <div class="panel panel-default">
+
+
+                    <div class="panel panel-default panel-primary">
                         <div class="panel-heading">
+                            <span class="glyphicon glyphicon-trash  " />
+                            <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21144">工夹具点检</a>
+                        </div>
+
+
+                        <div id="panel-element-21144" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                @Html.ActionLink("上线点检", "OnlineCheck", "checks")
+                            </div>
+
+                            <div class="panel-body">
+                                @Html.ActionLink("下线点检", "OfflineCheck", "checks")
+                            </div>
+
+                            <div class="panel-body">
+                                @Html.ActionLink("库存点检", "InStockCheck", "checks")
+                            </div>
+
+                            <div class="panel-body">
+                                @Html.ActionLink("点检查询", "Index", "checks")
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default panel-primary">
+                        <div class="panel-heading">
+                            <span class="glyphicon glyphicon-wrench  " />
                             <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21443">工夹具报修</a>
                         </div>
 
@@ -104,50 +155,76 @@
                     </div>
 
 
-                    <div class="panel panel-default">
+                    <div class="panel panel-default panel-primary">
                         <div class="panel-heading">
+                            <span class="glyphicon glyphicon-trash  " />
                             <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21444">工夹具报废</a>
                         </div>
 
 
                         <div id="panel-element-21444" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <a href="#">报废提交</a>
+                                @Html.ActionLink("报废提交", "Index", "Scraps")
                             </div>
 
                             <div class="panel-body">
-                                <a href="#">报废初审</a>
+                                @Html.ActionLink("报废初审", "FirstScrap", "Scraps")
                             </div>
 
                             <div class="panel-body">
-                                <a href="#">报废终审</a>
+                                @Html.ActionLink("报废终审", "SecondScrap", "Scraps")
                             </div>
 
                             <div class="panel-body">
-                                <a href="#">报废查询</a>
+                                @Html.ActionLink("报废查询", "FindScrap", "Scraps")
                             </div>
                         </div>
                     </div>
 
 
 
-                    <div class="panel panel-default">
+                    <div class="panel panel-default panel-primary">
                         <div class="panel-heading">
+                            <span class="glyphicon glyphicon-trash  " />
+                            <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21744">流程记录</a>
+                        </div>
+
+
+                        <div id="panel-element-21744" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                @Html.ActionLink("流程记录", "", "")
+                            </div>
+
+                            <div class="panel-body">
+                                @Html.ActionLink("流程", "", "")
+                            </div>
+
+                            <div class="panel-body">
+                                @Html.ActionLink("流程", "", "")
+                            </div>
+
+                            <div class="panel-body">
+                                @Html.ActionLink("流程", "", "")
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="panel panel-default panel-primary">
+                        <div class="panel-heading">
+                            <span class="glyphicon glyphicon-user " />
                             <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21445">系统管理</a>
                         </div>
 
 
                         <div id="panel-element-21445" class="panel-collapse collapse">
                             <div class="panel-body">
-                                @Html.ActionLink("用户管理", "EmployeeIndex", "Employees")
+                                @Html.ActionLink("用户管理", "Index", "Employees")
                             </div>
 
                             <div class="panel-body">
                                 @Html.ActionLink("部门管理", "Index", "Workcells")
-                            </div>
-
-                            <div class="panel-body">
-                                @Html.ActionLink("工夹具定义管理", "Index", "Jigs")
                             </div>
 
                             <div class="panel-body">

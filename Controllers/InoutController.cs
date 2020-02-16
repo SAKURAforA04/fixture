@@ -14,6 +14,7 @@ namespace Fixture02.Controllers
         private fixtureEntities db = new fixtureEntities();
 
         // GET: Jigitems
+        //xuewei
         public ActionResult Index(String code, String name, String location , String model, String partNo)
         {
             

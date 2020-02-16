@@ -1,0 +1,172 @@
+﻿@model IEnumerable<Fixture02.Models.Check>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/FixtureMaster.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.ItemID)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SeqID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.FamilyID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FamilyName)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PartNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AddDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AddUserID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AddUserName)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.CheckUserName)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.CheckType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckState)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.CheckResult1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckResult2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckResult3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckResult4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckResult5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckResult6)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckResult7)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckResult8)
+        </th>*@
+        @*<th>
+            @Html.DisplayNameFor(model => model.Problem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkcellID)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    @*<td>
+            @Html.DisplayFor(modelItem => item.ItemID)
+        </td>*@
+    <td>
+        @Html.DisplayFor(modelItem => item.Code)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SeqID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    @*<td>
+            @Html.DisplayFor(modelItem => item.FamilyID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FamilyName)
+        </td>*@
+    <td>
+        @Html.DisplayFor(modelItem => item.Model)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PartNo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.AddDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.AddUserID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.AddUserName)
+    </td>
+    @*<td>
+            @Html.DisplayFor(modelItem => item.CheckUserName)
+        </td>*@
+    <td>
+        @Html.DisplayFor(modelItem => item.CheckType)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CheckState)
+    </td>
+    @*<td>
+            @Html.DisplayFor(modelItem => item.CheckResult1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckResult2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckResult3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckResult4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckResult5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckResult6)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckResult7)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckResult8)
+        </td>*@
+    @*<td>
+            @Html.DisplayFor(modelItem => item.Problem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkcellID)
+        </td>*@
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.CheckID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.CheckID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.CheckID })
+    </td>
+</tr>
+}
+
+</table>

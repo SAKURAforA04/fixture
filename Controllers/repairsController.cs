@@ -150,7 +150,6 @@ namespace Fixture02.Controllers
             }
             repair.RepairState = "修复";
             repair.RepairDate = DateTime.Now;
-            //repair.RepairUserName = Session.User.username;
             repair.RepairUserName = "session.user.username";
             db.SaveChanges();
             changeJigitemState(repair.ItemID, "维修");
@@ -170,7 +169,6 @@ namespace Fixture02.Controllers
             }
             repair.RepairState = "未修复";
             repair.RepairDate = DateTime.Now;
-            //repair.RepairUserName = Session.User.username;
             repair.RepairUserName = "session.user.username";
             db.SaveChanges();
             changeJigitemState(repair.ItemID, "报废");

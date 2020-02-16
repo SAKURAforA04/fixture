@@ -73,18 +73,19 @@
             <td>
                 @Html.DisplayFor(modelItem => item.AddDate)
             </td>
-            <td>
 
+
+
+            <td>
                 @using (Html.BeginForm("FirstReview", "Jigitems", new { id = item.ItemID, state = "同意" }, FormMethod.Post))
                 {
                     <input type="submit" value="同意" class="btn btn-default" />
-                    @*@Html.ActionLink("审核", "FirstReview", new { id = item.ItemID })  //此方式执行Get模式*@
                 }
+
 
 
                 <div class="container">
                     <input type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="Values(@item.ItemID)" value="不同意" />
-
                     <!--  定义模态框触发器，此处为按钮触发  -->
                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <!--  定义模态框，过渡效果为淡入，id为myModal,tabindex=-1可以禁用使用tab切换，aria-labelledby用于引用模态框的标题，aria-hidden=true保持模态框在触发前窗口不可见  -->
@@ -125,7 +126,6 @@
                         </div>
                     </div>
                 </div>
-
             </td>
         </tr>
     }
