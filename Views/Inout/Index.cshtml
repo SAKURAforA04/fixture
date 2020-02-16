@@ -80,8 +80,8 @@
                 @Html.DisplayFor(modelItem => item.State)
             </td>
             <td>
-                @Html.ActionLink("编辑", "Edit","Jigitems", new { id = item.ItemID}) |
-                @Html.ActionLink("详情", "Details","Jigitems", new { id = item.ItemID }) |
+                @Html.ActionLink("编辑", "Edit","Jigitems", new { id = item.ItemID },"") |
+                @Html.ActionLink("详情", "Details","Jigitems",new { id = item.ItemID } ,"") |
                 @Html.ActionLink("出库", "OutStorage", item)
             </td>
         </tr>

@@ -18,6 +18,7 @@ namespace Fixture02.Controllers
         {
             
             var jigitem = from m in this.db.Jigitem select m;
+            jigitem = jigitem.Where(p => p.State == "库存");
             if (!String.IsNullOrEmpty(code))
             {
                 jigitem = jigitem.Where(h => h.Code.Contains(code));
