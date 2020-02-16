@@ -138,5 +138,35 @@ namespace Fixture02.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult forgetPassword()
+        {
+            return View();
+        }
+
+        public ActionResult forgetPassword1(Employee employee)
+        {
+            Employee userID = db.Employee.SingleOrDefault(n => n.EmployeeID == employee.EmployeeID);
+            if (userID == null)
+            {
+                return Content("用户不存在");
+            }
+            else
+            {
+                if (employee.EmployeeName != userID.EmployeeName || employee.Email != userID.Email)
+                {
+                    return Content("您所输入的用户名或邮箱错误，请重试！");
+                }
+                else
+                {
+                    db.Employee.SingleOrDefault(n => n.EmployeeID == employee.EmployeeID).PasswordForget = "yes";
+                    List<Employee> forgets = new List<Employee>();
+                    forgets.Add(userID);
+                    System.Web.HttpContext.Current.Session.Add("forgets", forgets);
+                    return RedirectToAction("Index", "Home");
+                }
+                return null;
+            }
+        }
     }
 }

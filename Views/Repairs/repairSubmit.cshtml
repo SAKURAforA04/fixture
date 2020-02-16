@@ -58,7 +58,7 @@
 
     @foreach (var item in Model)
     {
-        if (item.RepairState == "新增")
+        if (true)
         {
             <tr>
                 @*<td>
@@ -111,7 +111,7 @@
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.RepairID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.RepairID })
+                    @Html.ActionLink("Details", "Details", new { id = item.RepairID }) |
                     @*@Html.ActionLink("Delete", "Delete", new { id = item.RepairID })*@
                 </td>
             </tr>

@@ -304,6 +304,7 @@
     <Content Include="Views\Inout\OutStorage.cshtml" />
     <Content Include="Views\Inout\SearchInoutMessage.cshtml" />
     <Content Include="Views\Repairs\repairSubmit.cshtml" />
+    <Content Include="Views\Employees\forgetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

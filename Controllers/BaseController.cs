@@ -25,7 +25,7 @@ namespace Fixture02.Controllers
             string actionName = (filterContext.RouteData.Values["action"]).ToString().ToLower();
             fixtureEntities db = new fixtureEntities();
 
-            if (actionName != "login")
+            if (actionName != "login" && actionName!= "forgetpassword" && actionName!= "forgetpassword1")
             {
                 base.OnActionExecuting(filterContext);
                 Employee user = (Employee)System.Web.HttpContext.Current.Session["user"];

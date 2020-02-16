@@ -2,6 +2,7 @@
 
 @using PagedList
 @using PagedList.Mvc
+@using Fixture02.Models;
 
 @{
     Layout = "~/Views/Shared/FixtureMaster.cshtml";
@@ -53,6 +54,37 @@
             </th>
             <th></th>
         </tr>
+
+        <div>
+            @{
+                List<Employee> list = (List<Employee>)Session["forgets"];
+                foreach (var emp in list)
+                {
+                    <tr>
+                        <td>
+                            emp.EmployeeName
+                        </td>
+                        <td>
+                            emp.Email
+                        </td>
+                        <td>
+                            emp.UserLevel
+                        </td>
+                        <td>
+                            emp.Workcell.WorkcellName
+                        </td>
+                        <td>
+                            emp.Job
+                        </td>
+                        <td>
+                            @*@Html.ActionLink("编辑", "Edit", new { id = item.EmployeeID }) |
+                            @Html.ActionLink("详情", "Details", new { id = item.EmployeeID }) |
+                            @Html.ActionLink("删除", "Delete", new { id = item.EmployeeID })*@
+                        </td>
+                    </tr>
+                }
+            }
+        </div>
 
         @foreach (var item in Model)
         {

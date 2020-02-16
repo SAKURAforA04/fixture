@@ -26,6 +26,7 @@
           <Property Name="UserLevel" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="WorkcellID" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Job" Type="varchar" MaxLength="20" />
+          <Property Name="PasswordForget" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="Family">
           <Key>
@@ -198,6 +199,7 @@
           <Property Name="WorkcellID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Job" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Workcell" Relationship="fixtureModel.FK_Employee_Workcell" FromRole="Employee" ToRole="Workcell" />
+          <Property Name="PasswordForget" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Workcell">
           <Key>
@@ -392,6 +394,7 @@
           <EntitySetMapping Name="Employee">
             <EntityTypeMapping TypeName="fixtureModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="PasswordForget" ColumnName="PasswordForget" />
                 <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
                 <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
