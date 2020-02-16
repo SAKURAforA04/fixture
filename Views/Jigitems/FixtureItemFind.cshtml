@@ -15,7 +15,7 @@
     <title>Index</title>
 </head>
 <body>
-    <h2>FixtureItemFind</h2>
+    <h2>采购入库查询</h2>
     <div class="container-fluid">
         <div class="row-fluid">
             <p>
@@ -33,14 +33,14 @@
 
         <table class="table">
             <tr>
-                <th>
+                @*<th>
                     @Html.DisplayNameFor(model => model.ItemID)
-                </th>
+                </th>*@
                 <th>
                     @Html.DisplayNameFor(model => model.Code)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.SeqID)
+                    @Html.DisplayNameFor(model => model.Jig.Name)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.BillNo)
@@ -65,14 +65,14 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>
+                    @*<td>
                         @Html.DisplayFor(modelItem => item.ItemID)
+                    </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Code)-@Html.DisplayFor(modelItem => item.SeqID)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Code)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SeqID)
+                        @Html.DisplayFor(modelItem => item.Jig.Name)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.BillNo)

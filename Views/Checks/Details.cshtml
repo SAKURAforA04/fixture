@@ -5,19 +5,12 @@
     Layout = "~/Views/Shared/FixtureMaster.cshtml";
 }
 
-<h2>Details</h2>
+    <h2>点检查询</h2>
 
 <div>
-    <h4>check</h4>
+    <h4>点检详情</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ItemID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ItemID)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Code)
@@ -33,14 +26,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FamilyID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FamilyID)
         </dd>
 
         <dt>
@@ -68,6 +53,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.ItemID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemID)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.AddDate)
         </dt>
 
@@ -76,27 +69,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.AddUserID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AddUserID)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.AddUserName)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.AddUserName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CheckUserName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CheckUserName)
         </dd>
 
         <dt>
@@ -116,70 +93,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CheckResult1)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CheckResult1)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CheckResult2)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CheckResult2)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CheckResult3)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CheckResult3)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CheckResult4)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CheckResult4)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CheckResult5)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CheckResult5)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CheckResult6)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CheckResult6)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CheckResult7)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CheckResult7)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CheckResult8)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CheckResult8)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.Problem)
         </dt>
 
@@ -187,17 +100,8 @@
             @Html.DisplayFor(model => model.Problem)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.WorkcellID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.WorkcellID)
-        </dd>
-
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CheckID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("返回", "Index")
 </p>

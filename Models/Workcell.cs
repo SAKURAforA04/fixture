@@ -11,7 +11,8 @@ namespace Fixture02.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class Workcell
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,8 +20,9 @@ namespace Fixture02.Models
         {
             this.Employee = new HashSet<Employee>();
         }
-    
+        [DisplayName("部门编码")]
         public string WorkcellID { get; set; }
+        [DisplayName("部门名称")]
         public string WorkcellName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

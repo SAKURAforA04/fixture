@@ -11,16 +11,25 @@ namespace Fixture02.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class Employee
     {
+        [DisplayName("用户编号")]
         public string EmployeeID { get; set; }
+        [DisplayName("用户姓名")]
         public string EmployeeName { get; set; }
+        [DisplayName("账号密码")]
         public string Password { get; set; }
+        [DisplayName("绑定邮箱")]
         public string Email { get; set; }
+        [DisplayName("用户权限")]
         public string UserLevel { get; set; }
+        [DisplayName("部门编码")]
         public string WorkcellID { get; set; }
+        [DisplayName("职务")]
         public string Job { get; set; }
+        [DisplayName("岗位编码")]
         public string JobDepartmentID { get; set; }
     
         public virtual Workcell Workcell { get; set; }

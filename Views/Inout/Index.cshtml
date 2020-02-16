@@ -4,6 +4,9 @@
      Layout = "~/Views/Shared/FixtureMaster.cshtml";
 }
 
+@*//=============================================================出库首页面=========================================================*@
+
+
 <!DOCTYPE html>
 
 <html>
@@ -80,9 +83,138 @@
                 @Html.DisplayFor(modelItem => item.State)
             </td>
             <td>
+
                 @Html.ActionLink("编辑", "Edit","Jigitems", new { id = item.ItemID },"") |
                 @Html.ActionLink("详情", "Details","Jigitems",new { id = item.ItemID } ,"") |
                 @Html.ActionLink("出库", "OutStorage", item)
+
+
+
+
+
+
+
+
+
+
+                <!-- 按钮触发模态框 -->
+                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                    开始演示模态框
+                </button>
+                <!-- 模态框（Modal） -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">
+                                    模态框（Modal）标题
+                                </h4>
+                            </div>
+
+
+                            @*<div class="modal-body">
+            在这里添加一些文本
+        </div>*@
+
+                            <div class="tabbable" id="tabs-182595">
+                                <!-- Only required for left/right tabs -->
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a contenteditable="true" data-toggle="tab" href="#panel-1">第一部分</a></li>
+                                    <li><a contenteditable="true" data-toggle="tab" href="#panel-2">第二部分</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane active" contenteditable="true" id="panel-1">
+
+                                        @*<div id="divyes" hidden>*@
+                                        1.夹具是否有螺丝松动。<br />
+                                        2.夹具是否有部件损坏。<br />
+                                        3.夹具是否有钢套损坏掉落等不良。<br />
+                                        4.夹具是否有机械部件松动。<br />
+                                        5.夹具电路是否正常工作。<br />
+                                        6.夹具是否有不正常的响声。<br />
+                                        7.夹具是否牢固的固定在对应位置。<br />
+                                        8.使用抹布或者刷子进行夹具清洁。<br />
+                                        @*</div>*@
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                                            关闭1
+                                        </button>
+
+                                        
+
+                                        <button type="button" class="btn btn-primary">
+                                            @*提交更改1*@
+                                            @Html.ActionLink("出库", "OutStorage", item)
+                                        </button>
+                                    </div>
+
+                                    </div>
+
+                                    <div class="tab-pane" contenteditable="true" id="panel-2">
+                                        @*<div id="divno" hidden>*@
+                                        @Html.CheckBox("CheckResult1", true)1.夹具是否有螺丝松动。<br />
+                                        @Html.CheckBox("CheckResult2", true)2.夹具是否有部件损坏。<br />
+                                        @Html.CheckBox("CheckResult3", true)3.夹具是否有钢套损坏掉落等不良。<br />
+                                        @Html.CheckBox("CheckResult4", true)4.夹具是否有机械部件松动。<br />
+                                        @Html.CheckBox("CheckResult5", true)5.夹具电路是否正常工作。<br />
+                                        @Html.CheckBox("CheckResult6", true)6.夹具是否有不正常的响声。<br />
+                                        @Html.CheckBox("CheckResult7", true)7.夹具是否牢固的固定在对应位置。<br />
+                                        @Html.CheckBox("CheckResult8", true)8.使用抹布或者刷子进行夹具清洁。<br />
+                                        @*</div>*@
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                关闭2
+                                            </button>
+                                            <button type="button" class="btn btn-primary">
+                                                提交更改2
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            @*<div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                    关闭
+                                </button>
+                                <button type="button" class="btn btn-primary">
+                                    提交更改
+                                </button>
+                            </div>*@
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal -->
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+                
+
+
+
+
+
+
+
+
+
+
+
             </td>
         </tr>
             }

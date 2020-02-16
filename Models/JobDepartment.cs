@@ -11,10 +11,13 @@ namespace Fixture02.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class JobDepartment
     {
+        [DisplayName("岗位编码")]
         public string JobDepartmentID { get; set; }
+        [DisplayName("岗位名称")]
         public string JobDepartmentName { get; set; }
     }
 }
