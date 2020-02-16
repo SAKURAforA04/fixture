@@ -11,33 +11,61 @@ namespace Fixture02.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class Check
     {
+        [DisplayName("夹具点检编号")]
         public int CheckID { get; set; }
+        [DisplayName("夹具实体编号")]
         public Nullable<int> ItemID { get; set; }
+        [DisplayName("夹具代码")]
         public string Code { get; set; }
+        [DisplayName("夹具名称")]
         public string Name { get; set; }
+        [DisplayName("大类编码")]
         public string FamilyID { get; set; }
+        [DisplayName("大类名称")]
         public string FamilyName { get; set; }
+        [DisplayName("模组")]
         public string Model { get; set; }
+        [DisplayName("料号")]
         public string PartNo { get; set; }
+        [DisplayName("点检日期")]
         public Nullable<System.DateTime> AddDate { get; set; }
+        [DisplayName("创建人编码")]
         public string AddUserID { get; set; }
+        [DisplayName("创建人姓名")]
         public string AddUserName { get; set; }
+        [DisplayName("点检人姓名")]
         public string CheckUserName { get; set; }
+        [DisplayName("点检类型")]
         public string CheckType { get; set; }
+        [DisplayName("点检状态")]
         public string CheckState { get; set; }
+        [DisplayName("点检结果1")]
         public string CheckResult1 { get; set; }
+        [DisplayName("点检结果2")]
         public string CheckResult2 { get; set; }
+        [DisplayName("点检结果3")]
         public string CheckResult3 { get; set; }
+        [DisplayName("点检结果4")]
         public string CheckResult4 { get; set; }
+        [DisplayName("点检结果5")]
         public string CheckResult5 { get; set; }
+        [DisplayName("点检结果6")]
         public string CheckResult6 { get; set; }
+        [DisplayName("点检结果7")]
         public string CheckResult7 { get; set; }
+        [DisplayName("点检结果8")]
         public string CheckResult8 { get; set; }
+        [DisplayName("点检问题")]
         public string Problem { get; set; }
+        [DisplayName("工作部门编码")]
         public string WorkcellID { get; set; }
+        [DisplayName("夹具序列号")]
         public Nullable<int> SeqID { get; set; }
+        [DisplayName("点检图片")]
+        public string Pic { get; set; }
     }
 }

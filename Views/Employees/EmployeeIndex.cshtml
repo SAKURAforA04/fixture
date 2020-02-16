@@ -24,9 +24,9 @@
 
             @using (Html.BeginForm("EmployeeIndex", "Employees", FormMethod.Get))
             {
-                <p>员工姓名:@Html.TextBox("searchString")</p>
-                <p>员工权限:@Html.TextBox("userLevel")</p>
-                <p>员工部门:@Html.TextBox("workcellID")</p>
+                <p>员工姓名:@Html.TextBox("employeeName", ViewBag.employeeName as string)</p>
+                <p>员工权限:@Html.TextBox("userLevel", ViewBag.userLevel as string)</p>
+                <p>员工部门:@Html.TextBox("workcellID", ViewBag.workcellID as string)</p>
 
                 <input type="submit" value="查询" />
             }
@@ -36,6 +36,9 @@
 
     <table class="table">
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeID)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.EmployeeName)
             </th>
@@ -56,31 +59,37 @@
 
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EmployeeName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UserLevel)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Workcell.WorkcellName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Job)
-                </td>
-                <td>
-                    @Html.ActionLink("编辑", "Edit", new { id = item.EmployeeID }) |
-                    @Html.ActionLink("详情", "Details", new { id = item.EmployeeID }) |
-                    @Html.ActionLink("删除", "Delete", new { id = item.EmployeeID })
-                </td>
-            </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserLevel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Workcell.WorkcellName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Job)
+        </td>
+        <td>
+            @Html.ActionLink("编辑", "Edit", new { id = item.EmployeeID }) |
+            @Html.ActionLink("详情", "Details", new { id = item.EmployeeID }) |
+            @Html.ActionLink("删除", "Delete", new { id = item.EmployeeID })
+        </td>
+    </tr>
         }
 
     </table>
-    @Html.PagedListPager((IPagedList)Model, x => Url.Action("EmployeeIndex", new { page = x }))
+    @*@Html.PagedListPager((IPagedList)Model, page => Url.Action("EmployeeIndex", new { page  }))*@
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("EmployeeIndex", new { page, employeeName = ViewBag.employeeName, userLevel = ViewBag.userLevel, workcellID = ViewBag.workcellID }))
+    
+    
 </body>
 </html>

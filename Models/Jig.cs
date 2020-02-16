@@ -11,7 +11,8 @@ namespace Fixture02.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class Jig
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,27 +20,47 @@ namespace Fixture02.Models
         {
             this.Jigitem = new HashSet<Jigitem>();
         }
-    
+        [DisplayName("夹具代码")]
         public string Code { get; set; }
+        [DisplayName("夹具名称")]
         public string Name { get; set; }
+        [DisplayName("大类编码")]
         public string FamilyID { get; set; }
+        [DisplayName("大类名称")]
         public string FamilyName { get; set; }
+        [DisplayName("模组")]
         public string Model { get; set; }
+        [DisplayName("料号")]
         public string PartNo { get; set; }
+        [DisplayName("部门编码")]
         public string WorkcellID { get; set; }
+        [DisplayName("部门名称")]
         public string WorkcellName { get; set; }
+        [DisplayName("用途")]
         public string UsedFor { get; set; }
+        [DisplayName("数量")]
         public Nullable<int> UPL { get; set; }
+        [DisplayName("责任人编码")]
         public string OwnerID { get; set; }
+        [DisplayName("责任人姓名")]
         public string OwnerName { get; set; }
+        [DisplayName("保养点检周期")]
         public Nullable<int> PMPeriod { get; set; }
+        [DisplayName("创建日期")]
         public System.DateTime AddDate { get; set; }
+        [DisplayName("创建人编码")]
         public string AddUserID { get; set; }
+        [DisplayName("创建人姓名")]
         public string AddUserName { get; set; }
+        [DisplayName("修改日期")]
         public Nullable<System.DateTime> EditDate { get; set; }
+        [DisplayName("修改人编码")]
         public string EditUserID { get; set; }
+        [DisplayName("修改人姓名")]
         public string EditUserName { get; set; }
+        [DisplayName("备注")]
         public string Remark { get; set; }
+
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Jigitem> Jigitem { get; set; }

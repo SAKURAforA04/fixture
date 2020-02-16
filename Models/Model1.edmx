@@ -34,6 +34,7 @@
           <Property Name="CheckResult8" Type="varchar" MaxLength="100" />
           <Property Name="Problem" Type="varchar" MaxLength="100" />
           <Property Name="WorkcellID" Type="varchar" MaxLength="20" />
+          <Property Name="Pic" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -166,7 +167,7 @@
           <Key>
             <PropertyRef Name="RepairID" />
           </Key>
-          <Property Name="RepairID" Type="int" Nullable="false" />
+          <Property Name="RepairID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CheckID" Type="int" />
           <Property Name="ItemID" Type="int" Nullable="false" />
           <Property Name="Code" Type="varchar" MaxLength="20" Nullable="false" />
@@ -538,6 +539,7 @@
           <Property Name="Problem" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="WorkcellID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="SeqID" Type="Int32" />
+          <Property Name="Pic" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -746,6 +748,7 @@
           <EntitySetMapping Name="Check">
             <EntityTypeMapping TypeName="fixtureModel.Check">
               <MappingFragment StoreEntitySet="Check">
+                <ScalarProperty Name="Pic" ColumnName="Pic" />
                 <ScalarProperty Name="SeqID" ColumnName="SeqID" />
                 <ScalarProperty Name="WorkcellID" ColumnName="WorkcellID" />
                 <ScalarProperty Name="Problem" ColumnName="Problem" />
