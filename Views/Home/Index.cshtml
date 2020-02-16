@@ -103,9 +103,6 @@
                     <li>
                         <a href="#panel-891347" data-toggle="tab">报废处理</a>
                     </li>
-                    <li>
-                        <a href="#panel-891348" data-toggle="tab">点检处理</a>
-                    </li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="panel-789173">
@@ -191,27 +188,38 @@
                                 审核信息
                             </div>
 
+                            @foreach (var item in Model.listScr)
+                            {
+                                if (item.ScrapState == "新增")
+                                {
+                                    <div class="list-group-item">
+                                        <h4 class="list-group-item-heading">
+                                            您有一条对于 工夹具 @Html.DisplayFor(modelItem => item.Code) 的报废初审申请信息
+                                        </h4>
+                                        <p class="list-group-item-text">
+                                            @Html.ActionLink("前往处理", "FirstScrap", "Scraps")
+                                        </p>
+                                    </div>
+                                }
+                                else if (item.ScrapState == "初审")
+                                {
+                                    <div class="list-group-item">
+                                        <h4 class="list-group-item-heading">
+                                            您有一条对于 工夹具 @Html.DisplayFor(modelItem => item.Code) 的报废复审申请信息
+                                        </h4>
+                                        <p class="list-group-item-text">
+                                            @Html.ActionLink("前往处理", "SecondScrap", "Scraps")
+                                        </p>
+                                    </div>
+                                }
 
-                    
+                            }
+
 
                             <div class="list-group-item">
                                 <span class="badge">0</span> 报废审核信息数
                             </div> <a class="list-group-item active"> <span class="badge">0</span>信息数</a>
                         </div>
-                        </div>
-
-                        <div class="tab-pane" id="panel-891348">
-                            <div class="list-group">
-                                <a href="#" class="list-group-item active">审核信息</a>
-                                <div class="list-group-item">
-                                    审核信息
-                                </div>
-
-                                <div class="list-group-item">
-                                    <span class="badge">0</span> 点检审核信息数
-                                </div> <a class="list-group-item active"> <span class="badge">0</span>信息数</a>
-                            </div>
-
                         </div>
                     </div>
         </div>
