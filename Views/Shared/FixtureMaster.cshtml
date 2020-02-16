@@ -27,7 +27,7 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container-fluid ">
         <div class="row clearfix">
             <div class="col-md-12 column">
                 <h3 class="text-center title">
@@ -44,6 +44,7 @@
                         <div class="panel-heading">
                             <span class="glyphicon glyphicon-home " />
                             @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:#fff" })
+
                         </div>
                     </div>
 
@@ -55,12 +56,14 @@
                         </div>
 
                         <div id="panel-element-528672" class="panel-collapse collapse">
+
                             <div class="panel-body">
                                 @Html.ActionLink("采购入库登记", "Index", "Jigitems")
                             </div>
 
                             <div class="panel-body">
                                 @Html.ActionLink("采购入库初审", "FirstReview", "Jigitems")
+
                             </div>
 
                             <div class="panel-body">
@@ -74,12 +77,12 @@
                         </div>
                     </div>
 
-
                     <div class="panel panel-default panel-primary cl">
                         <div class="panel-heading">
                             <span class="glyphicon glyphicon-resize-horizontal  " />
                             <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21442">进/出库</a>
                         </div>
+
 
                         <div id="panel-element-21442" class="panel-collapse collapse">
                             <div class="panel-body">
@@ -93,9 +96,9 @@
                             <div class="panel-body">
                                 @Html.ActionLink("信息查询", "SearchInoutMessage", "Inout")
                             </div>
+
                         </div>
                     </div>
-
 
                     <div class="panel panel-default panel-primary cl">
                         <div class="panel-heading">
@@ -118,7 +121,6 @@
                             </div>
                         </div>
                     </div>
-
 
                     <div class="panel panel-default panel-primary cl">
                         <div class="panel-heading">
@@ -146,10 +148,9 @@
                         </div>
                     </div>
 
-
-
                     <div class="panel panel-default panel-primary cl">
                         <div class="panel-heading">
+                            <span class="glyphicon glyphicon-user " />
                             <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21445">系统管理</a>
                         </div>
 
@@ -162,10 +163,6 @@
 
                             <div class="panel-body">
                                 @Html.ActionLink("部门管理", "Index", "Workcells")
-                            </div>
-
-                            <div class="panel-body">
-                                @Html.ActionLink("工夹具定义管理", "Index", "Jigs")
                             </div>
 
                             <div class="panel-body">

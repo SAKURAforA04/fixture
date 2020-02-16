@@ -5,10 +5,10 @@
     //ViewBag.Title = "Create";
     Layout = "~/Views/Shared/FixtureMaster.cshtml";
 }
-<h2>Create</h2>
+<h5><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>>采购入库>> @Html.ActionLink("采购入库登记", "Index")>>新增创建</h5>
 
 <div class="form-horizontal">
-    <h4>Jigitem</h4>
+    <h4>Jigitem Create</h4>
     <hr />
     @*=============================================用来查询夹具定义表中的数据===================================*@
     <table class="table">
@@ -77,7 +77,7 @@
             </div>
         </div>
     </div>
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Create", "Jigitems", FormMethod.Post))
     {
         <div class="form-group">
             <div class="col-md-10" id="myModal">
@@ -133,9 +133,7 @@
         </div>
     }
 
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
+
 </div>
 
 
