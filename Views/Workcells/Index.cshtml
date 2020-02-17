@@ -8,32 +8,39 @@
     Layout = "~/Views/Shared/FixtureMaster.cshtml";
 }
 
-<h2>Index</h2>
+<h2>部门管理</h2>
+    <button class="btn btn-info" style="float:right"> @Html.ActionLink("创建新部门", "Create",new { @class="btn"},new { style = "color:white;" }) </button>
+<br /><br />
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.WorkcellName)
-        </th>
-        <th></th>
-    </tr>
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">部门列表</h3>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>部门名称</th>
+                    </tr>
+                </thead>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.WorkcellName)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.WorkcellID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.WorkcellID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.WorkcellID })
-            </td>
-        </tr>
-    }
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.WorkcellName)
+                        </td>
+                        <td>
+                            <button class="btn btn-default btn-sm">@Html.ActionLink("编辑", "Edit", new { id = item.WorkcellID })</button> |
+                            <button class="btn btn-default btn-sm">@Html.ActionLink("详情", "Details", new { id = item.WorkcellID })</button> |
+                            <button class="btn btn-danger btn-sm">@Html.ActionLink("删除", "Delete", new { id = item.WorkcellID }, new { style = "color:white;" })</button>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
 
-</table>
 @Html.PagedListPager((IPagedList)Model, x => Url.Action("Index", new { page = x }))
