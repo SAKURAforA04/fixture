@@ -31,8 +31,24 @@ namespace Fixture02.Controllers
             }
             //用于分页，顺便跳转
 
+            foreach(var item in name)
+            {
+                if(item.PasswordForget != null)
+                {
+                    System.Web.HttpContext.Current.Response.Write("<Script Language='JavaScript'>window.alert('" + "您有待处理的事项" + "');</script>");
+                    List<Employee> forgets = new List<Employee>();
+                    forgets.Add(item);
+                    System.Web.HttpContext.Current.Session.Add("forgets", forgets);
+                }
+            }
+
             return View(name.OrderBy(x => x.EmployeeID).ToPagedList(page, pageSize));
         }
+
+        //public ActionResult EmployeeIndex()
+        //{
+        //    return View(db.Employee.ToList());
+        //}
 
 
         public ActionResult Details(string id)
@@ -159,14 +175,22 @@ namespace Fixture02.Controllers
                 }
                 else
                 {
-                    db.Employee.SingleOrDefault(n => n.EmployeeID == employee.EmployeeID).PasswordForget = "yes";
-                    List<Employee> forgets = new List<Employee>();
-                    forgets.Add(userID);
-                    System.Web.HttpContext.Current.Session.Add("forgets", forgets);
+                    userID.PasswordForget = "yes";
+
+                    db.SaveChanges();
                     return RedirectToAction("Index", "Home");
                 }
                 return null;
             }
+        }
+
+        public ActionResult passwordReset(String id)
+        {
+            Employee emp = db.Employee.SingleOrDefault(n => n.EmployeeID == id);
+            emp.Password = "123456";
+            emp.PasswordForget = null;
+            db.SaveChanges();
+            return RedirectToAction("EmployeeIndex", "Employee",new { page = 1 });
         }
     }
 }

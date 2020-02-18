@@ -35,6 +35,8 @@
         </div>
     </div>
 
+
+
     <table class="table">
         <tr>
             <th>
@@ -55,36 +57,37 @@
             <th></th>
         </tr>
 
-        <div>
-            @{
-                List<Employee> list = (List<Employee>)Session["forgets"];
+        @{
+            List<Employee> list = (List<Employee>)Session["forgets"];
+            if (list != null)
+            {
                 foreach (var emp in list)
                 {
+                    var id = emp.EmployeeID;
                     <tr>
                         <td>
-                            emp.EmployeeName
+                            @emp.EmployeeName
                         </td>
                         <td>
-                            emp.Email
+                            @emp.Email
                         </td>
                         <td>
-                            emp.UserLevel
+                            @emp.UserLevel
                         </td>
                         <td>
-                            emp.Workcell.WorkcellName
+                            @emp.Workcell.WorkcellName
                         </td>
                         <td>
-                            emp.Job
+                            @emp.Job
                         </td>
                         <td>
-                            @*@Html.ActionLink("编辑", "Edit", new { id = item.EmployeeID }) |
-                            @Html.ActionLink("详情", "Details", new { id = item.EmployeeID }) |
-                            @Html.ActionLink("删除", "Delete", new { id = item.EmployeeID })*@
+                            <font color="#FF0000">密码错误</font> |
+                            @Html.ActionLink("重置", "passwordReset", new { id = emp.EmployeeID })
                         </td>
                     </tr>
                 }
             }
-        </div>
+        }
 
         @foreach (var item in Model)
         {
