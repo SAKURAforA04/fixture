@@ -18,9 +18,11 @@
 <body>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
-    <ul class="breadcrumb">
-        <li>您好，欢迎来到工夹具智能管理系统----系统管理>>@Html.ActionLink("用户管理", "EmployeeIndex")>>用户资料修改</li>
-    </ul>
+    @*<ul class="breadcrumb">
+            <li>您好，欢迎来到工夹具智能管理系统----系统管理>>@Html.ActionLink("用户管理", "EmployeeIndex")>>用户资料修改</li>
+        </ul>*@
+    <h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :18px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21445" id="cgrk">系统管理</a>>>@Html.ActionLink("用户管理", "EmployeeIndex", new { }, new { style = "color:blue;" })>>用户资料修改</h4>
+
     @*<div class="page-header" style="text-align:center">
             <h1>
                 工夹具智能管理系统
@@ -31,7 +33,7 @@
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-        <div class="panel panel-info">
+        <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">用户资料修改</h3>
             </div>
@@ -96,7 +98,7 @@
 
                     <div class="row">
                         <input type="submit" value="保存" class="btn btn-info" />
-                        <button class="btn btn-default">@Html.ActionLink("返回", "EmployeeIndex",new { @class="btn"},new { style = "color:black;" })</button>
+                        <button class="btn btn-default">@Html.ActionLink("返回", "EmployeeIndex", new { @class = "btn" }, new { style = "color:black;" })</button>
                     </div>
                 </div>
             </div>

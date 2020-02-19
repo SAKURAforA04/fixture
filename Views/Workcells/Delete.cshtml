@@ -5,12 +5,14 @@
     Layout = "~/Views/Shared/FixtureMaster.cshtml";
 }
 
-<ul class="breadcrumb">
-    <li>您好，欢迎来到工夹具智能管理系统----系统管理>>@Html.ActionLink("部门管理", "Index")>>删除部门</li>
-</ul>
+@*<ul class="breadcrumb">
+        <li>您好，欢迎来到工夹具智能管理系统----系统管理>>@Html.ActionLink("部门管理", "Index")>>删除部门</li>
+    </ul>*@
+<h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :18px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21445" id="cgrk">系统管理</a>>>@Html.ActionLink("部门管理", "Index", new { }, new { style = "color:blue;" })>>删除部门</h4>
+
 <hr />
 
-<div class="panel panel-success">
+<div class="panel panel-primary">
     <div class="panel-heading">
         <h5 class="panel-title">部门名称</h5>
     </div>

@@ -15,6 +15,7 @@
     <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
     <title>Index</title>
 </head>
 
@@ -42,17 +43,18 @@
                 </div>
             </div>
         </div>*@
-    <div class="btn-group" style="float:right">
-        <button class="btn btn-default" type="button" role="button"> @Html.ActionLink("创建用户", "Create",new { @class="btn"},new { style = "color:black;" }) </button>
-        <button type="button" class="btn btn-default">刷新列表</button>
+    <h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :18px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21445" id="cgrk">系统管理</a>>>用户管理</h4>
+
+    <div class="btn-group" style="float:right;">
+        <button class="btn btn-warning" type="button" role="button"> @Html.ActionLink("创建用户", "Create", new { @class = "btn" }, new { style = "color:white;" }) </button>
+        <button type="button" class="btn btn-warning">刷新列表</button>
     </div>
-    <hr />
-    <br />
+    <br /><br />
 
     <!--查询块-->
     @using (Html.BeginForm("EmployeeIndex", "Employees", FormMethod.Get))
     {
-        <div class="panel panel-success">
+        <div class="panel panel-info">
             <div class="panel-heading">
                 <h3 class="panel-title">查询条件</h3>
             </div>
@@ -89,7 +91,7 @@
                                 </div>
                                 <div class="form-actions col-md-3" style="text-align:right;">
                                     <div class="btn-set">
-                                        <button type="submit" class="btn search">查询</button>
+                                        <button type="submit" class="btn btn-primary search">查询</button>
                                         <!--【问题】当点击查询之后，无法重置-->
                                         <button type="reset" class="btn default reset">重置</button>
                                     </div>
@@ -102,7 +104,7 @@
         </div>
     }
 
-    <div class="panel panel-info">
+    <div class="panel panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title">用户列表</h3>
         </div>
@@ -156,7 +158,7 @@
                                             </div>
                                             <div class="modal-body">
                                                 此处为员工信息
-                                               <!--【待补充】-->
+                                                <!--【待补充】-->
                                             </div>
                                             <div class="modal-footer">
                                                 @using (Html.BeginForm())
@@ -196,5 +198,6 @@
                 });
             });
         </script>*@
+
 </body>
 </html>

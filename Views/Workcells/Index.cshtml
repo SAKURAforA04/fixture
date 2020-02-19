@@ -8,11 +8,13 @@
     Layout = "~/Views/Shared/FixtureMaster.cshtml";
 }
 
-<h2>部门管理</h2>
-    <button class="btn btn-info" style="float:right"> @Html.ActionLink("创建新部门", "Create",new { @class="btn"},new { style = "color:white;" }) </button>
-<br /><br />
+<h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :18px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21445" id="cgrk">系统管理</a>>>部门管理</h4>
 
-<div class="panel panel-success">
+<button class="btn btn-warning" style="float:right"> @Html.ActionLink("创建新部门", "Create", new { @class = "btn" }, new { style = "color:white;" }) </button>
+<br />
+<br />
+
+<div class="panel panel-primary">
     <div class="panel-heading">
         <h3 class="panel-title">部门列表</h3>
     </div>
