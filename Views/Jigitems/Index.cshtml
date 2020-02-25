@@ -1,49 +1,93 @@
 ﻿@model IEnumerable<Fixture02.Models.Jigitem>
 
+
 @using PagedList;
 @using PagedList.Mvc;
-
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/FixtureMaster.cshtml";
 }
 
-<h2>采购入库申请</h2>
+<style>
+    table {
+        border: 1px;
+        border-style: solid;
+    }
 
-<p>
-    @Html.ActionLink("新增申请", "Create")
+    td {
+        border: 1px;
+        border-style: solid;
+    }
+
+    th {
+        border: 1px;
+        border-style: solid;
+        text-align: center;
+        background-color: #508da3;
+        color: white;
+    }
+
+    a {
+        color: white;
+    }
+
+    .btn {
+        width: 45px;
+        height: 25px;
+        /* display: flex;
+        justify-content: center;
+        align-items: center;*/
+        line-height: 10px;
+        padding-right: 40px;
+    }
+</style>
+
+<p style=" position :relative ;left :870px;">
+    <button style="background-color: orange ;">@Html.ActionLink("新增申请", "Create")</button>
 </p>
-<table class="table">
+<table class="table" border="0" cellspacing="0" cellpadding="0" style=" width :auto ;text-align :center ;">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Code)
+        <th style=" width:45px;text-align :center ;">
+            @*@Html.DisplayNameFor(model => model.Code)*@
+            夹具代码
         </th>
         @*工夹具Code对应的Name*@
-        <th>
-            @Html.DisplayNameFor(model => model.Jig.Name)
+        <th style=" width:40px;">
+            @* @Html.DisplayNameFor(model => model.Jig.Name)*@
+            夹具名称
         </th>
 
-        <th>
-            @Html.DisplayNameFor(model => model.SeqID)
+        <th style=" width:55px;text-align :center ;">
+            @* @Html.DisplayNameFor(model => model.SeqID)*@
+            夹具序列号
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BillNo)
+        <th style=" width:180px;text-align :center ;">
+            @*@Html.DisplayNameFor(model => model.BillNo)*@
+            采购单据号
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RegDate)
+        <th style=" width:60px;text-align :center ;">
+            @* @Html.DisplayNameFor(model => model.RegDate)*@
+            入库日期
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Location)
+        <th style=" width:80px;text-align :center ;">
+            @*  @Html.DisplayNameFor(model => model.Location)*@
+            存放库位
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.State)
+        <th style=" width:60px;text-align :center ;">
+            @*@Html.DisplayNameFor(model => model.State)*@
+            状态
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AddDate)
+        <th style=" width:60px;text-align :center ;">
+            @* @Html.DisplayNameFor(model => model.AddDate)*@
+            创建日期
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BackNote)
+        <th style=" width:100px;text-align :center ;">
+            @* @Html.DisplayNameFor(model => model.BackNote)*@
+            退回原因
+        </th>
+        <th style=" width:200px;text-align :center  ;">
+            操作
         </th>
     </tr>
 
@@ -55,9 +99,9 @@
             </td>
 
             @*工夹具Code对应的Name*@
-            <th>
+            <td>
                 @Html.DisplayFor(modelItem => item.Jig.Name)
-            </th>
+            </td>
 
             <td>
                 @Html.DisplayFor(modelItem => item.SeqID)
@@ -77,18 +121,22 @@
             <td>
                 @Html.DisplayFor(modelItem => item.AddDate)
             </td>
-            <th>
+            <td style=" width:100px;text-align :center ;">
                 @Html.DisplayFor(modelItem => item.BackNote)
-            </th>
+            </td>
 
-            <td>
-                @Html.ActionLink("编辑", "Edit", new { id = item.ItemID }) |
-                @Html.ActionLink("明细", "Details", new { id = item.ItemID }) |
-                @Html.ActionLink("删除", "Delete", new { id = item.ItemID })
+            <td style=" text-align :left ;">
+                @Html.ActionLink("编辑", "Edit", new { id = item.ItemID }, new { @class = "btn btn-success" })|
+                @Html.ActionLink("明细", "Details", new { id = item.ItemID }, new { @class = "btn btn-info" })|
+                @Html.ActionLink("删除", "Delete", new { id = item.ItemID }, new { @class = "btn btn-danger" })
+               
             </td>
         </tr>
     }
 </table>
+
+
+
 
 @Html.PagedListPager((IPagedList)Model, x => Url.Action("Index", new { page = x }))
 

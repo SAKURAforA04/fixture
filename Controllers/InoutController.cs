@@ -14,10 +14,12 @@ namespace Fixture02.Controllers
         private fixtureEntities db = new fixtureEntities();
 
         // GET: Jigitems
+        //xuewei
         public ActionResult Index(String code, String name, String location , String model, String partNo)
         {
             
             var jigitem = from m in this.db.Jigitem select m;
+            jigitem = jigitem.Where(p => p.State == "库存");
             if (!String.IsNullOrEmpty(code))
             {
                 jigitem = jigitem.Where(h => h.Code.Contains(code));

@@ -8,13 +8,16 @@
     Layout = "~/Views/Shared/FixtureMaster.cshtml";
 }
 
-<h2>Index</h2>
+<h2>部门管理</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("新增", "Create")
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkcellID)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.WorkcellName)
         </th>
@@ -23,16 +26,19 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.WorkcellName)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.WorkcellID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.WorkcellID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.WorkcellID })
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.WorkcellID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.WorkcellName)
+    </td>
+    <td>
+        @Html.ActionLink("编辑", "Edit", new { id = item.WorkcellID }) |
+        @*@Html.ActionLink("详情", "Details", new { id = item.WorkcellID }) |*@
+        @Html.ActionLink("删除", "Delete", new { id = item.WorkcellID })
+    </td>
+</tr>
     }
 
 </table>

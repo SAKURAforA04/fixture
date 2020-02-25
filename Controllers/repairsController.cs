@@ -58,6 +58,7 @@ namespace Fixture02.Controllers
                 repair.AddUserName = user.EmployeeName;
                 db.repair.Add(repair);
                 db.SaveChanges();
+                changeJigitemState(repair.ItemID, "维修");
                 return RedirectToAction("Index");
             }
 
@@ -151,10 +152,9 @@ namespace Fixture02.Controllers
             }
             repair.RepairState = "修复";
             repair.RepairDate = DateTime.Now;
-            //repair.RepairUserName = Session.User.username;
             repair.RepairUserName = "session.user.username";
             db.SaveChanges();
-            changeJigitemState(repair.ItemID, "维修");
+            changeJigitemState(repair.ItemID, "库存");
             return RedirectToAction("Index");
         }
 
@@ -171,8 +171,10 @@ namespace Fixture02.Controllers
             }
             repair.RepairState = "未修复";
             repair.RepairDate = DateTime.Now;
+
             Employee user = (Employee)System.Web.HttpContext.Current.Session["user"];
             repair.RepairUserName = user.EmployeeName;
+
             db.SaveChanges();
             changeJigitemState(repair.ItemID, "报废");
             return RedirectToAction("Index");

@@ -20,8 +20,6 @@ namespace Fixture02.Controllers
         // GET: Jigitems
         public ActionResult Index(int page = 1, int pageSize = 4)
         {
-            //var state = db.Jigitem.Include(e => e.)
-
             var state = from m in this.db.Jigitem select m;
             state = state.Where(h => h.State.Equals("新增") || h.State.Equals("退回"));
             //加入分页
@@ -138,7 +136,6 @@ namespace Fixture02.Controllers
 
 
         //初审管理
-
         public ActionResult FirstReview(int page = 1, int pageSize = 4)
         {
             var state = from m in this.db.Jigitem select m;

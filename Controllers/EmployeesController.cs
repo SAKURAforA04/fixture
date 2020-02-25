@@ -14,22 +14,27 @@ namespace Fixture02.Controllers
     {
         private fixtureEntities db = new fixtureEntities();
 
-        public ActionResult EmployeeIndex(String searchString, String userLevel, String workcellID, int page = 1, int pageSize = 4)
+        public ActionResult EmployeeIndex(String employeeName, String userLevel, String workcellID, int page = 1, int pageSize = 4)
         {
+            
             var name = db.Employee.Include(e => e.Workcell);
-            if (!String.IsNullOrEmpty(searchString))
+            if (!String.IsNullOrEmpty(employeeName))
             {
-                name = name.Where(h => h.EmployeeName.Contains(searchString));
+                name = name.Where(h => h.EmployeeName.Contains(employeeName));
+                ViewBag.employeeName = employeeName;
             }
             if (!String.IsNullOrEmpty(userLevel))
             {
                 name = name.Where(h => h.UserLevel.Contains(userLevel));
+                ViewBag.userLevel = userLevel;
             }
             if (!String.IsNullOrEmpty(workcellID))
             {
                 name = name.Where(h => h.WorkcellID.Contains(workcellID));
+                ViewBag.workcellID = workcellID;
             }
             //用于分页，顺便跳转
+
 
             foreach(var item in name)
             {
@@ -41,6 +46,8 @@ namespace Fixture02.Controllers
                     System.Web.HttpContext.Current.Session.Add("forgets", forgets);
                 }
             }
+
+
 
             return View(name.OrderBy(x => x.EmployeeID).ToPagedList(page, pageSize));
         }

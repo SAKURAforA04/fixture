@@ -5,26 +5,48 @@
     Layout = "~/Views/Shared/FixtureMaster.cshtml";
 }
 
-<h2>Details</h2>
+<h2>采购入库查询</h2>
 
 <div>
-    <h4>Jigitem</h4>
+    <h4>采购入库详情</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemID)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Code)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Code)
+            @Html.DisplayFor(model => model.Code)- @Html.DisplayFor(model => model.SeqID)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.SeqID)
+            @Html.DisplayNameFor(model => model.Jig.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.SeqID)
+            @Html.DisplayFor(model => model.Jig.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Jig.Model)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Jig.Model)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Jig.PartNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Jig.PartNo)
         </dd>
 
         <dt>
@@ -159,5 +181,5 @@
 </div>
 <p>
     @*@Html.ActionLink("Edit", "Edit", new { id = Model.ItemID }) |*@
-    @Html.ActionLink("返回", "Index")
+    @Html.ActionLink("返回", "FixtureItemFind")
 </p>

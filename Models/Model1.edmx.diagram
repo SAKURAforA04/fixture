@@ -4,19 +4,24 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="209451a9176d4751b338fa636aeb0151" Name="Diagram1" ZoomLevel="67">
-        <EntityTypeShape EntityType="fixtureModel.Employee" Width="1.5" PointX="1" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="fixtureModel.Workcell" Width="1.5" PointX="0.875" PointY="0.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="fixtureModel.Family" Width="1.5" PointX="2.75" PointY="2.5" />
-        <EntityTypeShape EntityType="fixtureModel.Jig" Width="1.5" PointX="4.5" PointY="0.875" />
-        <EntityTypeShape EntityType="fixtureModel.Jigitem" Width="2.25" PointX="6.375" PointY="0.625" />
-        <EntityTypeShape EntityType="fixtureModel.Inout" Width="1.625" PointX="9" PointY="0.625" />
-        <AssociationConnector Association="fixtureModel.FK_Jigitem_Code" />
-        <AssociationConnector Association="fixtureModel.FK_Employee_Workcell" />
-        <EntityTypeShape EntityType="fixtureModel.Line" Width="1.5" PointX="0.75" PointY="6.75" />
-        <EntityTypeShape EntityType="fixtureModel.repair" Width="1.5" PointX="2.75" PointY="6.75" />
-        <EntityTypeShape EntityType="fixtureModel.sysdiagrams" Width="1.5" PointX="5.375" PointY="6.75" />
-        <EntityTypeShape EntityType="fixtureModel.Authority" Width="1.5" PointX="7.375" PointY="6.75" />
+      <Diagram DiagramId="08d137cb2ae0405b8cdfe4405830ca42" Name="Diagram1">
+        <EntityTypeShape EntityType="fixtureModel.Authority" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="fixtureModel.Check" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="fixtureModel.Employee" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="fixtureModel.EmployeeFunction" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="fixtureModel.Family" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="fixtureModel.Function" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="fixtureModel.Inout" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="fixtureModel.Jig" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="fixtureModel.Jigitem" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="fixtureModel.JobDepartment" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="fixtureModel.Line" Width="1.5" PointX="7.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="fixtureModel.repair" Width="1.5" PointX="9.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="fixtureModel.Scrap" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="fixtureModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="fixtureModel.Workcell" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <AssociationConnector Association="fixtureModel.FK_Employee_Workcell" ManuallyRouted="false" />
+        <AssociationConnector Association="fixtureModel.FK_Jigitem_Code" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
