@@ -10,7 +10,7 @@ using PagedList;
 
 namespace Fixture02.Controllers
 {
-    public class ScrapsController : Controller
+    public class ScrapsController : BaseController
     {
         private fixtureEntities db = new fixtureEntities();
 

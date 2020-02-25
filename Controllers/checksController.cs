@@ -11,7 +11,7 @@ using PagedList;
 
 namespace Fixture02.Controllers
 {
-    public class ChecksController : Controller
+    public class ChecksController : BaseController
     {
         private fixtureEntities db = new fixtureEntities();
 

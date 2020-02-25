@@ -14,7 +14,7 @@ using System.Web.Mvc;
 
 namespace Fixture02.Controllers
 {
-    public class FileController : Controller
+    public class FileController : BaseController
     {
         // GET: File
         public ActionResult Index()
