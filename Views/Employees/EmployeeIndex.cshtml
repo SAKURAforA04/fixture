@@ -12,29 +12,90 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
     <title>Index</title>
 </head>
+
 <body>
+    <h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :18px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21445" id="cgrk">系统管理</a>>>用户管理</h4>
 
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="span3">
-                <button class="btn" type="button"> @Html.ActionLink("新增", "Create")</button>
-            </div>
-
+@*<<<<<<< HEAD*@
+    @*存在争议*@
             @using (Html.BeginForm("EmployeeIndex", "Employees", FormMethod.Get))
             {
                 <p>员工姓名:@Html.TextBox("employeeName", ViewBag.employeeName as string)</p>
                 <p>员工权限:@Html.TextBox("userLevel", ViewBag.userLevel as string)</p>
                 <p>员工部门:@Html.TextBox("workcellID", ViewBag.workcellID as string)</p>
-
-                <input type="submit" value="查询" />
+                //=======
             }
-
-        </div>
+    @*<div class="btn-group" style="float:right;">
+        <button class="btn btn-warning" type="button" role="button"> @Html.ActionLink("创建用户", "Create", new { @class = "btn" }, new { style = "color:white;" }) </button>
+        <button type="button" class="btn btn-warning">刷新列表</button>
     </div>
+    <br /><br />*@
+@*>>>>>>> gy*@
 
+    <!--查询块-->
+    @using (Html.BeginForm("EmployeeIndex", "Employees", FormMethod.Get))
+    {
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">查询条件</h3>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-12">
+                    <div class="portlet-body form">
+                        <form id="queryFrom" class="search-form form-horizontal">
+                            <div class="form-body row">
+                                <label class="col-md-2 control-label" style="text-align:right; font-size:large;">员工姓名</label>
+                                <div class="clear">
+                                    @Html.TextBox("searchString", "", new { @class = "input-sm col-md-1" })
+                                </div>
+                                <label class="col-md-2 control-label" style="text-align:right; font-size:large;">员工权限</label>
+                                <div class="clear">
+                              
+                                    @Html.TextBox("userLevel", "", new { @class = "input-sm col-md-1" })
+                                </div>
+                                <label class="col-md-2 control-label" style="text-align:right; font-size:large;">员工部门</label>
+                                <div class="clear">
+                                    @Html.TextBox("workcellID", "", new { @class = "input-sm col-md-1" })
+                                </div>
+                                <div class="form-actions col-md-3" style="text-align:right;">
+                                    <div class="btn-set">
+                                        <button type="submit" class="btn btn-primary search">查询</button>
+                                        <button type="reset" class="btn default reset">重置</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">用户列表</h3>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>用户名</th>
+                            <th>用户邮箱</th>
+                            <th>用户权限</th>
+                            <th>工作部门编码</th>
+                            <th>用户职务</th>
+                        </tr>
+                    </thead>
+
+@*<<<<<<< HEAD*@
 
 
     <table class="table">
@@ -126,5 +187,71 @@
     @Html.PagedListPager((IPagedList)Model, page => Url.Action("EmployeeIndex", new { page, employeeName = ViewBag.employeeName, userLevel = ViewBag.userLevel, workcellID = ViewBag.workcellID }))
     
     
+=======
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EmployeeName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserLevel)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.WorkcellID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Job)
+                            </td>
+                            <td>
+                                <button class="btn btn-default btn-sm">@Html.ActionLink("编辑", "Edit", new { id = item.EmployeeID }) </button> |
+                                <button class="btn btn-default btn-sm">@Html.ActionLink("详情", "Details", new { id = item.EmployeeID })</button> |
+
+                                <!-- 模态框（Modal） -->
+                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">删除</button>
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                    &times;
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel">
+                                                    您确定要删除该用户的信息吗？
+                                                </h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                此处为员工信息
+                                                <!--【待补充】-->
+                                            </div>
+                                            <div class="modal-footer">
+                                                @using (Html.BeginForm())
+                                                {
+                                                    @Html.AntiForgeryToken()
+
+                                                    <div class="form-actions no-color">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                            关闭
+                                                        </button>
+                                                        <button type="submit" class="btn btn-primary" data-dismiss="modal">提交更改</button>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div><!-- /.modal-content -->
+                                    </div><!-- /.modal -->
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+    @Html.PagedListPager((IPagedList)Model, x => Url.Action("EmployeeIndex", new { page = x }))
+
+            //>>>>>>> gy
 </body>
 </html>

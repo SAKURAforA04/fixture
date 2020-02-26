@@ -9,6 +9,13 @@
     Layout = "~/Views/Shared/FixtureMaster.cshtml";
 }
 
+<script>
+    window.onload = function () {
+        var link_cgrk = document.getElementById("cgrk");
+        link_cgrk.click();
+    }
+</script>
+
 <style>
     table {
         border: 1px;
@@ -18,6 +25,11 @@
     td {
         border: 1px;
         border-style: solid;
+        height: 20px;
+        text-align: center;
+        vertical-align: central;
+        left: 50%;
+        top: 50%;
     }
 
     th {
@@ -41,10 +53,22 @@
         line-height: 10px;
         padding-right: 40px;
     }
+
+    #footer {
+        position: relative;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        color: blue;
+        text-align: center;
+    }
 </style>
 
-<p style=" position :relative ;left :870px;">
-    <button style="background-color: orange ;">@Html.ActionLink("新增申请", "Create")</button>
+<h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :18px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-528672"  id="cgrk">采购入库</a>>>采购入库登记</h4>
+
+<p style=" position :relative ;left :1040px;">
+    <button style="background-color: orange ;">@Html.ActionLink("新增申请", "Create", new { }, new { style = "color:white;font-size:14px;" })</button>
+
 </p>
 <table class="table" border="0" cellspacing="0" cellpadding="0" style=" width :auto ;text-align :center ;">
     <tr>
@@ -66,7 +90,7 @@
             @*@Html.DisplayNameFor(model => model.BillNo)*@
             采购单据号
         </th>
-        <th style=" width:60px;text-align :center ;">
+        <th style=" width:100px;text-align :center ;">
             @* @Html.DisplayNameFor(model => model.RegDate)*@
             入库日期
         </th>
@@ -78,7 +102,7 @@
             @*@Html.DisplayNameFor(model => model.State)*@
             状态
         </th>
-        <th style=" width:60px;text-align :center ;">
+        <th style=" width:100px;text-align :center ;">
             @* @Html.DisplayNameFor(model => model.AddDate)*@
             创建日期
         </th>
@@ -86,7 +110,7 @@
             @* @Html.DisplayNameFor(model => model.BackNote)*@
             退回原因
         </th>
-        <th style=" width:200px;text-align :center  ;">
+        <th style=" width:180px;text-align :center  ;">
             操作
         </th>
     </tr>
@@ -125,7 +149,8 @@
                 @Html.DisplayFor(modelItem => item.BackNote)
             </td>
 
-            <td style=" text-align :left ;">
+            <td style=" text-align :center  ;">
+
                 @Html.ActionLink("编辑", "Edit", new { id = item.ItemID }, new { @class = "btn btn-success" })|
                 @Html.ActionLink("明细", "Details", new { id = item.ItemID }, new { @class = "btn btn-info" })|
                 @Html.ActionLink("删除", "Delete", new { id = item.ItemID }, new { @class = "btn btn-danger" })
@@ -135,10 +160,9 @@
     }
 </table>
 
-
-
-
-@Html.PagedListPager((IPagedList)Model, x => Url.Action("Index", new { page = x }))
+<div id="footer">
+    @Html.PagedListPager((IPagedList)Model, x => Url.Action("Index", new { page = x }))
+</div>
 
 
 

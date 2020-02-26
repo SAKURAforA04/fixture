@@ -10,10 +10,12 @@
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+
     <script src="~/Scripts/sweet-alert.min.js"></script>
     <link href="~/Scripts/sweet-alert.css" rel="stylesheet" />
+
     <style>
-        h3 {
+        h3.title {
             height: auto;
             border-style: inset;
             border-radius: 10px;
@@ -22,7 +24,7 @@
             background-color: #5b7fa7;
         }
 
-        .panel {
+        .cl {
             background-color: #a5def1;
             border: 1px solid transparent;
             border-radius: 4px;
@@ -30,10 +32,10 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container-fluid ">
         <div class="row clearfix">
             <div class="col-md-12 column">
-                <h3 class="text-center">
+                <h3 class="text-center title">
                     工夹具智能管理系统
                 </h3>
             </div>
@@ -43,15 +45,16 @@
         <div class="row clearfix">
             <div class="col-md-2 column">
                 <div class="panel-group" id="panel-756431">
-                    <div class="panel panel-default panel-primary">
+                    <div class="panel panel-default panel-primary cl">
                         <div class="panel-heading">
+                            <span class="glyphicon glyphicon-home " />
+                            @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:#fff" })
 
-                            <span class="glyphicon glyphicon-home " /> @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:#fff" })
                         </div>
                     </div>
 
 
-                    <div class="panel panel-default panel-primary">
+                    <div class="panel panel-default panel-primary cl">
                         <div class="panel-heading">
                             <span class="glyphicon glyphicon-log-in  " />
                             <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-528672">采购入库</a>
@@ -79,8 +82,7 @@
                         </div>
                     </div>
 
-
-                    <div class="panel panel-default panel-primary">
+                    <div class="panel panel-default panel-primary cl">
                         <div class="panel-heading">
                             <span class="glyphicon glyphicon-resize-horizontal  " />
                             <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21442">进/出库</a>
@@ -103,6 +105,7 @@
                         </div>
                     </div>
 
+@*<<<<<<< HEAD*@
 
 
 
@@ -114,14 +117,6 @@
 
 
                         <div id="panel-element-21144" class="panel-collapse collapse">
-                            @*<div class="panel-body">
-                                @Html.ActionLink("上线点检", "OnlineCheck", "checks")
-                            </div>
-
-                            <div class="panel-body">
-                                @Html.ActionLink("下线点检", "OfflineCheck", "checks")
-                            </div>*@
-
                             <div class="panel-body">
                                 @Html.ActionLink("库存点检", "InStockCheck", "checks")
                             </div>
@@ -132,7 +127,10 @@
                         </div>
                     </div>
 
-                    <div class="panel panel-default panel-primary">
+                    @*<div class="panel panel-default panel-primary">
+=======*@
+                    <div class="panel panel-default panel-primary cl">
+@*>>>>>>> gy*@
                         <div class="panel-heading">
                             <span class="glyphicon glyphicon-wrench  " />
                             <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21443">工夹具报修</a>
@@ -154,8 +152,7 @@
                         </div>
                     </div>
 
-
-                    <div class="panel panel-default panel-primary">
+                    <div class="panel panel-default panel-primary cl">
                         <div class="panel-heading">
                             <span class="glyphicon glyphicon-trash  " />
                             <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21444">工夹具报废</a>
@@ -209,9 +206,7 @@
                         </div>
                     </div>
 
-
-
-                    <div class="panel panel-default panel-primary">
+                    <div class="panel panel-default panel-primary cl">
                         <div class="panel-heading">
                             <span class="glyphicon glyphicon-user " />
                             <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21445">系统管理</a>
@@ -225,6 +220,9 @@
 
                             <div class="panel-body">
                                 @Html.ActionLink("部门管理", "Index", "Workcells")
+                            </div>
+                            <div class="panel-body">
+                                @Html.ActionLink("工夹具定义管理", "Index", "Jigs")
                             </div>
 
                             <div class="panel-body">
