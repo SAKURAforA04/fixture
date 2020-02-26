@@ -145,7 +145,7 @@
 
                             <div class="list-group-item">
                                 <span class="badge">@Model.listJig.Count() </span> 采购入库信息数
-                            </div> <a class="list-group-item active"> <span class="badge">(@Model.listJig.Count() + @Model.listRep.Count())</span>信息数</a>
+                            </div> <a class="list-group-item active"> <span class="badge">(@Model.listJig.Count() + @Model.listRep.Count()+ @Model.listScr.Count())</span>信息数</a>
                         </div>
 
                     </div>
@@ -176,7 +176,7 @@
 
                             <div class="list-group-item">
                                 <span class="badge"> @Model.listRep.Count()</span> 报修审核信息数
-                            </div> <a class="list-group-item active"> <span class="badge">(@Model.listJig.Count() + @Model.listRep.Count())</span>信息数</a>
+                            </div> <a class="list-group-item active"> <span class="badge">(@Model.listJig.Count() + @Model.listRep.Count() + @Model.listScr.Count())</span>信息数</a>
                         </div>
                     </div>
 
@@ -217,8 +217,8 @@
 
 
                             <div class="list-group-item">
-                                <span class="badge">0</span> 报废审核信息数
-                            </div> <a class="list-group-item active"> <span class="badge">0</span>信息数</a>
+                                <span class="badge">@Model.listScr.Count()</span> 报废审核信息数
+                            </div> <a class="list-group-item active"> <span class="badge">(@Model.listJig.Count() + @Model.listRep.Count() + @Model.listScr.Count())</span>信息数</a>
                         </div>
                         </div>
                     </div>
