@@ -59,6 +59,12 @@ namespace Fixture02.Controllers
                 repair1 = repair1.Where(p => p.RepairState == "新增");
                 scrap = scrap.Where(p => p.ScrapState == "新增" || p.ScrapState == "初审");
             }
+            else if(user.UserLevel == "系统管理员")
+            {
+                jigitem = jigitem.Where(p => p.State == "新增" || p.State == "初审");
+                repair1 = repair1.Where(p => p.RepairState == "新增");
+                scrap = scrap.Where(p => p.ScrapState == "新增" || p.ScrapState == "初审");
+            }
             modelPage model = new modelPage();
             model.listJig = new List<Jigitem>();
             model.listRep = new List<repair>();
