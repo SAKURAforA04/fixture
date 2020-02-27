@@ -1,30 +1,52 @@
 ﻿@model Fixture02.Models.Jigitem
-
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/FixtureMaster.cshtml";
 }
+@*<<<<<<< HEAD
 
-<h2>Details</h2>
+<h2>采购入库查询</h2>
 
 <div>
-    <h4>Jigitem</h4>
-    <hr />
-    <dl class="dl-horizontal">
+    <h4>采购入库详情</h4>
+    <hr />*@
+    @*<dl class="dl-horizontal">*@
+        @*<dt>
+            @Html.DisplayNameFor(model => model.ItemID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemID)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Code)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Code)
+            @Html.DisplayFor(model => model.Code)- @Html.DisplayFor(model => model.SeqID)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.SeqID)
+            @Html.DisplayNameFor(model => model.Jig.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.SeqID)
+            @Html.DisplayFor(model => model.Jig.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Jig.Model)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Jig.Model)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Jig.PartNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Jig.PartNo)
         </dd>
 
         <dt>
@@ -156,8 +178,91 @@
         </dd>
 
     </dl>
+=======*@
+<h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :18px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-528672">采购入库</a>>>@Html.ActionLink("采购入库登记", "Index", new { }, new { style = "color:blue;" })>>明细</h4>
+<br />
+<div style=" text-align :center ;">
+    <div class="table-responsive">
+        <table class="table">
+            <caption>工夹具详细信息</caption>
+            <tr>
+                <td>夹具代码 </td>
+                @*<td>@Html.DisplayFor(model => model.Code)</td>*@
+            <td>@Html.DisplayFor(model => model.Code)- @Html.DisplayFor(model => model.SeqID)</td>
+            </tr>
+
+            @*<tr>
+            <td>夹具序列号 </td>
+            <td>@Html.DisplayFor(model => model.SeqID) </td>
+        </tr>*@
+            <tr>
+                <td>采购单据号 </td>
+                <td> @Html.DisplayFor(model => model.BillNo) </td>
+            </tr>
+            <tr>
+                <td>入库日期 </td>
+                <td>@Html.DisplayFor(model => model.RegDate) </td>
+            </tr>
+            <tr>
+                <td>已使用次数 </td>
+                <td>@Html.DisplayFor(model => model.UsedCount) </td>
+            </tr>
+            <tr>
+                <td>存放库位 </td>
+                <td> @Html.DisplayFor(model => model.Location)</td>
+            </tr>
+            <tr>
+                <td> 状态</td>
+                <td> @Html.DisplayFor(model => model.State)</td>
+            </tr>
+            <tr>
+                <td>夹具照片 </td>
+                <td> @Html.DisplayFor(model => model.Pic)</td>
+            </tr>
+            <tr>
+                <td>创建日期 </td>
+                <td> @Html.DisplayFor(model => model.AddDate)</td>
+            </tr>
+            <tr>
+                <td> 创建人编码</td>
+                <td> @Html.DisplayFor(model => model.AddUserID)</td>
+            </tr>
+            <tr>
+                <td> 创建人姓名</td>
+                <td> @Html.DisplayFor(model => model.AddUserName)</td>
+            </tr>
+            <tr>
+                <td> 初审日期</td>
+                <td>@Html.DisplayFor(model => model.FirstReviewDate) </td>
+            </tr>
+            <tr>
+                <td>初审人编码 </td>
+                <td>@Html.DisplayFor(model => model.FirstReviewUserID) </td>
+            </tr>
+            <tr>
+                <td> 初审人姓名</td>
+                <td>@Html.DisplayFor(model => model.FirstReviewUserName) </td>
+            </tr>
+            <tr>
+                <td>终审日期 </td>
+                <td> @Html.DisplayFor(model => model.SecondReviewDate) </td>
+            </tr>
+            <tr>
+                <td> 终审人编码</td>
+                <td> @Html.DisplayFor(model => model.SecondReviewUserID) </td>
+            </tr>
+            <tr>
+                <td>终审人姓名 </td>
+                <td>  @Html.DisplayFor(model => model.SecondReviewUserName)</td>
+            </tr>
+            <tr>
+                <td>缓存区时间 </td>
+                <td>@Html.DisplayFor(model => model.WaitTime)</td>
+            </tr>
+        </table>
+    </div>
+@*>>>>>>> gy*@
 </div>
-<p>
-    @*@Html.ActionLink("Edit", "Edit", new { id = Model.ItemID }) |*@
-    @Html.ActionLink("返回", "Index")
+<p style=" text-align :center ;">
+    @Html.ActionLink("返回", "Index", new { }, new { @class = "btn btn-primary" })
 </p>

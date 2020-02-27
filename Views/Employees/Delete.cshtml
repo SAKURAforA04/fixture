@@ -1,7 +1,7 @@
 ﻿@model Fixture02.Models.Employee
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/FixtureMaster.cshtml";
 }
 
 <!DOCTYPE html>
@@ -12,69 +12,51 @@
     <title>Delete</title>
 </head>
 <body>
-    <h3>你确定删除这名员工的信息吗？</h3>
-    <div>
-        <h4>Employee</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.EmployeeName)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.EmployeeName)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Password)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Password)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Email)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Email)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.UserLevel)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.UserLevel)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Workcell.WorkcellName)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Workcell.WorkcellName)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Job)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Job)
-            </dd>
-    
-        </dl>
-    
-        @using (Html.BeginForm()) {
-            @Html.AntiForgeryToken()
-    
-            <div class="form-actions no-color">
-                <input type="submit" value="删除" class="btn btn-default" /> |
-                @Html.ActionLink("返回", "EmployeeIndex")
-            </div>
-        }
+    <h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :18px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21445" id="cgrk">系统管理</a>>>@Html.ActionLink("用户管理", "EmployeeIndex", new { }, new { style = "color:blue;" })>>用户删除</h4>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">用户信息</h3>
+        </div>
+        <div class="panel-body" style="text-align:center;">
+            <table class="table table-bordered table-striped">
+                <tr>
+                    @*<td>@Html.DisplayNameFor(model => model.EmployeeName)</td>*@
+                    <td>用户名</td>
+                    <td>@Html.DisplayFor(model => model.EmployeeName)</td>
+                </tr>
+                <tr>
+                    @*<td>@Html.DisplayNameFor(model => model.Email)</td>*@
+                    <td>用户邮箱</td>
+                    <td>@Html.DisplayFor(model => model.Email)</td>
+                </tr>
+                <tr>
+                    @*<td>@Html.DisplayNameFor(model => model.UserLevel)</td>*@
+                    <td>用户权限</td>
+                    <td>@Html.DisplayFor(model => model.UserLevel)</td>
+                </tr>
+                <tr>
+                    @*<td>@Html.DisplayNameFor(model => model.WorkcellID)</td>*@
+                    <td>工作部门编码</td>
+                    <td>@Html.DisplayFor(model => model.WorkcellID)</td>
+                </tr>
+                <tr>
+                    @*<td>@Html.DisplayNameFor(model => model.Job)</td>*@
+                    <td>用户职务</td>
+                    <td>@Html.DisplayFor(model => model.Job)</td>
+                </tr>
+            </table>
+            <div class="alert alert-warning">您确定要<strong> 删除 </strong>所选用户吗？</div>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class=" btn-group">
+                    <input type="submit" value="删除" class="btn btn-danger" />
+                    <button class="btn btn-default" style="float:right">@Html.ActionLink("返回", "EmployeeIndex", new { @class = "btn" }, new { style = "color:black;" })</button>
+                </div>
+            }
+
+        </div>
     </div>
 </body>
 </html>

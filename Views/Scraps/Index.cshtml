@@ -1,0 +1,195 @@
+﻿@model IEnumerable<Fixture02.Models.Scrap>
+
+@using PagedList;
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/FixtureMaster.cshtml";
+}
+
+<h2>ScrapIndex</h2>
+
+<p style=" position :relative ;left :870px;">
+    <button style="background-color: orange ;">@Html.ActionLink("新增申请", "Create")</button>
+</p>
+
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.RepairID)
+            维修编号（流水）
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemID)
+            夹具实体编号（流水）
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Code)
+            夹具代码
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+            夹具名称
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.FamilyID)
+            夹具家族编号
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FamilyName)
+            夹具家族名称
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Model)
+            夹具模组
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PartNo)
+            夹具料号
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Count)
+            夹具寿命（年）
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Problem)
+            夹具报废原因
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.AddDate)
+            创建时间
+        </th>*@
+
+
+        @*<th>
+            @Html.DisplayNameFor(model => model.AddUserID)
+            创建者编码
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AddUserName)
+            创建者姓名
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstReviewDate)
+            初审时间
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstReviewUserID)
+            初审者编码
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstReviewUserName)
+            初审者姓名
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecondReviewDate)
+            终审时间
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecondReviewUserID)
+            终审者编码
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecondReviewUserName)
+            终审者姓名
+        </th>*@
+
+
+        @*<th>
+            @Html.DisplayNameFor(model => model.WorkcellID)
+            工作部门编码
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.ScrapState)
+            报废流程状态
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BackNote)
+            退回原因
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    @*<td>
+        @Html.DisplayFor(modelItem => item.RepairID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ItemID)
+    </td>*@
+    <td>
+        @Html.DisplayFor(modelItem => item.Code)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    @*<td>
+        @Html.DisplayFor(modelItem => item.FamilyID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FamilyName)
+    </td>*@
+    <td>
+        @Html.DisplayFor(modelItem => item.Model)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PartNo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Count)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Problem)
+    </td>
+    @*<td>
+        @Html.DisplayFor(modelItem => item.AddDate)
+    </td>*@
+    @*<td>
+        @Html.DisplayFor(modelItem => item.AddUserID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.AddUserName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FirstReviewDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FirstReviewUserID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FirstReviewUserName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SecondReviewDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SecondReviewUserID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SecondReviewUserName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.WorkcellID)
+    </td>*@
+    <td>
+        @Html.DisplayFor(modelItem => item.ScrapState)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.BackNote)
+    </td>
+
+
+    <td style=" text-align :left ;">
+        @Html.ActionLink("Edit", "Edit", new { id = item.ScrapID }, new { @class = "btn btn-success" }) |
+        @Html.ActionLink("Details", "Details", new { id = item.ScrapID }, new { @class = "btn btn-info" }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.ScrapID } ,new { @class = "btn btn-danger" })
+    </td>
+</tr>
+    }
+
+</table>
+
+@Html.PagedListPager((IPagedList)Model, x => Url.Action("Index", new { page = x }))

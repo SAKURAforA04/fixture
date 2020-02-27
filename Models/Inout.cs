@@ -33,5 +33,6 @@ namespace Fixture02.Models
         public Nullable<System.DateTime> ReviewDate { get; set; }
         public string ReviewUserID { get; set; }
         public string ReviewUserName { get; set; }
+        public string WorkcellID { get; set; }
     }
 }

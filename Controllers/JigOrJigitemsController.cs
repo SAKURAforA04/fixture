@@ -10,7 +10,7 @@ using Fixture02.Models;
 
 namespace Fixture02.Controllers
 {
-    public class JigOrJigitemsController : Controller
+    public class JigOrJigitemsController : BaseController
     {
         public ActionResult Index()
         {

@@ -5,13 +5,20 @@
     Layout = "~/Views/Shared/FixtureMaster.cshtml";
 }
 
-<h2>Delete</h2>
+<h2>部门管理</h2>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Workcell</h4>
+    <h4>部门删除</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkcellID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkcellID)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.WorkcellName)
         </dt>
@@ -22,12 +29,49 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @*@using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+            <input type="submit" value="删除" class="btn btn-default" /> |
+            @Html.ActionLink("返回", "Index")*@
+@*======================================================================================*@
+@*<ul class="breadcrumb">
+        <li>您好，欢迎来到工夹具智能管理系统----系统管理>>@Html.ActionLink("部门管理", "Index")>>删除部门</li>
+    </ul>*@
+<h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :18px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21445" id="cgrk">系统管理</a>>>@Html.ActionLink("部门管理", "Index", new { }, new { style = "color:blue;" })>>删除部门</h4>
+
+<hr />
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h5 class="panel-title">部门名称</h5>
+    </div>
+    <div class="panel-body" style="text-align:center;">
+        <div class="form-horizontal">
+            <div class="form-group">
+
+                <label class="col-md-2 col-md-offset-3" style="text-align:right; font-size:20px;">部门编号</label>
+                <div class="col-md-2" style="text-align:right; font-size:20px;">
+                    @Html.DisplayFor(model => model.WorkcellID)
+                </div>
+
+
+                <label class="col-md-2 col-md-offset-3" style="text-align:right; font-size:20px;">部门名称</label>
+                <div class="col-md-2" style="text-align:right; font-size:20px;">
+                    @Html.DisplayFor(model => model.WorkcellName)
+                </div>
+            </div>
+            <div class="alert alert-warning">您确定要<strong> 删除 </strong>所选部门吗？</div>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class=" btn-group">
+                    <input type="submit" value="删除" class="btn btn-danger" />
+                    <button class="btn btn-default" style="float:right">@Html.ActionLink("返回", "Index", new { @class = "btn" }, new { style = "color:black;" })</button>
+                </div>
+            }
+            </div>
+    </div>
 </div>
