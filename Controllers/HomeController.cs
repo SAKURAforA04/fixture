@@ -43,33 +43,33 @@ namespace Fixture02.Controllers
             }
             else if (user.UserLevel == "高级员工")
             {
-                jigitem = null;
+                jigitem = jigitem.Where(p => p.State == "退回"); 
                 repair1 = repair1.Where(p => p.RepairState == "新增");
-                scrap = null;
+                scrap = scrap.Where(p => p.ScrapState == "退回") ;
             }
             else if (user.UserLevel == "监管员")
             {
-                jigitem = jigitem.Where(p => p.State == "新增");
+                jigitem = jigitem.Where(p => p.State == "新增" ||  p.State == "退回");
                 repair1 = repair1.Where(p => p.RepairState == "新增");
-                scrap = scrap.Where(p => p.ScrapState == "新增");
+                scrap = scrap.Where(p => p.ScrapState == "新增" ||  p.ScrapState == "退回");
             }
             else if (user.UserLevel == "部门经理")
             {
-                jigitem = jigitem.Where(p => p.State == "新增" || p.State == "初审");
+                jigitem = jigitem.Where(p => p.State == "新增" || p.State == "初审" ||  p.State == "退回");
                 repair1 = repair1.Where(p => p.RepairState == "新增");
-                scrap = scrap.Where(p => p.ScrapState == "新增" || p.ScrapState == "初审");
+                scrap = scrap.Where(p => p.ScrapState == "新增" || p.ScrapState == "初审" ||  p.ScrapState == "退回");
             }
             else if(user.UserLevel == "系统管理员")
             {
-                jigitem = jigitem.Where(p => p.State == "新增" || p.State == "初审");
+                jigitem = jigitem.Where(p => p.State == "新增" || p.State == "初审" ||  p.State == "退回");
                 repair1 = repair1.Where(p => p.RepairState == "新增");
-                scrap = scrap.Where(p => p.ScrapState == "新增" || p.ScrapState == "初审");
+                scrap = scrap.Where(p => p.ScrapState == "新增" || p.ScrapState == "初审" || p.ScrapState == "退回");
             }
             modelPage model = new modelPage();
             model.listJig = new List<Jigitem>();
             model.listRep = new List<repair>();
             model.listScr = new List<Scrap>();
-            if(jigitem != null)
+            if (jigitem != null)
             foreach(var jigitem2 in jigitem)
             {
                 model.listJig.Add(jigitem2);
