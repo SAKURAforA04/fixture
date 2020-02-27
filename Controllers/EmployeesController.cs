@@ -187,7 +187,6 @@ namespace Fixture02.Controllers
                     db.SaveChanges();
                     return RedirectToAction("Index", "Home");
                 }
-                return null;
             }
         }
 

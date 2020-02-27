@@ -196,7 +196,8 @@ namespace Fixture02.Controllers
         public ActionResult OutStorage(Inout item)
         {
             item.AddDate = System.DateTime.Now;
-            if(db.Inout.Select(e => e.IinOutID).Any())
+        
+            if (db.Inout.Select(e => e.IinOutID).Any())
             {
                 int maxLinOutID = db.Inout.Select(e => e.IinOutID).Max();
                 item.IinOutID = maxLinOutID + 1;
@@ -286,6 +287,10 @@ namespace Fixture02.Controllers
         public string State { get; set; }
         public string Location{ get; set; }
         public int ItemID { get; set; }
+        public int SeqID { get; set; }
+        public string WorkcellID { get; set; }
+        public string FamilyID { get; set; }
+        public string FamilyName { get; set; }
     }
 
     public class OutJigList

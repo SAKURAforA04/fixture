@@ -57,28 +57,28 @@
                 <thead>
                     <tr>
                         <th>部门编码</th>
-                    </tr>
-                    <tr>
                         <th>部门名称</th>
+                        <th>操作</th>
                     </tr>
+                    
                 </thead>
 @*>>>>>>> gy*@
 
                 @foreach (var item in Model)
                 {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.WorkcellID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.WorkcellName)
-                </td>
-                <td>
-                    <button class="btn btn-default btn-sm">@Html.ActionLink("编辑", "Edit", new { id = item.WorkcellID })</button> |
-                    <button class="btn btn-default btn-sm">@Html.ActionLink("详情", "Details", new { id = item.WorkcellID })</button> |
-                    <button class="btn btn-danger btn-sm">@Html.ActionLink("删除", "Delete", new { id = item.WorkcellID }, new { style = "color:white;" })</button>
-                </td>
-            </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.WorkcellID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.WorkcellName)
+                        </td>
+                        <td>
+                            <button class="btn btn-default btn-sm">@Html.ActionLink("编辑", "Edit", new { id = item.WorkcellID })</button> |
+                            <button class="btn btn-default btn-sm">@Html.ActionLink("详情", "Details", new { id = item.WorkcellID })</button> |
+                            <button class="btn btn-danger btn-sm">@Html.ActionLink("删除", "Delete", new { id = item.WorkcellID }, new { style = "color:white;" })</button>
+                        </td>
+                    </tr>
                 }
             </table>
         </div>

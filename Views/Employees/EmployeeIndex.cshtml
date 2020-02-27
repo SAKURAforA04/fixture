@@ -23,21 +23,13 @@
 <body>
     <h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :18px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21445" id="cgrk">系统管理</a>>>用户管理</h4>
 
-@*<<<<<<< HEAD*@
-    @*存在争议*@
-            @using (Html.BeginForm("EmployeeIndex", "Employees", FormMethod.Get))
-            {
-                <p>员工姓名:@Html.TextBox("employeeName", ViewBag.employeeName as string)</p>
-                <p>员工权限:@Html.TextBox("userLevel", ViewBag.userLevel as string)</p>
-                <p>员工部门:@Html.TextBox("workcellID", ViewBag.workcellID as string)</p>
-                //=======
-            }
+
     @*<div class="btn-group" style="float:right;">
-        <button class="btn btn-warning" type="button" role="button"> @Html.ActionLink("创建用户", "Create", new { @class = "btn" }, new { style = "color:white;" }) </button>
-        <button type="button" class="btn btn-warning">刷新列表</button>
-    </div>
-    <br /><br />*@
-@*>>>>>>> gy*@
+            <button class="btn btn-warning" type="button" role="button"> @Html.ActionLink("创建用户", "Create", new { @class = "btn" }, new { style = "color:white;" }) </button>
+            <button type="button" class="btn btn-warning">刷新列表</button>
+        </div>
+        <br /><br />*@
+    @*>>>>>>> gy*@
 
     <!--查询块-->
     @using (Html.BeginForm("EmployeeIndex", "Employees", FormMethod.Get))
@@ -53,16 +45,16 @@
                             <div class="form-body row">
                                 <label class="col-md-2 control-label" style="text-align:right; font-size:large;">员工姓名</label>
                                 <div class="clear">
-                                    @Html.TextBox("searchString", "", new { @class = "input-sm col-md-1" })
+                                    @Html.TextBox("employeeName", ViewBag.employeeName as string, new { @class = "input-sm col-md-1" })
                                 </div>
                                 <label class="col-md-2 control-label" style="text-align:right; font-size:large;">员工权限</label>
                                 <div class="clear">
-                              
-                                    @Html.TextBox("userLevel", "", new { @class = "input-sm col-md-1" })
+
+                                    @Html.TextBox("userLevel", ViewBag.userLevel as string, new { @class = "input-sm col-md-1" })
                                 </div>
                                 <label class="col-md-2 control-label" style="text-align:right; font-size:large;">员工部门</label>
                                 <div class="clear">
-                                    @Html.TextBox("workcellID", "", new { @class = "input-sm col-md-1" })
+                                    @Html.TextBox("workcellID", ViewBag.workcellID as string, new { @class = "input-sm col-md-1" })
                                 </div>
                                 <div class="form-actions col-md-3" style="text-align:right;">
                                     <div class="btn-set">
@@ -84,113 +76,68 @@
         </div>
         <div class="panel-body">
             <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>用户名</th>
-                            <th>用户邮箱</th>
-                            <th>用户权限</th>
-                            <th>工作部门编码</th>
-                            <th>用户职务</th>
-                        </tr>
-                    </thead>
 
-@*<<<<<<< HEAD*@
-
-
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.EmployeeID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EmployeeName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UserLevel)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Workcell.WorkcellName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Job)
-            </th>
-            <th></th>
-        </tr>
-
-        @{
-            List<Employee> list = (List<Employee>)Session["forgets"];
-            if (list != null)
-            {
-                foreach (var emp in list)
-                {
-                    var id = emp.EmployeeID;
+                <table class="table">
                     <tr>
-                        <td>
-                            @emp.EmployeeName
-                        </td>
-                        <td>
-                            @emp.Email
-                        </td>
-                        <td>
-                            @emp.UserLevel
-                        </td>
-                        <td>
-                            @emp.Workcell.WorkcellName
-                        </td>
-                        <td>
-                            @emp.Job
-                        </td>
-                        <td>
-                            <font color="#FF0000">密码错误</font> |
-                            @Html.ActionLink("重置", "passwordReset", new { id = emp.EmployeeID })
-                        </td>
+                        <th>
+                            @Html.DisplayNameFor(model => model.EmployeeID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.EmployeeName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UserLevel)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Workcell.WorkcellName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Job)
+                        </th>
+                        <th>操作</th>
                     </tr>
-                }
-            }
-        }
 
-        @foreach (var item in Model)
-        {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmployeeID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmployeeName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserLevel)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Workcell.WorkcellName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Job)
-        </td>
-        <td>
-            @Html.ActionLink("编辑", "Edit", new { id = item.EmployeeID }) |
-            @Html.ActionLink("详情", "Details", new { id = item.EmployeeID }) |
-            @Html.ActionLink("删除", "Delete", new { id = item.EmployeeID })
-        </td>
-    </tr>
-        }
+                    @{
+                        List<Employee> list = (List<Employee>)Session["forgets"];
+                        if (list != null)
+                        {
+                            foreach (var emp in list)
+                            {
+                                var id = emp.EmployeeID;
+                                <tr>
+                                    <td>
+                                        @emp.EmployeeName
+                                    </td>
+                                    <td>
+                                        @emp.Email
+                                    </td>
+                                    <td>
+                                        @emp.UserLevel
+                                    </td>
+                                    <td>
+                                        @emp.Workcell.WorkcellName
+                                    </td>
+                                    <td>
+                                        @emp.Job
+                                    </td>
+                                    <td>
+                                        <font color="#FF0000">密码错误</font> |
+                                        @Html.ActionLink("重置", "passwordReset", new { id = emp.EmployeeID })
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    }
 
-    </table>
-    @*@Html.PagedListPager((IPagedList)Model, page => Url.Action("EmployeeIndex", new { page  }))*@
-    @Html.PagedListPager((IPagedList)Model, page => Url.Action("EmployeeIndex", new { page, employeeName = ViewBag.employeeName, userLevel = ViewBag.userLevel, workcellID = ViewBag.workcellID }))
-    
-    
-=======
                     @foreach (var item in Model)
                     {
                         <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EmployeeID)
+                            </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.EmployeeName)
                             </td>
@@ -201,7 +148,7 @@
                                 @Html.DisplayFor(modelItem => item.UserLevel)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.WorkcellID)
+                                @Html.DisplayFor(modelItem => item.Workcell.WorkcellName)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Job)
@@ -250,8 +197,9 @@
             </div>
         </div>
     </div>
-    @Html.PagedListPager((IPagedList)Model, x => Url.Action("EmployeeIndex", new { page = x }))
 
-            //>>>>>>> gy
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("EmployeeIndex", new { page, employeeName = ViewBag.employeeName, userLevel = ViewBag.userLevel, workcellID = ViewBag.workcellID }))
+
+
 </body>
 </html>

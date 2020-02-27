@@ -199,115 +199,90 @@ namespace Fixture02.Controllers
             string ItemID, string Code, string SeqID, string Name, string Model, string PartNo, string WorkcellID, string FamilyID, string FamilyName,
             string ItemID1, string Code1, string SeqID1, string Name1, string Model1, string PartNo1, string WorkcellID1, string FamilyID1, string FamilyName1,
             string CheckResult1, string CheckResult2, string CheckResult3, string CheckResult4,
-            string CheckResult5, string CheckResult6, string CheckResult7, string CheckResult8)
+            string CheckResult5, string CheckResult6, string CheckResult7, string CheckResult8, OutJig item)
         {
             Check check = new Check();
             string problem="";
 
-            if (CheckType == "库存")
+            if (CheckState == "正常")
             {
-                check.CheckType = "库存";
-                if (CheckState == "正常")
-                {
-                    check.CheckState = "正常";
-                    check.ItemID = int.Parse(ItemID);
-                    check.Code = Code;
-                    check.SeqID = int.Parse(SeqID);
-                    check.Name = Name;
-                    check.Model = Model;
-                    check.PartNo = PartNo;
-                    check.WorkcellID = WorkcellID;
-                    check.FamilyID = FamilyID;
-                    check.FamilyName = FamilyName;
-                    check.CheckResult1 = "false";
-                    check.CheckResult2 = "false";
-                    check.CheckResult3 = "false";
-                    check.CheckResult4 = "false";
-                    check.CheckResult5 = "false";
-                    check.CheckResult6 = "false";
-                    check.CheckResult7 = "false";
-                    check.CheckResult8 = "false";
-                }
-                else
-                {
-                    check.CheckState = "维修";
-                    check.ItemID = int.Parse(ItemID1);
-                    check.Code = Code1;
-                    check.SeqID = int.Parse(SeqID1);
-                    check.Name = Name1;
-                    check.Model = Model1;
-                    check.PartNo = PartNo1;
-                    check.WorkcellID = WorkcellID1;
-                    check.FamilyID = FamilyID1;
-                    check.FamilyName = FamilyName1;
-                    check.CheckResult1 = CheckResult1;
-                    check.CheckResult2 = CheckResult2;
-                    check.CheckResult3 = CheckResult3;
-                    check.CheckResult4 = CheckResult4;
-                    check.CheckResult5 = CheckResult5;
-                    check.CheckResult6 = CheckResult6;
-                    check.CheckResult7 = CheckResult7;
-                    check.CheckResult8 = CheckResult8;
-
-                    if (CheckResult1=="true")
-                    {
-                        problem = problem + "夹具有螺丝松动。";
-                    }
-                    if (CheckResult2 == "true")
-                    {
-                        problem = problem + "夹具有部件损坏。";
-                    }
-                    if (CheckResult3 == "true")
-                    {
-                        problem = problem + "夹具有钢套损坏掉落等不良。";
-                    }
-                    if (CheckResult4 == "true")
-                    {
-                        problem = problem + "夹具有机械部件松动。";
-                    }
-                    if (CheckResult5 == "true")
-                    {
-                        problem = problem + "夹具电路没有正常工作。";
-                    }
-                    if (CheckResult6 == "true")
-                    {
-                        problem = problem + "夹具有不正常的响声。";
-                    }
-                    if (CheckResult7 == "true")
-                    {
-                        problem = problem + "夹具没有牢固的固定在对应位置。";
-                    }
-                    if (CheckResult8 == "true")
-                    {
-                        problem = problem + "没有使用抹布或者刷子进行夹具清洁。";
-                    }
-                    check.Problem = problem;
-                    check.Pic = Pic;
-                    //处理向维修表中插入点检出问题的夹具
-                    //repair repair = new repair();
-
-                    //repair.ItemID = int.Parse(ItemID1);
-                    //repair.Code = Code1;
-                    //repair.Name = Name1;
-                    //repair.Model = Model1;
-                    //repair.PartNo = PartNo1;
-                    //repair.WorkcellID = WorkcellID1;
-                    //repair.FamilyID = FamilyID1;
-                    //repair.FamilyName = FamilyName1;
-
-                    //repair.Problem = problem;
-                    //repair.Pic = Pic;
-                    //repair.AddDate = DateTime.Now;
-                    //repair.RepairState = "新增";
-                    ////repair.AddUserID = Session.user.userid;
-                    ////repair.AddUserName = Session.user.username;
-                    //repair.AddUserID = "Session.user.userid";
-                    //repair.AddUserName = "Session.user.username";
-                    //db.repair.Add(repair);
-                }
-
+                check.CheckState = "正常";
+                check.ItemID = int.Parse(ItemID);
+                check.Code = Code;
+                check.SeqID = int.Parse(SeqID);
+                check.Name = Name;
+                check.Model = Model;
+                check.PartNo = PartNo;
+                check.WorkcellID = WorkcellID;
+                check.FamilyID = FamilyID;
+                check.FamilyName = FamilyName;
+                check.CheckResult1 = "false";
+                check.CheckResult2 = "false";
+                check.CheckResult3 = "false";
+                check.CheckResult4 = "false";
+                check.CheckResult5 = "false";
+                check.CheckResult6 = "false";
+                check.CheckResult7 = "false";
+                check.CheckResult8 = "false";
             }
-            
+            else
+            {
+                check.CheckState = "维修";
+                check.ItemID = int.Parse(ItemID1);
+                check.Code = Code1;
+                check.SeqID = int.Parse(SeqID1);
+                check.Name = Name1;
+                check.Model = Model1;
+                check.PartNo = PartNo1;
+                check.WorkcellID = WorkcellID1;
+                check.FamilyID = FamilyID1;
+                check.FamilyName = FamilyName1;
+                check.CheckResult1 = CheckResult1;
+                check.CheckResult2 = CheckResult2;
+                check.CheckResult3 = CheckResult3;
+                check.CheckResult4 = CheckResult4;
+                check.CheckResult5 = CheckResult5;
+                check.CheckResult6 = CheckResult6;
+                check.CheckResult7 = CheckResult7;
+                check.CheckResult8 = CheckResult8;
+
+                if (CheckResult1=="true")
+                {
+                    problem = problem + "夹具有螺丝松动。";
+                }
+                if (CheckResult2 == "true")
+                {
+                    problem = problem + "夹具有部件损坏。";
+                }
+                if (CheckResult3 == "true")
+                {
+                    problem = problem + "夹具有钢套损坏掉落等不良。";
+                }
+                if (CheckResult4 == "true")
+                {
+                    problem = problem + "夹具有机械部件松动。";
+                }
+                if (CheckResult5 == "true")
+                {
+                    problem = problem + "夹具电路没有正常工作。";
+                }
+                if (CheckResult6 == "true")
+                {
+                    problem = problem + "夹具有不正常的响声。";
+                }
+                if (CheckResult7 == "true")
+                {
+                    problem = problem + "夹具没有牢固的固定在对应位置。";
+                }
+                if (CheckResult8 == "true")
+                {
+                    problem = problem + "没有使用抹布或者刷子进行夹具清洁。";
+                }
+                check.Problem = problem;
+                check.Pic = Pic;
+            }
+
+            check.CheckType = CheckType;
             check.AddDate = DateTime.Now;
             check.AddUserID = "011";
             check.AddUserName = "llggxx";
@@ -316,7 +291,34 @@ namespace Fixture02.Controllers
 
             
             db.SaveChanges();
-            return RedirectToAction("InStockCheck");
+            if (CheckType == "库存")
+            {
+                return RedirectToAction("InStockCheck");
+            }else if (CheckType == "出库")
+            {
+                //执行出库点检
+                if (CheckState == "正常")
+                {
+                    return RedirectToAction("OutStorage","Inout",item);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Inout");
+                }
+            }else
+            {
+                //执行入库点检，还没改好...
+                if (CheckState == "正常")
+                {
+                    return RedirectToAction("OutStorage", "Inout", item);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Inout");
+                }
+            }
+
+
         }
 
         [HttpGet]
