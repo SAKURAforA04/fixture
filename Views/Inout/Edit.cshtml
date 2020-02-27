@@ -15,9 +15,10 @@
     <title>Edit</title>
 </head>
 <body>
-    <ul class="breadcrumb">
+    @*<ul class="breadcrumb">
         <li>您好，欢迎来到工夹具智能管理系统----进出库>>@Html.ActionLink("出库管理", "Index") / @Html.ActionLink("入库管理", "InIndex")>>出入库编辑</li>
-    </ul>
+    </ul>*@
+    <h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :18px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21442" id="cgrk">进出库</a>>>@Html.ActionLink("信息查询", "SearchInoutMessage", new { }, new { style = "color:blue;" })>>出入库信息编辑</h4>
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()

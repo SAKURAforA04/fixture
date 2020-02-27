@@ -1,0 +1,65 @@
+﻿
+
+@{
+    Layout = "~/Views/Shared/FixtureMaster.cshtml";
+}
+<div class="well">
+    <form class="form-inline" id="gameGroup">
+        <div>
+            <input name="file" type="file" id="file" />
+            
+                <div class="form-group">
+                    <select class="form-control" name="table" id="table">
+                        <option>Employee</option>
+                        <option>Family</option>
+                        <option>Inout</option>
+                        <option>Jig</option>
+                        <option>Jigitem</option>
+                        <option>Line</option>
+                        <option>repair</option>
+                        <option>Workcell</option>
+                    </select>
+                </div>
+           
+            <br />
+            <input name="submit" type="button" id="btn-excel" class="btn btn-info" value="导入" />
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $("#btn-excel")
+            .click(function () {
+                var formData = new FormData();
+                var filename = $("#file")[0].files[0];
+                if (filename == null || filename == "") {
+                    swal("请选择要导入的文件");
+                    return;
+                }
+                var table = document.getElementById("table").options[window.document.getElementById("table").selectedIndex].text;
+                if (filename != null) {
+                    formData.append('file', $("#file")[0].files[0]); //将文件转成二进制形式
+                    formData.append("table", table)
+                    $.ajax({
+                        type: "post",
+                        url: "/File/ExcelToUpload",//"/文件名/控制器名/控制器内方法"
+                        async: false,
+                        contentType: false, //这个一定要写
+                        processData: false, //这个也一定要写，不然会报错
+                        data: formData,
+                        dataType: 'json', //返回类型，有json，text，HTML。这里并没有jsonp格式，所以别妄想能用jsonp做跨域了。
+                        success: function (data) {
+                           // swal(table);
+                            swal(data);
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown, data) {
+                             
+                            swal(errorThrown);
+                        }
+                    });
+                } else {
+
+                }
+            });
+    })
+</script>

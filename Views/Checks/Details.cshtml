@@ -1,0 +1,107 @@
+﻿@model Fixture02.Models.Check
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/FixtureMaster.cshtml";
+}
+
+    <h2>点检查询</h2>
+
+<div>
+    <h4>点检详情</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FamilyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FamilyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Model)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PartNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PartNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddUserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddUserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CheckType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CheckType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CheckState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CheckState)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Problem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Problem)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("返回", "Index")
+</p>

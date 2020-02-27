@@ -14,9 +14,6 @@ namespace Fixture02.Models
             fixtureEntities db = new fixtureEntities();
             this.Jig = db.Jig.ToList();
             this.Jigitem = db.Jigitem.ToList();
-
         }
-        
-
     }
 }

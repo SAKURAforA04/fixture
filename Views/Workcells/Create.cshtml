@@ -5,14 +5,38 @@
     Layout = "~/Views/Shared/FixtureMaster.cshtml";
 }
 
-<ul class="breadcrumb">
-    <li>您好，欢迎来到工夹具智能管理系统----系统管理>>@Html.ActionLink("部门管理", "Index")>>部门创建</li>
-</ul>
+<h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :18px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21445" id="cgrk">系统管理</a>>>@Html.ActionLink("部门管理", "Index", new { }, new { style = "color:blue;" })>>部门创建</h4>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    <div class="panel panel-success">
+@*<<<<<<< HEAD
+    
+    <div class="form-horizontal">
+        <h4>部门创建</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.WorkcellID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.WorkcellID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.WorkcellID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.WorkcellName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.WorkcellName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.WorkcellName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="保存" class="btn btn-default" />
+=======*@
+    <div class="panel panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title">部门创建</h3>
         </div>
@@ -34,11 +58,11 @@
                     </div>
                 </div>
                 <div class="btn-group">
-                    <input type="submit" value="创建" class="btn btn-success" style = "color:white;" />
-                    <button class="btn btn-default">@Html.ActionLink("返回", "Index",new { @class="btn"},new { style = "color:black;" })</button>
+                    <input type="submit" value="创建" class="btn btn-primary" style="color:white;" />
+                    <button class="btn btn-default">@Html.ActionLink("返回", "Index", new { @class = "btn" }, new { style = "color:black;" })</button>
                 </div>
+@*>>>>>>> gy*@
             </div>
         </div>
     </div>
 }
-

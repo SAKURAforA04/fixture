@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/FixtureMaster.cshtml";
 }
 <h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :18px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-528672">采购入库</a>>>@Html.ActionLink("采购入库登记", "Index", new { }, new { style = "color:blue;" })>>编辑</h4>
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Jigitems", new { id = Model.ItemID, state = "保存" }, FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
@@ -14,7 +14,7 @@
         <div>
             @Html.HiddenFor(model => model.ItemID)
         </div>
-        <form style=" text-align :center ;">
+        <div style=" text-align :center ;">
             <div class="form-group">
                 <label class=" control-label col-md-2">夹具代码</label>
                 <div class="col-md-4">
@@ -57,7 +57,7 @@
                     @Html.ValidationMessageFor(model => model.Pic, "", new { @class = "text-danger" })
                 </div>
             </div>
-        </form>
+        </div>
         @Html.HiddenFor(model => model.UsedCount)
         @Html.HiddenFor(model => model.State)
         @Html.HiddenFor(model => model.AddDate)
@@ -71,18 +71,9 @@
         @Html.HiddenFor(model => model.SecondReviewUserName)
         @Html.HiddenFor(model => model.WaitTime)
         @Html.HiddenFor(model => model.BackNote)
-        @*<div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
-                </div>
-            </div>*@
-
-
+        
     </div>
-}
 
-@using (Html.BeginForm("EditItem", "Jigitems", new { id = Model.ItemID, state = "保存" }, FormMethod.Post))
-{
     <input type="submit" value="保存" class="btn btn-success" style="position:relative ;left:450px;top:5px;" />
 }
 

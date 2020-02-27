@@ -25,13 +25,20 @@ namespace Fixture02.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Authority> Authorities { get; set; }
+        public virtual DbSet<Check> Check { get; set; }
         public virtual DbSet<Employee> Employee { get; set; }
-        public virtual DbSet<Workcell> Workcell { get; set; }
+        public virtual DbSet<EmployeeFunction> EmployeeFunction { get; set; }
         public virtual DbSet<Family> Family { get; set; }
+        public virtual DbSet<Function> Function { get; set; }
+        public virtual DbSet<Inout> Inout { get; set; }
         public virtual DbSet<Jig> Jig { get; set; }
         public virtual DbSet<Jigitem> Jigitem { get; set; }
-        public virtual DbSet<Inout> Inout { get; set; }
+        public virtual DbSet<JobDepartment> JobDepartment { get; set; }
         public virtual DbSet<Line> Line { get; set; }
         public virtual DbSet<repair> repair { get; set; }
+        public virtual DbSet<Scrap> ScrapSet { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Workcell> Workcell { get; set; }
     }
 }

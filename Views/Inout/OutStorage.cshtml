@@ -3,9 +3,10 @@
 @{
     Layout = "~/Views/Shared/FixtureMaster.cshtml";
 }
-<ul class="breadcrumb">
+@*<ul class="breadcrumb">
     <li>您好，欢迎来到工夹具智能管理系统----进出库>>@Html.ActionLink("出库管理", "Index")>>出库</li>
-</ul>
+</ul>*@
+    <h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :18px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21442" id="cgrk">进出库</a>>>@Html.ActionLink("出库管理", "Index", new { }, new { style = "color:blue;" })>>出库</h4>
 <div class="container">
     <div class="row clearfix">
         <div class="col-md-10 column">
@@ -61,7 +62,7 @@
                                                 </div>
                                             </div>
                                             @Html.Hidden("ItemID", Model.ItemID)
-                                            <input type="hidden" name="State" id="State" value="进库" />
+                                            <input type="hidden" name="State" id="State" value="出库" />
                                             @Html.Hidden("AddUserId", 123)
                                             @Html.Hidden("Model", Model.Model)
                                             @Html.Hidden("PartNo", Model.PartNo)
@@ -127,7 +128,7 @@
                                                 </div>
                                             </div>
                                             @Html.Hidden("ItemID", Model.ItemID)
-                                            <input type="hidden" name="State" id="State" value="缓冲" />
+                                            <input type="hidden" name="State" id="State" value="缓存" />
                                             @Html.Hidden("AddUserId", 123)
                                             @Html.Hidden("Model", Model.Model)
                                             @Html.Hidden("PartNo", Model.PartNo)

@@ -3,11 +3,16 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>智能工夹具管理系统</title>
 
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <script src="~/Scripts/sweet-alert.min.js"></script>
+    <link href="~/Scripts/sweet-alert.css" rel="stylesheet" />
 
     <style>
         h3.title {
@@ -100,7 +105,32 @@
                         </div>
                     </div>
 
+@*<<<<<<< HEAD*@
+
+
+
+                    <div class="panel panel-default panel-primary">
+                        <div class="panel-heading">
+                            <span class="glyphicon glyphicon-trash  " />
+                            <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21144">工夹具点检</a>
+                        </div>
+
+
+                        <div id="panel-element-21144" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                @Html.ActionLink("库存点检", "InStockCheck", "checks")
+                            </div>
+
+                            <div class="panel-body">
+                                @Html.ActionLink("点检查询", "Index", "checks")
+                            </div>
+                        </div>
+                    </div>
+
+                    @*<div class="panel panel-default panel-primary">
+=======*@
                     <div class="panel panel-default panel-primary cl">
+@*>>>>>>> gy*@
                         <div class="panel-heading">
                             <span class="glyphicon glyphicon-wrench  " />
                             <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21443">工夹具报修</a>
@@ -109,7 +139,7 @@
 
                         <div id="panel-element-21443" class="panel-collapse collapse">
                             <div class="panel-body">
-                                @Html.ActionLink("报修提交", "create", "Repairs")
+                                @Html.ActionLink("报修提交", "repairSubmit", "Repairs")
                             </div>
 
                             <div class="panel-body">
@@ -131,19 +161,47 @@
 
                         <div id="panel-element-21444" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <a href="#">报废提交</a>
+                                @Html.ActionLink("报废提交", "Index", "Scraps")
                             </div>
 
                             <div class="panel-body">
-                                <a href="#">报废初审</a>
+                                @Html.ActionLink("报废初审", "FirstScrap", "Scraps")
                             </div>
 
                             <div class="panel-body">
-                                <a href="#">报废终审</a>
+                                @Html.ActionLink("报废终审", "SecondScrap", "Scraps")
                             </div>
 
                             <div class="panel-body">
-                                <a href="#">报废查询</a>
+                                @Html.ActionLink("报废查询", "FindScrap", "Scraps")
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="panel panel-default panel-primary">
+                        <div class="panel-heading">
+                            <span class="glyphicon glyphicon-trash  " />
+                            <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21744">流程记录</a>
+                        </div>
+
+
+                        <div id="panel-element-21744" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                @Html.ActionLink("流程记录", "", "")
+                            </div>
+
+                            <div class="panel-body">
+                                @Html.ActionLink("流程", "", "")
+                            </div>
+
+                            <div class="panel-body">
+                                @Html.ActionLink("流程", "", "")
+                            </div>
+
+                            <div class="panel-body">
+                                @Html.ActionLink("流程", "", "")
                             </div>
                         </div>
                     </div>
@@ -157,7 +215,6 @@
 
                         <div id="panel-element-21445" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <span class="glyphicon glyphicon-user " />
                                 @Html.ActionLink("用户管理", "EmployeeIndex", "Employees")
                             </div>
 
@@ -170,6 +227,20 @@
 
                             <div class="panel-body">
                                 <a href="#">权限管理</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21446">文件导入</a>
+                        </div>
+
+
+                        <div id="panel-element-21446" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                @Html.ActionLink("文件导入", "Index", "File")
                             </div>
                         </div>
                     </div>

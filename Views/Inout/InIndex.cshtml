@@ -11,24 +11,11 @@
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>InIndex</title>
-    <style>
-        .container-fluid {
-            background-color: #CDC9C9;
-            border-radius: 30px;
-            position: relative;
-        }
 
-        .panel {
-            background-color: #FFFFFF;
-        }
-    </style>
 </head>
 <body>
-    <ul class="breadcrumb">
-        <li>您好，欢迎来到工夹具智能管理系统----进出库>>入库管理</li>
-    </ul>
+    <h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :18px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21442" id="cgrk">进出库</a>>>入库管理</h4>
     <div class="container-fluid">
-        <br />        <br />
         @using (Html.BeginForm("Index", "Inout", FormMethod.Get))
         {
             <div class="panel panel-default">
@@ -69,7 +56,7 @@
                 </div>
             </div>
         }
-        <div class="panel panel-default">
+        <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">工夹具列表</h3>
             </div>

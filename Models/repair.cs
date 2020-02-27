@@ -31,5 +31,6 @@ namespace Fixture02.Models
         public Nullable<System.DateTime> RepairDate { get; set; }
         public string RepairUserName { get; set; }
         public string RepairState { get; set; }
+        public string WorkcellID { get; set; }
     }
 }
