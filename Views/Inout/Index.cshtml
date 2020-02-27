@@ -1,92 +1,299 @@
 ﻿@model Fixture02.Controllers.OutJigList
 
 @{
-     Layout = "~/Views/Shared/FixtureMaster.cshtml";
+    Layout = "~/Views/Shared/FixtureMaster.cshtml";
 }
+
+@*//=============================================================出库首页面=========================================================*@
+
 
 <!DOCTYPE html>
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>Index</title>
+    @*<style>
+            .container-fluid {
+                background-color:#CDC9C9;
+                border-radius:30px;
+                position:relative;
+            }
+            .panel{
+                background-color:#FFFFFF;
+            }
+        </style>*@
 </head>
 <body>
+    @*<ul class="breadcrumb">
+        <li>您好，欢迎来到工夹具智能管理系统----进出库>>出库管理</li>
+    </ul>*@
+    <h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :18px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21442" id="cgrk">进出库</a>>>出库管理</h4>
     <div class="container-fluid">
-        <div class="row-fluid">
 
-            <p>
+        @using (Html.BeginForm("Index", "Inout", FormMethod.Get))
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">查询条件</h3>
+                </div>
+                <div class="panel-body">
+                    <div id="queryFrom" class="search-form form-horizontal">
+                        <div class="form-group row">
+                            <label class="col-md-2 control-label" style="text-align:right; font-size:large;">夹具代码</label>
+                            <div class="col-md-2">
+                                @Html.TextBox("code", "", new { @class = "input-sm form-control" })
+                            </div>
+                            <label class="col-md-2 control-label" style="text-align:right; font-size:large;">夹具名称</label>
+                            <div class="col-md-2">
+                                @Html.TextBox("name", "", new { @class = "input-sm form-control" })
+                            </div>
+                            <label class="col-md-2 control-label" style="text-align:right; font-size:large;">夹具库位</label>
+                            <div class="col-md-2">
+                                @Html.TextBox("location", "", new { @class = "input-sm form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-2 control-label" style="text-align:right; font-size:large;">夹具模组</label>
+                            <div class="col-md-2">
+                                @Html.TextBox("model", "", new { @class = "input-sm form-control" })
+                            </div>
+                            <label class="col-md-2 control-label" style="text-align:right; font-size:large;">夹具料号</label>
+                            <div class="col-md-2">
+                                @Html.TextBox("partNO", "", new { @class = "input-sm form-control" })
+                            </div>
+                            <div class="col-md-4" style="text-align:center;">
+                                <button class="btn btn-info" type="submit">查询</button>
+                                <button type="reset" class="btn default reset">重置</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
 
-                @using (Html.BeginForm("Index", "Inout", FormMethod.Get))
-                {
-                   <table class="table"> 
-                       <tr>
-                           <th>夹具编号:@Html.TextBox("code")</th>
-                           <th>夹具名称:@Html.TextBox("name")</th>
-                           <th>夹具库位:@Html.TextBox("location")</th>
-                           <th>夹具模组:@Html.TextBox("model")</th>
-                           <th>夹具料号:@Html.TextBox("partNO")</th>
-                           <th> <button class="btn" type="submit">查询</button></th>
-                       </tr>
-                   </table>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">工夹具列表</h3>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>夹具代码</th>
+                                <th>夹具名称</th>
+                                <th>夹具库位</th>
+                                <th>夹具模组</th>
+                                <th>夹具料号</th>
+                                <th>夹具状态</th>
+                            </tr>
+                        </thead>
+                        @foreach (var item in Model.OutModelList)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Code)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Location)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Model)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PartNo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.State)
+                                </td>
+                                <td>
+                                    <button class="btn btn-default btn-sm"> @Html.ActionLink("编辑", "Edit", "Jigitems", new { id = item.ItemID }, "")</button> |
+                                    <button class="btn btn-default btn-sm"> @Html.ActionLink("详情", "Details", "Jigitems", new { id = item.ItemID }, "")</button> |
+                                    @*<button class="btn btn-danger btn-sm">  @Html.ActionLink("出库", "OutStorage", item, new { style = "color:white;" })</button>*@
+                                    
+                                    <!-- 按钮触发模态框 -->
+                                    <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal" onclick="Values(this)"
+                                            itemid1="@item.ItemID" code="@item.Code" seqid="@item.SeqID" name="@item.Name" model="@item.Model"
+                                            partno="@item.PartNo" workcellid="@item.WorkcellID" familyid="@item.FamilyID" familyname="@item.FamilyName"
+                                            checkstate="正常">
+                                        出库
+                                    </button>
 
-            }
-                </p>
+                                    <!-- 模态框（Modal） -->
+                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                        &times;
+                                                    </button>
+                                                    <h4 class="modal-title" id="myModalLabel">
+                                                        请点检以下操作是否均已执行并无问题
+                                                    </h4>
+                                                </div>
 
+
+
+                                                <div class="modal-body">
+                                                    <div class="tabbable" id="tabs-182595">
+                                                        <!-- Only required for left/right tabs -->
+                                                        <ul class="nav nav-tabs">
+                                                            <li class="active"><a contenteditable="true" data-toggle="tab" href="#panel-1">点检正常</a></li>
+                                                            <li><a contenteditable="true" data-toggle="tab" href="#panel-2">点检报修</a></li>
+                                                        </ul>
+
+                                                        <div class="tab-content">
+
+                                                            <div class="tab-pane active" contenteditable="true" id="panel-1">
+                                                                @using (Html.BeginForm("InStockCheck", "Checks", item, FormMethod.Post))
+                                                                {
+                                                                    <div id="divyes">
+                                                                        1.夹具是否有螺丝松动。<br />
+                                                                        2.夹具是否有部件损坏。<br />
+                                                                        3.夹具是否有钢套损坏掉落等不良。<br />
+                                                                        4.夹具是否有机械部件松动。<br />
+                                                                        5.夹具电路是否正常工作。<br />
+                                                                        6.夹具是否有不正常的响声。<br />
+                                                                        7.夹具是否牢固的固定在对应位置。<br />
+                                                                        8.使用抹布或者刷子进行夹具清洁。<br />
+                                                                    </div>
+
+                                                                    <div class="modal-footer">
+
+
+                                                                        <input type="hidden" id="ItemID" name="ItemID" value="" />
+                                                                        <input type="hidden" id="Code" name="Code" value="" />
+                                                                        <input type="hidden" id="SeqID" name="SeqID" value="" />
+                                                                        <input type="hidden" id="Name" name="Name" value="" />
+                                                                        <input type="hidden" id="Model" name="Model" value="" />
+                                                                        <input type="hidden" id="PartNo" name="PartNo" value="" />
+                                                                        <input type="hidden" id="WorkcellID" name="WorkcellID" value="" />
+                                                                        <input type="hidden" id="FamilyID" name="FamilyID" value="" />
+                                                                        <input type="hidden" id="FamilyName" name="FamilyName" value="" />
+
+                                                                        <input type="hidden" id="CheckState" name="CheckState" value="正常" />
+                                                                        <input type="hidden" id="CheckType" name="CheckType" value="出库" />
+
+                                                                        <input type="submit" value="完成点检" class="btn btn-default" />
+
+                                                                        <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                            关闭
+                                                                        </button>
+                                                                    </div>
+                                                                }
+
+                                                            </div>
+                                                            <div class="tab-pane" contenteditable="true" id="panel-2">
+                                                                @using (Html.BeginForm("InStockCheck", "Checks", item, FormMethod.Post))
+                                                                {
+                                                                    <div id="divno">
+                                                                        @Html.CheckBox("CheckResult1", false)1.夹具是否有螺丝松动。<br />
+                                                                        @Html.CheckBox("CheckResult2", false)2.夹具是否有部件损坏。<br />
+                                                                        @Html.CheckBox("CheckResult3", false)3.夹具是否有钢套损坏掉落等不良。<br />
+                                                                        @Html.CheckBox("CheckResult4", false)4.夹具是否有机械部件松动。<br />
+                                                                        @Html.CheckBox("CheckResult5", false)5.夹具电路是否正常工作。<br />
+                                                                        @Html.CheckBox("CheckResult6", false)6.夹具是否有不正常的响声。<br />
+                                                                        @Html.CheckBox("CheckResult7", false)7.夹具是否牢固的固定在对应位置。<br />
+                                                                        @Html.CheckBox("CheckResult8", false)8.使用抹布或者刷子进行夹具清洁。<br />
+                                                                        维修图片：<input type="text" id="Pic" name="Pic" value="" /><br />
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <input type="hidden" id="ItemID1" name="ItemID1" value="" />
+                                                                        <input type="hidden" id="Code1" name="Code1" value="" />
+                                                                        <input type="hidden" id="SeqID1" name="SeqID1" value="" />
+                                                                        <input type="hidden" id="Name1" name="Name1" value="" />
+                                                                        <input type="hidden" id="Model1" name="Model1" value="" />
+                                                                        <input type="hidden" id="PartNo1" name="PartNo1" value="" />
+                                                                        <input type="hidden" id="WorkcellID1" name="WorkcellID1" value="" />
+                                                                        <input type="hidden" id="FamilyID1" name="FamilyID1" value="" />
+                                                                        <input type="hidden" id="FamilyName1" name="FamilyName1" value="" />
+
+                                                                        <input type="hidden" id="CheckState" name="CheckState" value="维修" />
+                                                                        <input type="hidden" id="CheckType" name="CheckType" value="出库" />
+
+
+                                                                        <input type="submit" value="提交维修" class="btn btn-default" />
+
+                                                                        <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                            关闭
+                                                                        </button>
+                                                                    </div>
+                                                                }
+                                                            </div>
+
+
+                                                        </div><!-- /.modal-content -->
+                                                    </div><!-- /.modal -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
             </div>
         </div>
-        <table class="table">
-            <tr>
-                <th>
-                    Code
-                </th>
-                <th>
-                    Name
-                </th>
-                <th>
-                    Location
-                </th>
-                <th>
-                    Model
-                </th>
-                <th>
-                    PartNo
-                </th>
-                <th>
-                    state
-                </th>
-                <th></th>
-            </tr>
 
-            @foreach (var item in Model.OutModelList)
-            {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Code)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Model)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PartNo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.State)
-            </td>
-            <td>
-                @Html.ActionLink("编辑", "Edit","Jigitems", new { id = item.ItemID}) |
-                @Html.ActionLink("详情", "Details","Jigitems", new { id = item.ItemID }) |
-                @Html.ActionLink("出库", "OutStorage", item)
-            </td>
-        </tr>
-            }
+    </div>   
+ </body>
 
-        </table>
-    </body>
+
+    
+
+
 </html>
+
+<script>
+    //$('#myModal').modal("hide");
+    function Values(obj) {
+        var thisobj = $(obj);
+
+        var itemid = thisobj.attr("itemid1");
+        var code = thisobj.attr("code");
+        var seqid = thisobj.attr("seqid");
+        var name = thisobj.attr("name");
+        var model = thisobj.attr("model");
+        var partno = thisobj.attr("partno");
+        var workcellid = thisobj.attr("workcellid");
+        var workcellid = thisobj.attr("workcellid");
+        var familyname = thisobj.attr("familyname");
+        var checkstate = thisobj.attr("checkstate");
+
+        $("#ItemID").val(itemid);
+        $("#Code").val(code);
+        $("#SeqID").val(seqid);
+        $("#Name").val(name);
+        $("#Model").val(model);
+        $("#PartNo").val(partno);
+        $("#WorkcellID").val(workcellid);
+        $("#FamilyID").val(workcellid);
+        $("#FamilyName").val(familyname);
+
+        $("#ItemID1").val(itemid);
+        $("#Code1").val(code);
+        $("#SeqID1").val(seqid);
+        $("#Name1").val(name);
+        $("#Model1").val(model);
+        $("#PartNo1").val(partno);
+        $("#WorkcellID1").val(workcellid);
+        $("#FamilyID1").val(workcellid);
+        $("#FamilyName1").val(familyname);
+        //if (checkstate == "正常") {
+        //    $("#divyes").show();
+        //    $("#divno").hide();
+        //} else {
+        //    $("#divyes").hide();
+        //    $("#divno").show();
+        //}
+    }
+</script>

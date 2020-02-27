@@ -1,5 +1,8 @@
 ﻿@model IEnumerable<Fixture02.Models.repair>
 
+@using PagedList
+@using PagedList.Mvc
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/FixtureMaster.cshtml";
@@ -10,115 +13,114 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CheckID)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.ItemID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Code)
+            夹具代码
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            夹具名称
+        </th>
+
+        <th>
+            所属大类名称
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FamilyID)
+            夹具模组
+        </th>
+
+        <th>
+            @*@Html.DisplayNameFor(model => model.Problem)*@问题描述
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FamilyName)
+            @*@Html.DisplayNameFor(model => model.Pic)*@故障照片
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Model)
+            @*@Html.DisplayNameFor(model => model.AddDate)*@创建日期
         </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.AddUserID)
+            </th>*@
         <th>
-            @Html.DisplayNameFor(model => model.PartNo)
+            @*@Html.DisplayNameFor(model => model.AddUserName)*@创建人姓名
         </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.RepairDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RepairUserName)
+            </th>*@
         <th>
-            @Html.DisplayNameFor(model => model.Problem)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Pic)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AddDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AddUserID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AddUserName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RepairDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RepairUserName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RepairState)
+            @*@Html.DisplayNameFor(model => model.RepairState)*@维修状态
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CheckID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ItemID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Code)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FamilyID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FamilyName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Model)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PartNo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Problem)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Pic)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AddDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AddUserID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AddUserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RepairDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RepairUserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RepairState)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.RepairID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.RepairID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.RepairID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        if (true)
+        {
+            <tr>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.CheckID)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.FamilyID)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.FamilyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.PartNo)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Problem)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pic)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AddDate)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.AddUserID)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.AddUserName)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.RepairDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RepairUserName)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.RepairState)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.RepairID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.RepairID })
+                    @*@Html.ActionLink("Delete", "Delete", new { id = item.RepairID })*@
+                </td>
+            </tr>
+        }
+    }
 
 </table>

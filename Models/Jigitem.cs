@@ -34,6 +34,8 @@ namespace Fixture02.Models
         public string SecondReviewUserName { get; set; }
         public Nullable<System.DateTime> WaitTime { get; set; }
         public string BackNote { get; set; }
+        public string WorkcellID { get; set; }
+        public Nullable<System.DateTime> FinalCheckDate { get; set; }
     
         public virtual Jig Jig { get; set; }
     }

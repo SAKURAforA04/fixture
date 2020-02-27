@@ -5,10 +5,12 @@
     //ViewBag.Title = "Create";
     Layout = "~/Views/Shared/FixtureMaster.cshtml";
 }
-<h2>Create</h2>
+
+<h5><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>>采购入库>> @Html.ActionLink("采购入库登记", "Index")>>新增创建</h5>
 
 <div class="form-horizontal">
-    <h4>Jigitem</h4>
+    <h4>Jigitem Create</h4>
+
     <hr />
     @*=============================================用来查询夹具定义表中的数据===================================*@
     <table class="table">
@@ -77,23 +79,24 @@
             </div>
         </div>
     </div>
-    @using (Html.BeginForm())
+
+    @using (Html.BeginForm("Create", "Jigitems", FormMethod.Post))
     {
         <div class="form-group">
             <div class="col-md-10" id="myModal">
                 <b>夹具编码：</b><input type="text" name="Code" id="Code" readonly="readonly" />
             </div>
         </div>
+
         <div class="form-group">
             <div class="col-md-10" id="myModal">
                 <b>夹具名称：</b><input type="text" name="Name" id="Name" readonly="readonly" />
             </div>
         </div>
-        <div class="form-group">
 
+        <div class="form-group">
             <div class="col-md-10">
                 <b> 夹具序列号：</b><input type="text" name="SeqID" />
-
             </div>
         </div>
 
@@ -109,32 +112,21 @@
             </div>
         </div>
 
-
         <div class="form-group">
             <div class="col-md-10">
                 <b>存放库位：</b><input type="text" name="Location" />
             </div>
         </div>
 
-
-        @*<div class="form-group">
-                <div class="col-md-10">
-                    <b>图片：</b><input type="text" name="Pic" />
-                </div>
-            </div>*@
-
-
-
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="存盘" class="btn btn-default" />
             </div>
         </div>
     }
 
     <div>
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("返回", "Index")
     </div>
 </div>
 

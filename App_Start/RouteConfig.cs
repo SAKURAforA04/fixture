@@ -13,6 +13,7 @@ namespace Fixture02
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //最新稳定版 2/8
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

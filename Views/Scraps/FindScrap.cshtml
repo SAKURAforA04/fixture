@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Fixture02.Models.Scrap>
+
+@using PagedList;
+@using PagedList.Mvc;
+
+@{
+    Layout = "~/Views/Shared/FixtureMaster.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h2>FixtureItemFind</h2>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <p>
+                @using (Html.BeginForm("FindScrap", "Scraps", FormMethod.Get))
+                {
+                    <p>夹具代码:@Html.TextBox("code")</p>
+                    <p>夹具状态:@Html.TextBox("state")</p>
+                    <input type="submit" value="查询" />
+                }
+            </div>
+        </div>
+
+        <table class="table">
+            <tr>
+                <th>
+                    夹具代码
+                </th>
+                <th>
+                    夹具名称
+                </th>
+                <th>
+                    夹具模组
+                </th>
+                <th>
+                    夹具料号
+                </th>
+                <th>
+                    夹具寿命（年）
+                </th>
+                <th>
+                    夹具报废原因
+                </th>
+                <th>
+                    报废流程状态
+                </th>
+                <th>
+                    退回原因
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Code)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Model)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PartNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Count)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Problem)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ScrapState)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BackNote)
+                    </td>
+                    <td>
+                        @Html.ActionLink("详情", "Details", new { id = item.ItemID })
+                    </td>
+                </tr>
+            }
+        </table>
+        @Html.PagedListPager((IPagedList)Model, x => Url.Action("FixtureItemFind", new { page = x }))
+    </body>
+</html>
