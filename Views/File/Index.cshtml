@@ -3,13 +3,31 @@
 @{
     Layout = "~/Views/Shared/FixtureMaster.cshtml";
 }
-<div class="well">
-    <form class="form-inline" id="gameGroup">
-        <div>
-            <input name="file" type="file" id="file" />
-            
-                <div class="form-group">
-                    <select class="form-control" name="table" id="table">
+<h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :18px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21446" id="cgrk">文件导入</a>>>文件导入</h4>
+<br />
+<div class="panel panel-primary">
+    <div class="panel-heading">导入文件</div>
+    <div class="panel-body">
+        <form class="col-md-8 col-md-offset-2" id="gameGroup" role="form">
+            @*<input name="file" type="file" id="file" class="col-md-11 form-control" />*@
+            <div class="form-group">
+                <div class="col-md-4 control-label" style="text-align:right; font-size:large;">选择文件：</div>
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <input id='location' class="form-control" onclick="$('#file').click();">
+                        <label class="input-group-btn">
+                            <input type="button" id="i-check" value="浏览文件" class="btn btn-primary" onclick="$('#file').click();">
+                        </label>
+                    </div>
+                </div>
+                <input type="file" name="file" id='file' onchange="$('#location').val($('#file').val());" style="display: none">
+            </div>
+            <br /><br />
+            <div class="form-group">
+                <div class="col-md-4 control-label" style="text-align:right; font-size:large;">将文件加入到：</div>
+                <div class="col-md-6">
+                    <select class="form-control" name="table" id="table" style="background-color:lightblue;">
+                        <option>选择分组</option>
                         <option>Employee</option>
                         <option>Family</option>
                         <option>Inout</option>
@@ -20,12 +38,13 @@
                         <option>Workcell</option>
                     </select>
                 </div>
-           
-            <br />
-            <input name="submit" type="button" id="btn-excel" class="btn btn-info" value="导入" />
-        </div>
-    </form>
+            </div>
+            <br /><br />
+                <input name="submit" type="button" id="btn-excel" class="btn btn-info col-md-2 col-md-offset-6" value="导入" />
+        </form>
+    </div>
 </div>
+
 <script type="text/javascript">
     $(function () {
         $("#btn-excel")
@@ -49,11 +68,11 @@
                         data: formData,
                         dataType: 'json', //返回类型，有json，text，HTML。这里并没有jsonp格式，所以别妄想能用jsonp做跨域了。
                         success: function (data) {
-                           // swal(table);
+                            // swal(table);
                             swal(data);
                         },
                         error: function (XMLHttpRequest, textStatus, errorThrown, data) {
-                             
+
                             swal(errorThrown);
                         }
                     });

@@ -7,232 +7,265 @@
 @using PagedList;
 @using PagedList.Mvc;
 
-    <h2>库存点检</h2>
-<div>
+<h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :18px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21144" id="cgrk">工夹具点检</a>>>库存点检</h4>
     @using (Html.BeginForm("InStockCheck", "Checks", FormMethod.Get))
     {
-        <p>夹具代码:@Html.TextBox("code", ViewBag.code as string)</p>
-        <p>夹具名称:@Html.TextBox("name", ViewBag.name as string)</p>
-        <p>夹具位置:@Html.TextBox("location", ViewBag.location as string)</p>
-
-        <input type="submit" value="查询" />
-    }
-</div>
-<table class="table">
-    <tr>
-        <th>@Html.DisplayNameFor(model => model.Code)</th>
-        <th>@Html.DisplayNameFor(model => model.Name)</th>
-        <th>@Html.DisplayNameFor(model => model.FamilyName)</th>
-        <th>@Html.DisplayNameFor(model => model.Model)</th>
-        <th>@Html.DisplayNameFor(model => model.PartNo)</th>
-        <th>@Html.DisplayNameFor(model => model.Location)</th>
-        <th>@Html.DisplayNameFor(model => model.UsedCount)</th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.JigitemCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FamilyName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Model)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PartNo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UsedCount)
-            </td>
-
-
-            @*//点检无问题按钮*@
-            <td>
-                <!-- 按钮触发模态框 -->
-                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" onclick="Values(this)"
-                        itemid1="@item.ItemID" code="@item.Code" seqid="@item.SeqID" name="@item.Name" model="@item.Model"
-                        partno="@item.PartNo" workcellid="@item.WorkcellID" familyid="@item.FamilyID" familyname="@item.FamilyName"
-                        checkstate="正常">
-                    点检
-                </button>
-                @*<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" onclick="Values(this)"
-                            itemid1="@item.ItemID" code="@item.Code" seqid="@item.SeqID" name="@item.Name" model="@item.Model"
-                            partno="@item.PartNo" workcellid="@item.WorkcellID" familyid="@item.FamilyID" familyname="@item.FamilyName"
-                            checkstate="维修">
-                        维修
-                    </button>*@
-
-
-                <!-- 模态框（Modal） -->
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                    &times;
-                                </button>
-                                <h4 class="modal-title" id="myModalLabel">
-                                    请点检以下操作是否均已执行并无问题
-                                </h4>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">查询条件</h3>
+            </div>
+            <div class="panel-body">
+                <div class="portlet-body form">
+                    <form id="queryFrom" class="search-form form-horizontal">
+                        <div class="form-body row">
+                            <label class="col-md-2 control-label" style="text-align:right; font-size:large;">夹具代码</label>
+                            <div class="col-md-1">
+                                @Html.TextBox("code", ViewBag.code as string, new { @class = "input-sm form-control" })
                             </div>
-
-
-
-                            <div class="modal-body">
-                                <div class="tabbable" id="tabs-182595">
-                                    <!-- Only required for left/right tabs -->
-                                    <ul class="nav nav-tabs">
-                                        <li class="active"><a contenteditable="true" data-toggle="tab" href="#panel-1">点检正常</a></li>
-                                        <li><a contenteditable="true" data-toggle="tab" href="#panel-2">点检报修</a></li>
-                                    </ul>
-
-                                    <div class="tab-content">
-
-                                        <div class="tab-pane active" contenteditable="true" id="panel-1">
-                                            @using (Html.BeginForm("InStockCheck", "Checks", FormMethod.Post))
-                                            {
-                                                <div id="divyes">
-                                                    1.夹具是否有螺丝松动。<br />
-                                                    2.夹具是否有部件损坏。<br />
-                                                    3.夹具是否有钢套损坏掉落等不良。<br />
-                                                    4.夹具是否有机械部件松动。<br />
-                                                    5.夹具电路是否正常工作。<br />
-                                                    6.夹具是否有不正常的响声。<br />
-                                                    7.夹具是否牢固的固定在对应位置。<br />
-                                                    8.使用抹布或者刷子进行夹具清洁。<br />
-                                                </div>
-
-                                                <div class="modal-footer">
-
-
-                                                    <input type="hidden" id="ItemID" name="ItemID" value="" />
-                                                    <input type="hidden" id="Code" name="Code" value="" />
-                                                    <input type="hidden" id="SeqID" name="SeqID" value="" />
-                                                    <input type="hidden" id="Name" name="Name" value="" />
-                                                    <input type="hidden" id="Model" name="Model" value="" />
-                                                    <input type="hidden" id="PartNo" name="PartNo" value="" />
-                                                    <input type="hidden" id="WorkcellID" name="WorkcellID" value="" />
-                                                    <input type="hidden" id="FamilyID" name="FamilyID" value="" />
-                                                    <input type="hidden" id="FamilyName" name="FamilyName" value="" />
-
-                                                    <input type="hidden" id="CheckState" name="CheckState" value="正常" />
-                                                    <input type="hidden" id="CheckType" name="CheckType" value="库存" />
-
-                                                    <input type="submit" value="完成点检" class="btn btn-default" />
-
-                                                    <button type="button" class="btn btn-warning" data-dismiss="modal">
-                                                        关闭
-                                                    </button>
-                                                </div>
-                                            }
-
-                                        </div>
-                                        <div class="tab-pane" contenteditable="true" id="panel-2">
-                                            @using (Html.BeginForm("InStockCheck", "Checks", FormMethod.Post))
-                                            {
-                                                <div id="divno">
-                                                    @Html.CheckBox("CheckResult1", false)1.夹具是否有螺丝松动。<br />
-                                                    @Html.CheckBox("CheckResult2", false)2.夹具是否有部件损坏。<br />
-                                                    @Html.CheckBox("CheckResult3", false)3.夹具是否有钢套损坏掉落等不良。<br />
-                                                    @Html.CheckBox("CheckResult4", false)4.夹具是否有机械部件松动。<br />
-                                                    @Html.CheckBox("CheckResult5", false)5.夹具电路是否正常工作。<br />
-                                                    @Html.CheckBox("CheckResult6", false)6.夹具是否有不正常的响声。<br />
-                                                    @Html.CheckBox("CheckResult7", false)7.夹具是否牢固的固定在对应位置。<br />
-                                                    @Html.CheckBox("CheckResult8", false)8.使用抹布或者刷子进行夹具清洁。<br />
-                                                    维修图片：<input type="text" id="Pic" name="Pic" value="" /><br />
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <input type="hidden" id="ItemID1" name="ItemID1" value="" />
-                                                    <input type="hidden" id="Code1" name="Code1" value="" />
-                                                    <input type="hidden" id="SeqID1" name="SeqID1" value="" />
-                                                    <input type="hidden" id="Name1" name="Name1" value="" />
-                                                    <input type="hidden" id="Model1" name="Model1" value="" />
-                                                    <input type="hidden" id="PartNo1" name="PartNo1" value="" />
-                                                    <input type="hidden" id="WorkcellID1" name="WorkcellID1" value="" />
-                                                    <input type="hidden" id="FamilyID1" name="FamilyID1" value="" />
-                                                    <input type="hidden" id="FamilyName1" name="FamilyName1" value="" />
-
-                                                    <input type="hidden" id="CheckState" name="CheckState" value="维修" />
-                                                    <input type="hidden" id="CheckType" name="CheckType" value="库存" />
-
-
-                                                    <input type="submit" value="提交维修" class="btn btn-default" />
-
-                                                    <button type="button" class="btn btn-warning" data-dismiss="modal">
-                                                        关闭
-                                                    </button>
-                                                </div>
-                                            }
-                                        </div>
-
-
-                                    </div><!-- /.modal-content -->
-                                </div><!-- /.modal -->
+                            <label class="col-md-2 control-label" style="text-align:right; font-size:large;">夹具名称</label>
+                            <div class="col-md-1">
+                                @Html.TextBox("name", ViewBag.name as string, new { @class = "input-sm form-control" })
+                            </div>
+                            <label class="col-md-2 control-label" style="text-align:right; font-size:large;">夹具位置</label>
+                            <div class="col-md-1">
+                                @Html.TextBox("location", ViewBag.location as string, new { @class = "input-sm form-control" })
+                            </div>
+                            @*<div class="form-actions col-md-4" >
+                                <div class="btn-set">*@
+                            <div class="col-md-3" style="text-align:center;">
+                                <button type="submit" class="btn btn-primary search">查询</button>
+                                <button type="reset" class="btn default reset">重置</button>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </td>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">工夹具列表</h3>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Code)</th>
+                        <th>@Html.DisplayNameFor(model => model.Name)</th>
+                        <th>@Html.DisplayNameFor(model => model.FamilyName)</th>
+                        <th>@Html.DisplayNameFor(model => model.Model)</th>
+                        <th>@Html.DisplayNameFor(model => model.PartNo)</th>
+                        <th>@Html.DisplayNameFor(model => model.Location)</th>
+                        <th>@Html.DisplayNameFor(model => model.UsedCount)</th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.JigitemCode)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FamilyName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Model)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PartNo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Location)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UsedCount)
+                            </td>
 
 
-        </tr>
-    }
-</table>
-
-<script>
-    //$('#myModal').modal("hide");
-    function Values(obj) {
-        var thisobj = $(obj);
-
-        var itemid = thisobj.attr("itemid1");
-        var code = thisobj.attr("code");
-        var seqid = thisobj.attr("seqid");
-        var name = thisobj.attr("name");
-        var model = thisobj.attr("model");
-        var partno = thisobj.attr("partno");
-        var workcellid = thisobj.attr("workcellid");
-        var workcellid = thisobj.attr("workcellid");
-        var familyname = thisobj.attr("familyname");
-        var checkstate = thisobj.attr("checkstate");
-
-        $("#ItemID").val(itemid);
-        $("#Code").val(code);
-        $("#SeqID").val(seqid);
-        $("#Name").val(name);
-        $("#Model").val(model);
-        $("#PartNo").val(partno);
-        $("#WorkcellID").val(workcellid);
-        $("#FamilyID").val(workcellid);
-        $("#FamilyName").val(familyname);
-
-        $("#ItemID1").val(itemid);
-        $("#Code1").val(code);
-        $("#SeqID1").val(seqid);
-        $("#Name1").val(name);
-        $("#Model1").val(model);
-        $("#PartNo1").val(partno);
-        $("#WorkcellID1").val(workcellid);
-        $("#FamilyID1").val(workcellid);
-        $("#FamilyName1").val(familyname);
-        //if (checkstate == "正常") {
-        //    $("#divyes").show();
-        //    $("#divno").hide();
-        //} else {
-        //    $("#divyes").hide();
-        //    $("#divno").show();
-        //}
-    }
-</script>
+                            @*//点检无问题按钮*@
+                            <td>
+                                <!-- 按钮触发模态框 -->
+                                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal" onclick="Values(this)"
+                                        itemid1="@item.ItemID" code="@item.Code" seqid="@item.SeqID" name="@item.Name" model="@item.Model"
+                                        partno="@item.PartNo" workcellid="@item.WorkcellID" familyid="@item.FamilyID" familyname="@item.FamilyName"
+                                        checkstate="正常">
+                                    点检
+                                </button>
+                                @*<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" onclick="Values(this)"
+                                            itemid1="@item.ItemID" code="@item.Code" seqid="@item.SeqID" name="@item.Name" model="@item.Model"
+                                            partno="@item.PartNo" workcellid="@item.WorkcellID" familyid="@item.FamilyID" familyname="@item.FamilyName"
+                                            checkstate="维修">
+                                        维修
+                                    </button>*@
 
 
-@Html.PagedListPager((IPagedList)Model, page => Url.Action("InStockCheck", new { page, code = ViewBag.code, name = ViewBag.name, location = ViewBag.location }))
+                                <!-- 模态框（Modal） -->
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                    &times;
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel">
+                                                    请检查该夹具以下操作是否均可正常执行
+                                                </h4>
+                                            </div>
+
+
+
+                                            <div class="modal-body">
+                                                <div class="tabbable" id="tabs-182595">
+                                                    <!-- Only required for left/right tabs -->
+                                                    <ul class="nav nav-tabs">
+                                                        <li class="active"><a contenteditable="true" data-toggle="tab" href="#panel-1">点检正常</a></li>
+                                                        <li><a contenteditable="true" data-toggle="tab" href="#panel-2">点检报修</a></li>
+                                                    </ul>
+
+                                                    <div class="tab-content">
+
+                                                        <div class="tab-pane active" contenteditable="true" id="panel-1">
+                                                            @using (Html.BeginForm("InStockCheck", "Checks", FormMethod.Post))
+                                                            {
+                                                            <div id="divyes">
+                                                                ①.夹具无螺丝松动。<br />
+                                                                ②.夹具无部件损坏。<br />
+                                                                ③.夹具无钢套损坏掉落等不良。<br />
+                                                                ④.夹具无机械部件松动。<br />
+                                                                ⑤.夹具电路正常工作。<br />
+                                                                ⑥.夹具无不正常的响声。<br />
+                                                                ⑦.夹具牢固的固定在对应位置。<br />
+                                                                ⑧.已使用抹布或者刷子进行夹具清洁。<br />
+                                                            </div>
+
+                                                                <div class="modal-footer">
+
+
+                                                                    <input type="hidden" id="ItemID" name="ItemID" value="" />
+                                                                    <input type="hidden" id="Code" name="Code" value="" />
+                                                                    <input type="hidden" id="SeqID" name="SeqID" value="" />
+                                                                    <input type="hidden" id="Name" name="Name" value="" />
+                                                                    <input type="hidden" id="Model" name="Model" value="" />
+                                                                    <input type="hidden" id="PartNo" name="PartNo" value="" />
+                                                                    <input type="hidden" id="WorkcellID" name="WorkcellID" value="" />
+                                                                    <input type="hidden" id="FamilyID" name="FamilyID" value="" />
+                                                                    <input type="hidden" id="FamilyName" name="FamilyName" value="" />
+
+                                                                    <input type="hidden" id="CheckState" name="CheckState" value="正常" />
+                                                                    <input type="hidden" id="CheckType" name="CheckType" value="库存" />
+
+                                                                    <input type="submit" value="完成点检" class="btn btn-warning" />
+
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                                        关闭
+                                                                    </button>
+                                                                </div>
+                                                            }
+
+                                                        </div>
+                                                        <div class="tab-pane" contenteditable="true" id="panel-2">
+                                                            @using (Html.BeginForm("InStockCheck", "Checks", FormMethod.Post))
+                                                            {
+                                                                <div id="divno">
+                                                                    @Html.CheckBox("CheckResult1", false)1.夹具螺丝松动。<br />
+                                                                    @Html.CheckBox("CheckResult2", false)2.夹具部件损坏。<br />
+                                                                    @Html.CheckBox("CheckResult3", false)3.夹具存在钢套损坏掉落等不良。<br />
+                                                                    @Html.CheckBox("CheckResult4", false)4.夹具机械部件松动。<br />
+                                                                    @Html.CheckBox("CheckResult5", false)5.夹具电路不能正常工作。<br />
+                                                                    @Html.CheckBox("CheckResult6", false)6.夹具是有不正常的响声。<br />
+                                                                    @Html.CheckBox("CheckResult7", false)7.夹具没有牢固的固定在对应位置。<br />
+                                                                    @Html.CheckBox("CheckResult8", false)8.未使用抹布或者刷子进行夹具清洁。<br />
+                                                                    维修图片：<input type="text" id="Pic" name="Pic" value="" /><br />
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <input type="hidden" id="ItemID1" name="ItemID1" value="" />
+                                                                    <input type="hidden" id="Code1" name="Code1" value="" />
+                                                                    <input type="hidden" id="SeqID1" name="SeqID1" value="" />
+                                                                    <input type="hidden" id="Name1" name="Name1" value="" />
+                                                                    <input type="hidden" id="Model1" name="Model1" value="" />
+                                                                    <input type="hidden" id="PartNo1" name="PartNo1" value="" />
+                                                                    <input type="hidden" id="WorkcellID1" name="WorkcellID1" value="" />
+                                                                    <input type="hidden" id="FamilyID1" name="FamilyID1" value="" />
+                                                                    <input type="hidden" id="FamilyName1" name="FamilyName1" value="" />
+
+                                                                    <input type="hidden" id="CheckState" name="CheckState" value="维修" />
+                                                                    <input type="hidden" id="CheckType" name="CheckType" value="库存" />
+
+
+                                                                    <input type="submit" value="提交维修" class="btn btn-warning" />
+
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                                        关闭
+                                                                    </button>
+                                                                </div>
+                                                            }
+                                                        </div>
+
+
+                                                    </div><!-- /.modal-content -->
+                                                </div><!-- /.modal -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+
+
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+
+                <script>
+                    //$('#myModal').modal("hide");
+                    function Values(obj) {
+                        var thisobj = $(obj);
+
+                        var itemid = thisobj.attr("itemid1");
+                        var code = thisobj.attr("code");
+                        var seqid = thisobj.attr("seqid");
+                        var name = thisobj.attr("name");
+                        var model = thisobj.attr("model");
+                        var partno = thisobj.attr("partno");
+                        var workcellid = thisobj.attr("workcellid");
+                        var workcellid = thisobj.attr("workcellid");
+                        var familyname = thisobj.attr("familyname");
+                        var checkstate = thisobj.attr("checkstate");
+
+                        $("#ItemID").val(itemid);
+                        $("#Code").val(code);
+                        $("#SeqID").val(seqid);
+                        $("#Name").val(name);
+                        $("#Model").val(model);
+                        $("#PartNo").val(partno);
+                        $("#WorkcellID").val(workcellid);
+                        $("#FamilyID").val(workcellid);
+                        $("#FamilyName").val(familyname);
+
+                        $("#ItemID1").val(itemid);
+                        $("#Code1").val(code);
+                        $("#SeqID1").val(seqid);
+                        $("#Name1").val(name);
+                        $("#Model1").val(model);
+                        $("#PartNo1").val(partno);
+                        $("#WorkcellID1").val(workcellid);
+                        $("#FamilyID1").val(workcellid);
+                        $("#FamilyName1").val(familyname);
+                        //if (checkstate == "正常") {
+                        //    $("#divyes").show();
+                        //    $("#divno").hide();
+                        //} else {
+                        //    $("#divyes").hide();
+                        //    $("#divno").show();
+                        //}
+                    }
+                </script>
+
+
+                @Html.PagedListPager((IPagedList)Model, page => Url.Action("InStockCheck", new { page, code = ViewBag.code, name = ViewBag.name, location = ViewBag.location }))

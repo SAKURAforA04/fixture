@@ -5,103 +5,61 @@
     Layout = "~/Views/Shared/FixtureMaster.cshtml";
 }
 
-    <h2>点检查询</h2>
+<h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :18px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21144" id="cgrk">工夹具点检</a>>>@Html.ActionLink("点检查询", "Index", new { }, new { style = "color:blue;" })>>点检信息详情</h4>
 
-<div>
-    <h4>点检详情</h4>
-    <hr />
-    <dl class="dl-horizontal">
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Code)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Code)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FamilyName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FamilyName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Model)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Model)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PartNo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PartNo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ItemID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ItemID)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AddDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AddDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AddUserName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AddUserName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CheckType)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CheckType)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CheckState)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CheckState)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Problem)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Problem)
-        </dd>
-
-    </dl>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">点检详细信息</h3>
+    </div>
+    <div class="panel-body" style="text-align:center;">
+        <table class="table table-bordered table-striped">
+            <tr>
+                <td>夹具代码</td>
+                <td>@Html.DisplayFor(model => model.Code)</td>
+            </tr>
+            <tr>
+                <td>夹具名称</td>
+                <td>@Html.DisplayFor(model => model.Name)</td>
+            </tr>
+            <tr>
+                <td>所属大类名称</td>
+                <td>@Html.DisplayFor(model => model.FamilyName)</td>
+            </tr>
+            <tr>
+                <td>夹具模组</td>
+                <td>@Html.DisplayFor(model => model.Model)</td>
+            </tr>
+            <tr>
+                <td>夹具料号</td>
+                <td>@Html.DisplayFor(model => model.PartNo)</td>
+            </tr>
+            <tr>
+                <td>夹具实体编号</td>
+                <td>@Html.DisplayFor(model => model.ItemID)</td>
+            </tr>
+            <tr>
+                <td>创建日期</td>
+                <td>@Html.DisplayFor(model => model.AddDate)</td>
+            </tr>
+            <tr>
+                <td>创建人姓名</td>
+                <td>@Html.DisplayFor(model => model.AddUserName)</td>
+            </tr>
+            <tr>
+                <td>点检类型</td>
+                <td>@Html.DisplayFor(model => model.CheckType)</td>
+            </tr>
+            <tr>
+                <td>点检状态</td>
+                <td>@Html.DisplayFor(model => model.CheckState)</td>
+            </tr>
+            <tr>
+                <td>问题综述</td>
+                <td>@Html.DisplayFor(model => model.Problem)</td>
+            </tr>
+        </table>
+        <button class="btn btn-default btn-lg col-md-offset-1">@Html.ActionLink("返回", "Index")</button>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("返回", "Index")
-</p>
+
+

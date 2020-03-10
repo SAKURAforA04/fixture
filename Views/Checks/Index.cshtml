@@ -6,178 +6,227 @@
     Layout = "~/Views/Shared/FixtureMaster.cshtml";
 }
 
-    <h2>点检查询</h2>
+<h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :18px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21144" id="cgrk">工夹具点检</a>>>点检查询</h4>
 
-
-<div>
-    @using (Html.BeginForm("Index", "Checks", FormMethod.Get))
-    {
-        <p>夹具代码:@Html.TextBox("code", ViewBag.code as string)</p>
+@using (Html.BeginForm("Index", "Checks", FormMethod.Get))
+{
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">查询条件</h3>
+        </div>
+        <div class="panel-body">
+            <div class="portlet-body form">
+                <form id="queryFrom" class="search-form form-horizontal">
+                    <div class="form-body row">
+                        <label class="col-md-2 control-label" style="text-align:right; font-size:large;">夹具代码</label>
+                        <div class="col-md-2">
+                            @Html.TextBox("code", ViewBag.code as string, new { @class = "input-sm form-control" })
+                        </div>
+                        <label class="col-md-2 control-label" style="text-align:right; font-size:large;">夹具名称</label>
+                        <div class="col-md-2">
+                            @Html.TextBox("name", ViewBag.name as string, new { @class = "input-sm form-control" })
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-body row">
+                        <label class="col-md-2 control-label" style="text-align:right; font-size:large;">点检类型</label>
+                        <div class="col-md-2">
+                            @Html.TextBox("checktype", ViewBag.checktype as string, new { @class = "input-sm form-control" })
+                        </div>
+                        <label class="col-md-2 control-label" style="text-align:right; font-size:large;">点检状态</label>
+                        <div class="col-md-2">
+                            @Html.TextBox("checkstate", ViewBag.checkstate as string, new { @class = "input-sm form-control" })
+                        </div>
+                        <div class="col-md-4" style="text-align:center;">
+                            <button type="submit" class="btn btn-primary search">查询</button>
+                            <button type="reset" class="btn default reset">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    @*<p>夹具代码:@Html.TextBox("code", ViewBag.code as string)</p>
         <p>夹具名称:@Html.TextBox("name", ViewBag.name as string)</p>
         <p>点检类型:@Html.TextBox("checktype", ViewBag.checktype as string)</p>
         <p>点检状态:@Html.TextBox("checkstate", ViewBag.checkstate as string)</p>
-        <input type="submit" value="查询" />
-    }
+        <input type="submit" value="查询" />*@
+}
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">工夹具列表</h3>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <tr style="text-align:center;">
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.ItemID)
+                        </th>*@
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.Code)*@
+                        夹具代码
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.SeqID)
+                        </th>*@
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.Name)*@
+                        夹具名称
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.FamilyID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FamilyName)
+                        </th>*@
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.Model)*@
+                        夹具模组
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.PartNo)*@
+                        夹具料号
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.AddDate)*@
+                        创建日期
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.AddUserID)
+                        </th>*@
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.AddUserName)*@
+                        创建人姓名
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.CheckUserName)
+                        </th>*@
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.CheckType)*@
+                        点检类型
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.CheckState)*@
+                        点检状态
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.CheckResult1)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CheckResult2)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CheckResult3)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CheckResult4)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CheckResult5)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CheckResult6)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CheckResult7)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CheckResult8)
+                        </th>*@
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.Problem)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.WorkcellID)
+                        </th>*@
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.ItemID)
+                            </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Code)-@Html.DisplayFor(modelItem => item.SeqID)
+                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.SeqID)
+                            </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.FamilyID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FamilyName)
+                            </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Model)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PartNo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AddDate)
+                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.AddUserID)
+                            </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AddUserName)
+                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.CheckUserName)
+                            </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CheckType)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CheckState)
+                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.CheckResult1)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CheckResult2)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CheckResult3)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CheckResult4)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CheckResult5)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CheckResult6)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CheckResult7)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CheckResult8)
+                            </td>*@
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.Problem)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.WorkcellID)
+                            </td>*@
+                        <td>
+                            <button class="btn btn-default btn-sm">@Html.ActionLink("详情", "Details", new { id = item.CheckID })</button>
+</td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
 </div>
-
-
-<table class="table">
-    <tr>
-        @*<th>
-                @Html.DisplayNameFor(model => model.ItemID)
-            </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.Code)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.SeqID)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        @*<th>
-                @Html.DisplayNameFor(model => model.FamilyID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FamilyName)
-            </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.Model)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PartNo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AddDate)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.AddUserID)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.AddUserName)
-        </th>
-        @*<th>
-                @Html.DisplayNameFor(model => model.CheckUserName)
-            </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.CheckType)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CheckState)
-        </th>
-        @*<th>
-                @Html.DisplayNameFor(model => model.CheckResult1)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CheckResult2)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CheckResult3)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CheckResult4)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CheckResult5)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CheckResult6)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CheckResult7)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CheckResult8)
-            </th>*@
-        @*<th>
-                @Html.DisplayNameFor(model => model.Problem)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.WorkcellID)
-            </th>*@
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.ItemID)
-                </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.Code)-@Html.DisplayFor(modelItem => item.SeqID)
-            </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.SeqID)
-            </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.FamilyID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FamilyName)
-                </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.Model)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PartNo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AddDate)
-            </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.AddUserID)
-            </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.AddUserName)
-            </td>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.CheckUserName)
-                </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.CheckType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CheckState)
-            </td>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.CheckResult1)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CheckResult2)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CheckResult3)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CheckResult4)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CheckResult5)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CheckResult6)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CheckResult7)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CheckResult8)
-                </td>*@
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.Problem)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.WorkcellID)
-                </td>*@
-            <td>
-                @Html.ActionLink("详情", "Details", new { id = item.CheckID }) 
-            </td>
-        </tr>
-    }
-
-</table>
 @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page, code = ViewBag.code, name = ViewBag.name, checktype = ViewBag.checktype, checkstate = ViewBag.checkstate }))
