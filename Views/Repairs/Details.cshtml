@@ -5,143 +5,184 @@
     Layout = "~/Views/Shared/FixtureMaster.cshtml";
 }
 
-<h2>Details</h2>
+<h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :18px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21443" id="gjjbx">工夹具报修</a>>>@Html.ActionLink("报修提交", "Index", new { }, new { style = "color:blue;" })>>详情</h4>
+<hr />
 
-<div>
-    <h4>repair</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CheckID)
-        </dt>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">工夹具报修信息详情</h3>
+    </div>
+    <div class="panel-body" style="text-align:center;">
+        <div class="form-horizontal">
 
-        <dd>
-            @Html.DisplayFor(model => model.CheckID)
-        </dd>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.RepairID)
+            <table class="table">
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label class="col-md-5" style="text-align:right; font-size:18px;">夹具点检编号</label>
+                            <div class="col-md-4">
+                                @Html.DisplayFor(model => model.CheckID)
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group col-sm-offset-2">
+                            <label class="col-md-5" style="text-align:right; font-size:18px;">夹具实体编号</label>
+                            <div class="col-md-4">
+                                @Html.DisplayFor(model => model.ItemID)
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ItemID)
-        </dt>
+                        <div class="form-group">
+                            <label class="col-md-5" style="text-align:right; font-size:18px;">夹具代码</label>
+                            <div class="col-md-4">
+                                @Html.DisplayFor(model => model.Code)
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label class="col-md-5" style="text-align:right; font-size:18px;">夹具名称</label>
+                            <div class="col-md-4">
+                                @Html.DisplayFor(model => model.Name)
+                            </div>
+                        </div>
+                    </td>
+                </tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.ItemID)
-        </dd>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label class="col-md-5" style="text-align:right; font-size:18px;">所属大类编码</label>
+                            <div class="col-md-4">
+                                @Html.DisplayFor(model => model.FamilyID)
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label class="col-md-5" style="text-align:right; font-size:18px;">所属大类名称</label>
+                            <div class="col-md-4">
+                                @Html.DisplayFor(model => model.FamilyName)
+                            </div>
+                        </div>
+                    </td>
+                </tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Code)
-        </dt>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label class="col-md-5" style="text-align:right; font-size:18px;">夹具模组</label>
+                            <div class="col-md-4">
+                                @Html.DisplayFor(model => model.Model)
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label class="col-md-5" style="text-align:right; font-size:18px;">夹具料号</label>
+                            <div class="col-md-4">
+                                @Html.DisplayFor(model => model.PartNo)
+                            </div>
+                        </div>
+                    </td>
+                </tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.Code)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label class="col-md-5" style="text-align:right; font-size:18px;">创建日期</label>
+                            <div class="col-md-4">
+                                @Html.DisplayFor(model => model.AddDate)
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label class="col-md-5" style="text-align:right; font-size:18px;">创建人编码</label>
+                            <div class="col-md-4">
+                                @Html.DisplayFor(model => model.AddUserID)
+                            </div>
+                        </div>
+                    </td>
+                </tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label class="col-md-5" style="text-align:right; font-size:18px;">创建人姓名</label>
+                            <div class="col-md-4">
+                                @Html.DisplayFor(model => model.AddUserName)
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label class="col-md-5" style="text-align:right; font-size:18px;">维修状态</label>
+                            <div class="col-md-4">
+                                @Html.DisplayFor(model => model.RepairState)
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label class="col-md-5" style="text-align:right; font-size:18px;">修复日期</label>
+                            <div class="col-md-4">
+                                @Html.DisplayFor(model => model.RepairDate)
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label class="col-md-5" style="text-align:right; font-size:18px;">维修人员姓名</label>
+                            <div class="col-md-4">
+                                @Html.DisplayFor(model => model.RepairUserName)
+                            </div>
+                        </div>
+                    </td>
+                </tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FamilyID)
-        </dt>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label class="col-md-5" style="text-align:right; font-size:18px;">故障描述</label>
+                            <div class="col-md-7">
+                                @Html.DisplayFor(model => model.Problem)
+                            </div>
+                        </div>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label class="col-md-5" style="text-align:right; font-size:18px;">故障照片</label>
+                            <div class="col-md-7">
+                                @Html.DisplayFor(model => model.Pic)
+                            </div>
+                        </div>
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+            <div class="row">
+                <div class="col-lg-6" style="text-align:right;">
+                    @Html.ActionLink("编辑", "Edit", new { id = Model.RepairID }, new { @class = "btn btn-success" })
 
-        <dd>
-            @Html.DisplayFor(model => model.FamilyID)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FamilyName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FamilyName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Model)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Model)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PartNo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PartNo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Problem)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Problem)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Pic)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Pic)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AddDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AddDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AddUserID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AddUserID)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AddUserName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AddUserName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.RepairDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RepairDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.RepairUserName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RepairUserName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.RepairState)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RepairState)
-        </dd>
-
-    </dl>
+                </div>
+                <div class="col-lg-6" style="text-align:left;">
+                    @Html.ActionLink("返回", "Index", new { }, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.RepairID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

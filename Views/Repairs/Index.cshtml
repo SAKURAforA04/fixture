@@ -173,8 +173,8 @@
                     @Html.DisplayFor(modelItem => item.RepairState)
                 </td>
                 <td>
-                    @Html.ActionLink("编辑", "Edit",  new { id = item.RepairID }, new { @class = "btn btn-success" }) |
-                    @Html.ActionLink("详情", "Details",  new { id = item.RepairID }, new { @class = "btn btn-info" })
+                    @* @Html.ActionLink("编辑", "Edit",  new { id = item.RepairID }, new { @class = "btn btn-success" }) |*@
+                    @Html.ActionLink("详情", "Details", new { id = item.RepairID }, new { @class = "btn btn-info" })
                     @*@Html.ActionLink("Delete", "Delete", new { id = item.RepairID })*@
                 </td>
             </tr>
