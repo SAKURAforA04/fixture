@@ -7,6 +7,12 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/FixtureMaster.cshtml";
 }
+<script>
+    window.onload = function () {
+        var link_gjjbf = document.getElementById("gjjbf");
+        link_gjjbf.click();
+    }
+</script>
 <style>
     table {
         border: 1px;
@@ -52,10 +58,10 @@
     }
 </style>
 
+<h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21444" style=" color :blue ;font-size :18px;" id="gjjbf">工夹具报废</a>>>报废提交</h4>
+<br />
 
-<h2>ScrapIndex</h2>
-
-<p style=" position :relative ;left :870px;">
+<p style=" position :relative ;left :1060px;">
     @Html.ActionLink("新增申请", "Create", new { }, new { @class = "btn btn-warning" })
 </p>
 
@@ -230,5 +236,6 @@
     }
 
 </table>
-
-@Html.PagedListPager((IPagedList)Model, x => Url.Action("Index", new { page = x }))
+<div id="footer">
+    @Html.PagedListPager((IPagedList)Model, x => Url.Action("Index", new { page = x }))
+</div>
