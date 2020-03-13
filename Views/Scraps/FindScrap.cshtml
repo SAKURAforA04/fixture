@@ -10,86 +10,173 @@
 <!DOCTYPE html>
 
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
 </head>
 <body>
-    <h2>FixtureItemFind</h2>
+    <script>
+        window.onload = function () {
+            var link_gjjbf = document.getElementById("gjjbf");
+            link_gjjbf.click();
+        }
+    </script>
+    <style>
+        table {
+            border: 1px;
+            border-style: solid;
+        }
+
+        td {
+            border: 1px;
+            border-style: solid;
+            height: 20px;
+            text-align: center;
+            vertical-align: central;
+            left: 50%;
+            top: 50%;
+        }
+
+        th {
+            border: 1px;
+            border-style: solid;
+            text-align: center;
+            background-color: #508da3;
+            color: white;
+        }
+
+        /* .btn {
+            width: 45px;
+            height: 25px;
+            /* display: flex;
+            justify-content: center;
+            align-items: center;*/
+        /*      line-height: 10px;
+            padding-right: 40px;
+        }
+        */
+
+        #footer {
+            position: relative;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            color: blue;
+            text-align: center;
+        }
+    </style>
+    <h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21444" style=" color :blue ;font-size :18px;" id="gjjbf">工夹具报废</a>>>报废查询</h4>
+    <br />
     <div class="container-fluid">
         <div class="row-fluid">
-            <p>
-                @using (Html.BeginForm("FindScrap", "Scraps", FormMethod.Get))
-                {
-                    <p>夹具代码:@Html.TextBox("code")</p>
-                    <p>夹具状态:@Html.TextBox("state")</p>
-                    <input type="submit" value="查询" />
-                }
-            </div>
-        </div>
 
-        <table class="table">
-            <tr>
-                <th>
-                    夹具代码
-                </th>
-                <th>
-                    夹具名称
-                </th>
-                <th>
-                    夹具模组
-                </th>
-                <th>
-                    夹具料号
-                </th>
-                <th>
-                    夹具寿命（年）
-                </th>
-                <th>
-                    夹具报废原因
-                </th>
-                <th>
-                    报废流程状态
-                </th>
-                <th>
-                    退回原因
-                </th>
-            </tr>
-
-            @foreach (var item in Model)
+            @using (Html.BeginForm("FindScrap", "Scraps", FormMethod.Get))
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Code)
-                    </td>
-
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Model)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PartNo)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Count)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Problem)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ScrapState)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.BackNote)
-                    </td>
-                    <td>
-                        @Html.ActionLink("详情", "Details", new { id = item.ItemID })
-                    </td>
-                </tr>
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">查询条件</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-md-12">
+                            <div class="portlet-body form">
+                                <form id="queryFrom" class="search-form form-horizontal">
+                                    <div class="form-body row">
+                                        <label class="col-md-2 control-label" style="text-align:right; font-size:large;">夹具代码:</label>
+                                        <div class="clear">
+                                            @Html.TextBox("code", "", new { @class = "input-sm col-md-1" })
+                                        </div>
+                                        <label class="col-md-2 control-label" style="text-align:right; font-size:large;">夹具状态:</label>
+                                        <div class="clear">
+                                            @Html.TextBox("state", "", new { @class = "input-sm col-md-1" })
+                                        </div>
+                                        <div class="form-actions col-md-6" style="text-align:right;">
+                                            <div class="btn-set">
+                                                <div class="col-md-4" style="text-align:right;">
+                                                    <button type="submit" class="btn btn-primary search">查询</button>
+                                                </div>
+                                                <div class="col-md-4" style="text-align:left;">
+                                                    <button type="reset" class="btn default reset">重置</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             }
-        </table>
+        </div>
+    </div>
+
+    <table class="table">
+        <tr>
+            <th>
+                夹具代码
+            </th>
+            <th>
+                夹具名称
+            </th>
+            <th>
+                夹具模组
+            </th>
+            <th>
+                夹具料号
+            </th>
+            <th>
+                夹具寿命（年）
+            </th>
+            <th>
+                夹具报废原因
+            </th>
+            <th>
+                报废流程状态
+            </th>
+            <th>
+                退回原因
+            </th>
+            <th>
+                操作
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PartNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Count)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Problem)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ScrapState)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BackNote)
+                </td>
+                <td>
+                    @Html.ActionLink("详情", "Details", new { id = item.ItemID }, new { @class = "btn btn-primary" })
+                </td>
+            </tr>
+        }
+    </table>
+    <div id="footer">
         @Html.PagedListPager((IPagedList)Model, x => Url.Action("FixtureItemFind", new { page = x }))
-    </body>
+    </div>
+</body>
 </html>
