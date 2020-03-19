@@ -9,88 +9,242 @@
     Layout = "~/Views/Shared/FixtureMaster.cshtml";
 }
 
-<h2>Create</h2>
-
-
-<table class="table">
-    <tr>
-        <th>@Html.DisplayNameFor(model => model.Code)</th>
-        <th>@Html.DisplayNameFor(model => model.Name)</th>
-        <th>@Html.DisplayNameFor(model => model.Location)</th>
-        <th>已使用次数</th>
-        <th>状态</th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.JigitemCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UsedCount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.State)
-            </td>
-            <td>
-
-                <input type="button" class="btn btn-primary" onclick="Values(this)"
-                       jigitemcode1="@item.JigitemCode" itemid1="@item.ItemID" code1="@item.Code" seqid1="@item.SeqID" name1="@item.Name" familyid1="@item.FamilyID"
-                       familyname1="@item.FamilyName" model1="@item.Model" partno1="@item.PartNo" usedcount1="@item.UsedCount" workcellid1="@item.WorkcellID" value="选择" />
-            </td>
-        </tr>
+<script>
+    window.onload = function () {
+        var link_gjjbf = document.getElementById("gjjbf");
+        link_gjjbf.click();
     }
+</script>
+<style>
+       .table {
+           border: 1px;
+           border-style: solid;
+       }
 
-</table>
-@Html.PagedListPager((IPagedList)Model, x => Url.Action("Create", new { page = x }))
-@using (Html.BeginForm("Create", "Scraps", FormMethod.Post))
-{
-    <input type="text" name="ItemID" id="ItemID" />
-    <input type="text" name="Code" id="Code" />
-    <input type="text" name="SeqID" id="SeqID" />
-    <input type="text" name="FamilyID" id="FamilyID" />
-    <input type="text" name="FamilyName" id="FamilyName" />
-    <input type="text" name="Model" id="Model" />
-    <input type="text" name="PartNo" id="PartNo" />
-    <input type="text" name="Count" id="Count" />
-    <input type="text" name="WorkcellID" id="WorkcellID" />
+       /* td {
+           border: 1px;
+           border-style: solid;
+           height: 20px;
+           text-align: center;
+           vertical-align: central;
+           left: 50%;
+           top: 50%;
+       }
 
-    <div class="form-group">
-        <div class="col-md-10" @*id="myModal"*@>
-            <b>夹具编码：</b><input type="text" name="JigitemCode" id="JigitemCode" readonly="readonly" />
+    th {
+           border: 1px;
+           border-style: solid;
+           text-align: center;
+           background-color: #508da3;
+           color: white;
+       }
+          */
+       th {
+           text-align: center;
+       }
+
+       td {
+           text-align: center;
+       }
+
+       .table1 {
+           border: none;
+           border-style: none;
+       }
+
+
+       /* .btn {
+           width: 45px;
+           height: 25px;
+           /* display: flex;
+           justify-content: center;
+           align-items: center;*/
+       /*      line-height: 10px;
+           padding-right: 40px;
+       }
+       */
+
+       #footer {
+           position: relative;
+           left: 0;
+           right: 0;
+           bottom: 0;
+           color: blue;
+           text-align: center;
+       }
+</style>
+
+<h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21444" style=" color :blue ;font-size :18px;" id="gjjbf">工夹具报废</a>>>@Html.ActionLink("报废提交", "Index", new { }, new { style = "color:blue;" })>>新增报废</h4>
+<br />
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">报废工夹具选择</h3>
+    </div>
+    <div class="panel-body" style="text-align:center;">
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <table class="table">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Code)</th>
+                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                    <th>@Html.DisplayNameFor(model => model.Location)</th>
+                    <th>已使用次数</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.JigitemCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Location)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UsedCount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.State)
+                        </td>
+                        <td>
+
+                            <input type="button" class="btn btn-primary" onclick="Values(this)"
+                                   jigitemcode1="@item.JigitemCode" itemid1="@item.ItemID" code1="@item.Code" seqid1="@item.SeqID" name1="@item.Name" familyid1="@item.FamilyID"
+                                   familyname1="@item.FamilyName" model1="@item.Model" partno1="@item.PartNo" usedcount1="@item.UsedCount" workcellid1="@item.WorkcellID" data-toggle="modal" data-target="#myModal" value="选择" />
+                        </td>
+                    </tr>
+                }
+
+            </table>
+            <div style="text-align:center;">
+                @Html.PagedListPager((IPagedList)Model, x => Url.Action("Create", new { page = x }))
+            </div>
         </div>
     </div>
-    <div class="form-group">
-        <div class="col-md-10" @*id="myModal"*@>
-            <b>夹具名称：</b><input type="text" name="Name" id="Name" readonly="readonly" />
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="btn-info modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4>工夹具报废申请增加详情</h4>
+            </div>
+            @using (Html.BeginForm("Create", "Scraps", FormMethod.Post))
+            {
+                <div class="modal-body">
+                    <input type="hidden" id="id" name="id" value="" />
+                    <table class="table1">
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <div class="col-md-10" @*id="myModal"*@>
+                                        <b class="col-md-8" style="text-align:right; font-size:18px;">夹具名称：</b><input type="text" name="Name" id="Name" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <div class="col-md-10" @*id="myModal"*@>
+                                        <b class="col-md-10" style="text-align:right; font-size:18px;">夹具实体编号：</b><input type="text" name="ItemID" id="ItemID" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <div class="col-md-10" @*id="myModal"*@>
+                                        <b class="col-md-8" style="text-align:right; font-size:18px;">夹具代码：</b><input type="text" name="Code" id="Code" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <div class="col-md-10" @*id="myModal"*@>
+                                        <b class="col-md-9" style="text-align:right; font-size:18px;">夹具序列号：</b><input type="text" name="SeqID" id="SeqID" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <div class="col-md-10" @*id="myModal"*@>
+                                        <b class="col-md-10" style="text-align:right; font-size:18px;">所属大类编码：</b> <input type="text" name="FamilyID" id="FamilyID" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <div class="col-md-10" @*id="myModal"*@>
+                                        <b class="col-md-10" style="text-align:right; font-size:18px;">所属大类名称：</b><input type="text" name="FamilyName" id="FamilyName" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <div class="col-md-10" @*id="myModal"*@>
+                                        <b class="col-md-8" style="text-align:right; font-size:18px;">夹具模组：</b><input type="text" name="Model" id="Model" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <div class="col-md-10" @*id="myModal"*@>
+                                        <b class="col-md-8" style="text-align:right; font-size:18px;">夹具料号：</b><input type="text" name="PartNo" id="PartNo" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <div class="col-md-10" @*id="myModal"*@>
+                                        <b class="col-md-10" style="text-align:right; font-size:18px;">物品寿命技术：</b><input type="text" name="Count" id="Count" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <div class="col-md-10" @*id="myModal"*@>
+                                        <b class="col-md-10" style="text-align:right; font-size:18px;">工作部门编码：</b><input type="text" name="WorkcellID" id="WorkcellID" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <div class="form-group">
+                                    <div class="col-sm-10">
+                                        <b class="col-md-8" style="text-align:left; font-size:18px;">报废原因：</b><textarea id="backNote" name="Problem" class="form-control well col-md-12" placeholder="请输入报废原因"></textarea>
+                                    </div>
+                                </div>
+                            </td>
+
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" value="新增" class="btn btn-success" />
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
+                </div>
+
+            }
         </div>
     </div>
+</div>
 
-    <div class="form-group">
-        <div class="col-md-10">
-            <b> 报废原因:</b><input type="text" name="Problem" />
-        </div>
-    </div>
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="新增" class="btn btn-default" />
-        </div>
-    </div>
-
-
-    <div>
-        @Html.ActionLink("返回", "Index")
-    </div>
-}
 
 <script>
     function Values(obj) {

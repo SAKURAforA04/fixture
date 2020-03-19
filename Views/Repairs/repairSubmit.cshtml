@@ -5,43 +5,101 @@
     Layout = "~/Views/Shared/FixtureMaster.cshtml";
 }
 
-<h2>报修提交</h2>
+<script>
+    window.onload = function () {
+        var link_gjjbx = document.getElementById("gjjbx");
+        link_gjjbx.click();
+    }
+</script>
 
-<p>
-    @Html.ActionLink("新增报修", "Create")
+<style>
+    table {
+        border: 1px;
+        border-style: solid;
+    }
+
+    td {
+        border: 1px;
+        border-style: solid;
+        height: 20px;
+        text-align: center;
+        vertical-align: central;
+        left: 50%;
+        top: 50%;
+    }
+
+    th {
+        border: 1px;
+        border-style: solid;
+        text-align: center;
+        background-color: #508da3;
+        color: white;
+    }
+
+    a {
+        color: white;
+    }
+
+    .btn {
+        width: 45px;
+        height: 25px;
+        /* display: flex;
+        justify-content: center;
+        align-items: center;*/
+        line-height: 10px;
+        padding-right: 40px;
+        text-align:left;
+    }
+
+    #footer {
+        position: relative;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        color: blue;
+        text-align: center;
+    }
+</style>
+
+
+<h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :18px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21443" id="gjjbx">工夹具报修</a>>>报修提交</h4>
+
+
+<p  style= "text-align:left;width: 70px;">
+    @Html.ActionLink("新增", "Create", new { }, new { @class = "btn btn-success" })
 </p>
-<table class="table">
+<table class="table" border="0" cellspacing="0" cellpadding="0" style=" width :auto ;text-align :center ;">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ItemID)
+        <th style=" width:55px;text-align :center ;">
+            夹具实体编号
         </th>
-        <th>
+        <th style=" width:55px;text-align :center ;">
             夹具代码
         </th>
-        <th>
+        <th style=" width:55px;">
             夹具名称
         </th>
-      
-        <th>
+
+        <th style=" width:60px;text-align :center ;">
             所属大类名称
         </th>
-        <th>
+        <th style=" width:180px;text-align :center ;">
             夹具模组
         </th>
 
-        <th>
+        <th style=" width:100px;text-align :center ;">
             @*@Html.DisplayNameFor(model => model.Problem)*@问题描述
         </th>
-        <th>
+        <th style=" width:80px;text-align :center ;">
             @*@Html.DisplayNameFor(model => model.Pic)*@故障照片
         </th>
-        <th>
+        <th style=" width:120px;text-align :center ;">
             @*@Html.DisplayNameFor(model => model.AddDate)*@创建日期
         </th>
         @*<th>
                 @Html.DisplayNameFor(model => model.AddUserID)
             </th>*@
-        <th>
+        <th style=" width:80px;text-align :center ;">
             @*@Html.DisplayNameFor(model => model.AddUserName)*@创建人姓名
         </th>
         @*<th>
@@ -50,10 +108,10 @@
             <th>
                 @Html.DisplayNameFor(model => model.RepairUserName)
             </th>*@
-        <th>
+        <th style=" width:60px;text-align :center ;">
             @*@Html.DisplayNameFor(model => model.RepairState)*@维修状态
         </th>
-        <th></th>
+        <th style=" width:140px;text-align :center ;">操作</th>
     </tr>
 
     @foreach (var item in Model)
@@ -110,8 +168,8 @@
                     @Html.DisplayFor(modelItem => item.RepairState)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.RepairID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.RepairID }) |
+                    @Html.ActionLink("编辑", "Edit", new { id = item.RepairID }, new { @class = "btn btn-success" }) |
+                    @Html.ActionLink("详情", "Details", new { id = item.RepairID }, new { @class = "btn btn-info" })
                     @*@Html.ActionLink("Delete", "Delete", new { id = item.RepairID })*@
                 </td>
             </tr>
