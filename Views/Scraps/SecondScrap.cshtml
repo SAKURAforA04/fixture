@@ -14,27 +14,12 @@
     }
 </script>
 <style>
-    table {
-        border: 1px;
-        border-style: solid;
-    }
-
     td {
-        border: 1px;
-        border-style: solid;
-        height: 20px;
         text-align: center;
-        vertical-align: central;
-        left: 50%;
-        top: 50%;
     }
 
     th {
-        border: 1px;
-        border-style: solid;
         text-align: center;
-        background-color: #508da3;
-        color: white;
     }
 
     /* .btn {
@@ -56,108 +41,127 @@
         color: blue;
         text-align: center;
     }
+
+    .gridContainer {
+        display: grid;
+        width: 100%;
+        grid-template-columns: 1fr 1fr;
+    }
 </style>
 <h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21444" style=" color :blue ;font-size :18px;" id="gjjbf">工夹具报废</a>>>报废提交终审</h4>
 <br />
 
-<table class="table">
-    <tr>
-        <th>
-            夹具代码
-        </th>
-        <th>
-            夹具名称
-        </th>
-        <th>
-            夹具模组
-        </th>
-        <th>
-            夹具料号
-        </th>
-        <th>
-            夹具寿命（年）
-        </th>
-        <th>
-            夹具报废原因
-        </th>
-        <th>
-            报废流程状态
-        </th>
-        <th>
-            退回原因
-        </th>
-        <th style="width:200px;text-align:center;">
-            操作
-        </th>
-    </tr>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">终审列表</h3>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            夹具代码
+                        </th>
+                        <th>
+                            夹具名称
+                        </th>
+                        <th>
+                            夹具模组
+                        </th>
+                        <th>
+                            夹具料号
+                        </th>
+                        <th>
+                            夹具寿命（年）
+                        </th>
+                        <th>
+                            夹具报废原因
+                        </th>
+                        <th>
+                            报废流程状态
+                        </th>
+                        <th>
+                            退回原因
+                        </th>
+                        <th style="width:200px;text-align:center;">
+                            操作
+                        </th>
+                    </tr>
+                </thead>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Code)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Model)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PartNo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Count)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Problem)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ScrapState)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BackNote)
-            </td>
-
-            <td class="row" style="text-align:left;height:10px;">
-                @using (Html.BeginForm("SecondScrap", "Scraps", new { id = item.ScrapID, state = "同意" }, FormMethod.Post))
+                @foreach (var item in Model)
                 {
-                    <input type="submit" value="同意" class="btn btn-default" style="position:relative;left:15px;top:5px;" />
-                }
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Code)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Model)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PartNo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Count)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Problem)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ScrapState)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BackNote)
+                        </td>
 
-                <div class="container" style=" width :20px;height :10px;text-align:left;position:relative;left:-100px;">
-                    <input type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="Values(@item.ScrapID)" value="不同意" style="position:relative;top:-30px;left:100px" />
-                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="btn-info modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4>问题反馈</h4>
-                                </div>
-                                @using (Html.BeginForm("SecondScrap", "Scraps", new { state = "不同意" }, FormMethod.Post))
+                        <td style="text-align:center;">
+                            <div class="gridContainer">
+                                @using (Html.BeginForm("SecondScrap", "Scraps", new { id = item.ScrapID, state = "同意" }, FormMethod.Post))
                                 {
-                                    <div class="modal-body">
-                                        <input type="hidden" id="id" name="id" value="" />
-                                        <div class="form-group">
-                                            <div class="col-sm-9">
-                                                <input type="text" id="backNote" name="backNote" class="form-control well" placeholder="请输入审批退回意见" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="modal-footer">
-                                        <input type="submit" value="提交" class="btn btn-warning" />
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
-                                    </div>
+                                    <input type="submit" value="同意" class="btn btn-default" />
                                 }
+
+
+                                <input type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="Values(@item.ScrapID)" value="不同意" />
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="btn-info modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4>问题反馈</h4>
+                                            </div>
+                                            @using (Html.BeginForm("SecondScrap", "Scraps", new { state = "不同意" }, FormMethod.Post))
+                                            {
+                                                <div class="modal-body">
+                                                    <input type="hidden" id="id" name="id" value="" />
+                                                    <div class="form-group">
+                                                        <div class="col-sm-9">
+                                                            <input type="text" id="backNote" name="backNote" class="form-control well" placeholder="请输入审批退回意见" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <input type="submit" value="提交" class="btn btn-warning" />
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
+                                                </div>
+                                            }
+                                        </div>
+
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </td>
-        </tr>
-    }
-</table>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
 
 <script>
     $('#myModal').modal("hide");

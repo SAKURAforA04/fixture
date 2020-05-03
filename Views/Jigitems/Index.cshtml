@@ -8,7 +8,10 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/FixtureMaster.cshtml";
 }
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
     window.onload = function () {
         var link_cgrk = document.getElementById("cgrk");
@@ -17,7 +20,7 @@
 </script>
 
 <style>
-    table {
+    /*  table {
         border: 1px;
         border-style: solid;
     }
@@ -38,6 +41,13 @@
         text-align: center;
         background-color: #508da3;
         color: white;
+    }*/
+    td {
+        text-align: center;
+    }
+
+    th {
+        text-align: center;
     }
 
     a {
@@ -64,101 +74,142 @@
     }
 </style>
 
-<h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :18px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-528672"  id="cgrk">采购入库</a>>>采购入库登记</h4>
+<h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :18px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-528672" id="cgrk">采购入库</a>>>采购入库登记</h4>
 
 <p style=" position :relative ;left :1040px;">
-    <button style="background-color: orange ;">@Html.ActionLink("新增申请", "Create", new { }, new { style = "color:white;font-size:14px;" })</button>
+    <button class="btn-primary">@Html.ActionLink("新增申请", "Create", new { }, new { style = "color:white;font-size:14px;" })</button>
 
 </p>
-<table class="table" border="0" cellspacing="0" cellpadding="0" style=" width :auto ;text-align :center ;">
-    <tr>
-        <th style=" width:45px;text-align :center ;">
-            @*@Html.DisplayNameFor(model => model.Code)*@
-            夹具代码
-        </th>
-        @*工夹具Code对应的Name*@
-        <th style=" width:40px;">
-            @* @Html.DisplayNameFor(model => model.Jig.Name)*@
-            夹具名称
-        </th>
+@*<table class="table" border="0" cellspacing="0" cellpadding="0" style=" width :auto ;text-align :center ;">*@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">工夹具入库登记列表</h3>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        @* <th style=" width:45px;text-align :center ;">
+                            夹具代码
+                            </th>
 
-        <th style=" width:55px;text-align :center ;">
-            @* @Html.DisplayNameFor(model => model.SeqID)*@
-            夹具序列号
-        </th>
-        <th style=" width:180px;text-align :center ;">
-            @*@Html.DisplayNameFor(model => model.BillNo)*@
-            采购单据号
-        </th>
-        <th style=" width:100px;text-align :center ;">
-            @* @Html.DisplayNameFor(model => model.RegDate)*@
-            入库日期
-        </th>
-        <th style=" width:80px;text-align :center ;">
-            @*  @Html.DisplayNameFor(model => model.Location)*@
-            存放库位
-        </th>
-        <th style=" width:60px;text-align :center ;">
-            @*@Html.DisplayNameFor(model => model.State)*@
-            状态
-        </th>
-        <th style=" width:100px;text-align :center ;">
-            @* @Html.DisplayNameFor(model => model.AddDate)*@
-            创建日期
-        </th>
-        <th style=" width:100px;text-align :center ;">
-            @* @Html.DisplayNameFor(model => model.BackNote)*@
-            退回原因
-        </th>
-        <th style=" width:180px;text-align :center  ;">
-            操作
-        </th>
-    </tr>
+                            <th style=" width:40px;">
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Code)
-            </td>
+                                夹具名称
+                            </th>
 
-            @*工夹具Code对应的Name*@
-            <td>
-                @Html.DisplayFor(modelItem => item.Jig.Name)
-            </td>
+                            <th style=" width:55px;text-align :center ;">
 
-            <td>
-                @Html.DisplayFor(modelItem => item.SeqID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BillNo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RegDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.State)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AddDate)
-            </td>
-            <td style=" width:100px;text-align :center ;">
-                @Html.DisplayFor(modelItem => item.BackNote)
-            </td>
+                                夹具序列号
+                            </th>
+                            <th style=" width:180px;text-align :center ;">
 
-            <td style=" text-align :center  ;">
+                                采购单据号
+                            </th>
+                            <th style=" width:100px;text-align :center ;">
 
-                @Html.ActionLink("编辑", "Edit", new { id = item.ItemID }, new { @class = "btn btn-success" })|
-                @Html.ActionLink("明细", "Details", new { id = item.ItemID }, new { @class = "btn btn-info" })|
-                @Html.ActionLink("删除", "Delete", new { id = item.ItemID }, new { @class = "btn btn-danger" })
-               
-            </td>
-        </tr>
-    }
-</table>
+                                入库日期
+                            </th>
+                            <th style=" width:80px;text-align :center ;">
+
+                                存放库位
+                            </th>
+                            <th style=" width:60px;text-align :center ;">
+
+                                状态
+                            </th>
+                            <th style=" width:100px;text-align :center ;">
+
+                                创建日期
+                            </th>
+                            <th style=" width:100px;text-align :center ;">
+
+                                退回原因
+                            </th>
+                            <th style=" width:180px;text-align :center  ;">
+                                操作
+                            </th>*@
+                        <th>
+                            夹具代码
+                        </th>
+                        <th>
+                            夹具名称
+                        </th>
+                        <th>
+                            夹具序列号
+                        </th>
+                        <th>
+                            夹具单据号
+                        </th>
+                        <th>
+                            入库日期
+                        </th>
+                        <th>
+                            存放库位
+                        </th>
+                        <th>
+                            状态
+                        </th>
+                        <th>
+                            创建日期
+                        </th>
+                        <th>
+                            退回原因
+                        </th>
+                        <th>
+                            操作
+                        </th>
+                    </tr>
+                </thead>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Code)
+                        </td>
+
+                        @*工夹具Code对应的Name*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Jig.Name)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SeqID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BillNo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RegDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Location)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.State)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AddDate)
+                        </td>
+                        <td style=" width:100px;text-align :center ;">
+                            @Html.DisplayFor(modelItem => item.BackNote)
+                        </td>
+
+                        <td style=" text-align :center  ;">
+
+                            @Html.ActionLink("编辑", "Edit", new { id = item.ItemID }, new { @class = "btn btn-default" })|
+                            @Html.ActionLink("明细", "Details", new { id = item.ItemID }, new { @class = "btn btn-default" })|
+                            @Html.ActionLink("删除", "Delete", new { id = item.ItemID }, new { @class = "btn btn-danger" })
+
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
 
 <div id="footer">
     @Html.PagedListPager((IPagedList)Model, x => Url.Action("Index", new { page = x }))

@@ -23,27 +23,12 @@
         }
     </script>
     <style>
-        table {
-            border: 1px;
-            border-style: solid;
-        }
-
         td {
-            border: 1px;
-            border-style: solid;
-            height: 20px;
             text-align: center;
-            vertical-align: central;
-            left: 50%;
-            top: 50%;
         }
 
         th {
-            border: 1px;
-            border-style: solid;
             text-align: center;
-            background-color: #508da3;
-            color: white;
         }
 
         /* .btn {
@@ -110,71 +95,82 @@
         </div>
     </div>
 
-    <table class="table">
-        <tr>
-            <th>
-                夹具代码
-            </th>
-            <th>
-                夹具名称
-            </th>
-            <th>
-                夹具模组
-            </th>
-            <th>
-                夹具料号
-            </th>
-            <th>
-                夹具寿命（年）
-            </th>
-            <th>
-                夹具报废原因
-            </th>
-            <th>
-                报废流程状态
-            </th>
-            <th>
-                退回原因
-            </th>
-            <th>
-                操作
-            </th>
-        </tr>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">夹具列表</h3>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                夹具代码
+                            </th>
+                            <th>
+                                夹具名称
+                            </th>
+                            <th>
+                                夹具模组
+                            </th>
+                            <th>
+                                夹具料号
+                            </th>
+                            <th>
+                                夹具寿命（年）
+                            </th>
+                            <th>
+                                夹具报废原因
+                            </th>
+                            <th>
+                                报废流程状态
+                            </th>
+                            <th>
+                                退回原因
+                            </th>
+                            <th>
+                                操作
+                            </th>
+                        </tr>
+                    </thead>
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Code)
-                </td>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Code)
+                            </td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Model)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PartNo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Count)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Problem)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ScrapState)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BackNote)
-                </td>
-                <td>
-                    @Html.ActionLink("详情", "Details", new { id = item.ItemID }, new { @class = "btn btn-primary" })
-                </td>
-            </tr>
-        }
-    </table>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Model)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PartNo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Count)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Problem)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ScrapState)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BackNote)
+                            </td>
+                            <td>
+                                @Html.ActionLink("详情", "Details", new { id = item.ItemID }, new { @class = "btn btn-primary" })
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
     <div id="footer">
         @Html.PagedListPager((IPagedList)Model, x => Url.Action("FixtureItemFind", new { page = x }))
     </div>

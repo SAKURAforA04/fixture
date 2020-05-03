@@ -13,24 +13,12 @@
 </script>
 
 <style>
-    table {
-        border: 1px;
-        border-style: solid;
-    }
-
     td {
-        border: 1px;
-        border-style: solid;
-        height: 30px;
         text-align: center;
     }
 
     th {
-        border: 1px;
-        border-style: solid;
         text-align: center;
-        background-color: #508da3;
-        color: white;
     }
 
     #footer {
@@ -55,7 +43,7 @@
 </head>
 <body>
 
-    <h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :16px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-528672"  id="cgrk">采购入库</a>>>采购入库查询</h4>
+    <h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :16px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-528672" id="cgrk">采购入库</a>>>采购入库查询</h4>
     <br />
     <div class="container-fluid" style=" text-align :center ;">
 
@@ -64,10 +52,44 @@
                 <b>
                     @using (Html.BeginForm("FixtureItemFind", "Jigitems", FormMethod.Get))
                     {
-                        <span style="padding-right:30px;">夹具代码: @Html.TextBox("code")    </span>
-                        <span style="padding-right:30px;"> 所在位置: @Html.TextBox("location")   </span>
-                        <span style="padding-right:30px;"> 夹具状态: @Html.TextBox("state")</span>
-                        <input type="submit" value="查询" class=" btn-primary" style=" position :relative ;top :-3px;" />
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">查询条件</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="col-md-12">
+                                    <div class="portlet-body form">
+                                        <form id="queryFrom" class="search-form form-horizontal">
+                                            <div class="form-body row">
+                                                <label class="col-md-2 control-label" style="text-align:right; font-size:large;">夹具代码:</label>
+                                                <div class="clear">
+                                                    @Html.TextBox("code", ViewBag.employeeName as string, new { @class = "input-sm col-md-1" })
+                                                </div>
+                                                <label class="col-md-2 control-label" style="text-align:right; font-size:large;">所在位置:</label>
+                                                <div class="clear">
+
+                                                    @Html.TextBox("location", ViewBag.userLevel as string, new { @class = "input-sm col-md-1" })
+                                                </div>
+                                                <label class="col-md-2 control-label" style="text-align:right; font-size:large;">夹具状态:</label>
+                                                <div class="clear">
+                                                    @Html.TextBox("state", ViewBag.workcellID as string, new { @class = "input-sm col-md-1" })
+                                                </div>
+                                                <div class="form-actions col-md-3" style="text-align:right;">
+                                                    <div class="btn-set">
+                                                        <button type="submit" class="btn btn-primary search">查询</button>
+                                                        <button type="reset" class="btn default reset">重置</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        /*     <span style="padding-right:30px;">夹具代码: @Html.TextBox("code")    </span>
+                             <span style="padding-right:30px;"> 所在位置: @Html.TextBox("location")   </span>
+                             <span style="padding-right:30px;"> 夹具状态: @Html.TextBox("state")</span>
+                             <input type="submit" value="查询" class=" btn-primary" style=" position :relative ;top :-3px;" />*/
                     }
                 </b>
             </p>
@@ -75,161 +97,155 @@
     </div>
     <br />
 
-    <table class="table">
-        <tr>
-            <th style=" width:60px;text-align :center ;">
-                @*  @Html.DisplayNameFor(model => model.ItemID)*@
-                夹具实体编号
-            </th>
-            <th style=" width:100px;text-align :center ;">
-                @*  @Html.DisplayNameFor(model => model.Code)*@
-                夹具代码
-            </th>
-            @*<th style=" width:60px;text-align :center ;">
-                夹具序列号
-            </th>*@
-            <th style=" width:160px;text-align :center ;">
-                @*  @Html.DisplayNameFor(model => model.BillNo)*@
-                采购单据号
-            </th>
-            <th style=" width:130px;text-align :center ;">
-                @*@Html.DisplayNameFor(model => model.RegDate)*@
-                入库日期
-            </th>
-            <th style=" width:60px;text-align :center ;">
-                @*  @Html.DisplayNameFor(model => model.UsedCount)*@
-                已使用次数
-            </th>
-            <th style=" width:130px;text-align :center ;">
-                @*  @Html.DisplayNameFor(model => model.Location)*@
-                存放库位
-            </th>
-            <th style=" width:120px;text-align :center ;">
-                @*  @Html.DisplayNameFor(model => model.State)*@
-                状态
-            </th>
-            <th style=" width:130px;text-align :center ;">
-                @*  @Html.DisplayNameFor(model => model.AddDate)*@
-                创建日期
-            </th>
-            <th style=" width:80px;text-align :center ;">
-                查看
-            </th>
-        </tr>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">夹具列表</h3>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            @*  <th style=" width:60px;text-align :center ;">
 
-        @foreach (var item in Model)
-        {
-    <tr>
-        @*<<<<<<< HEAD*@
-        @*<th>
-            @Html.DisplayNameFor(model => model.ItemID)
-        </th>*@
-        @*<th>
-                            @Html.DisplayNameFor(model => model.Code)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Jig.Name)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.BillNo)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.RegDate)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.UsedCount)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Location)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.State)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.AddDate)
-                        </th>
-        =======*@
-        <td>
-            @Html.DisplayFor(modelItem => item.ItemID)
-        </td>
+                                    夹具实体编号
+                                </th>
+                                <th style=" width:100px;text-align :center ;">
 
-        <td>
-            @Html.DisplayFor(modelItem => item.Code)-@Html.DisplayFor(modelItem => item.SeqID)
-        </td>
+                                    夹具代码
+                                </th>
 
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Code)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SeqID)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.BillNo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RegDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UsedCount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Location)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.State)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AddDate)
-        </td>
-        <td>
-            @Html.ActionLink("详情", "Details", new { id = item.ItemID }, new { @class = "btn btn-primary" })
-        </td>
-        @*>>>>>>> gy*@
-    </tr>
-        }
+                                <th style=" width:160px;text-align :center ;">
 
-@*<<<<<<< HEAD*@
-            @*@foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ItemID)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Code)-@Html.DisplayFor(modelItem => item.SeqID)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Jig.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.BillNo)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.RegDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.UsedCount)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Location)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.State)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AddDate)
-                    </td>
-                    <td>
-                        @Html.ActionLink("详情", "Details", new { id = item.ItemID })
-                    </td>
-                </tr>
-            }
+                                    采购单据号
+                                </th>
+                                <th style=" width:130px;text-align :center ;">
 
-        </table>
-        @Html.PagedListPager((IPagedList)Model, x => Url.Action("FixtureItemFind", new { page = x }))
-    </body>*@
-@*=======*@
-    </table>
+                                    入库日期
+                                </th>
+                                <th style=" width:60px;text-align :center ;">
+
+                                    已使用次数
+                                </th>
+                                <th style=" width:130px;text-align :center ;">
+
+                                    存放库位
+                                </th>
+                                <th style=" width:120px;text-align :center ;">
+
+                                    状态
+                                </th>
+                                <th style=" width:130px;text-align :center ;">
+
+                                    创建日期
+                                </th>
+                                <th style=" width:80px;text-align :center ;">
+                                    查看
+                                </th>*@
+                            <th>
+                                夹具实体编号
+                            </th>
+                            <th>
+                                夹具代码
+                            </th>
+                            <th>
+                                采购单据号
+                            </th>
+                            <th>
+                                入库日期
+                            </th>
+                            <th>
+                                已使用次数
+                            </th>
+                            <th>
+                                存放库位
+                            </th>
+                            <th>
+                                状态
+                            </th>
+                            <th>
+                                创建日期
+                            </th>
+                            <th>
+                                查看
+                            </th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            @*<<<<<<< HEAD*@
+                            @*<th>
+                                    @Html.DisplayNameFor(model => model.ItemID)
+                                </th>*@
+                            @*<th>
+                                                    @Html.DisplayNameFor(model => model.Code)
+                                                </th>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.Jig.Name)
+                                                </th>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.BillNo)
+                                                </th>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.RegDate)
+                                                </th>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.UsedCount)
+                                                </th>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.Location)
+                                                </th>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.State)
+                                                </th>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.AddDate)
+                                                </th>
+                                =======*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ItemID)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Code)-@Html.DisplayFor(modelItem => item.SeqID)
+                            </td>
+
+                            @*<td>
+                                    @Html.DisplayFor(modelItem => item.Code)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SeqID)
+                                </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BillNo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RegDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UsedCount)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Location)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.State)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AddDate)
+                            </td>
+                            <td>
+                                @Html.ActionLink("详情", "Details", new { id = item.ItemID }, new { @class = "btn btn-primary" })
+                            </td>
+                            @*>>>>>>> gy*@
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
     <div id="footer"> @Html.PagedListPager((IPagedList)Model, x => Url.Action("FixtureItemFind", new { page = x }))</div>
 </body>
 @*>>>>>>> gy*@
