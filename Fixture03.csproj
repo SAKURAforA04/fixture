@@ -52,6 +52,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="fastJSON, Version=2.3.0.0, Culture=neutral, PublicKeyToken=6b75a806b86095cd, processorArchitecture=MSIL">
+      <HintPath>packages\fastJSON.2.3.1\lib\net40\fastJSON.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=1.0.0.999, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>packages\SharpZipLib.1.0.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
@@ -152,6 +155,7 @@
     <Compile Include="Controllers\ChecksController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\FileController.cs" />
+    <Compile Include="Controllers\FlowController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InoutController.cs" />
     <Compile Include="Controllers\JigitemsController.cs" />
@@ -277,6 +281,24 @@
     <Content Include="fonts\icomoon.ttf" />
     <Content Include="fonts\icomoon.woff" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\ECharts\chart\bar.js" />
+    <Content Include="Scripts\ECharts\chart\chord.js" />
+    <Content Include="Scripts\ECharts\chart\eventRiver.js" />
+    <Content Include="Scripts\ECharts\chart\force.js" />
+    <Content Include="Scripts\ECharts\chart\funnel.js" />
+    <Content Include="Scripts\ECharts\chart\gauge.js" />
+    <Content Include="Scripts\ECharts\chart\k.js" />
+    <Content Include="Scripts\ECharts\chart\line.js" />
+    <Content Include="Scripts\ECharts\chart\map.js" />
+    <Content Include="Scripts\ECharts\chart\pie.js" />
+    <Content Include="Scripts\ECharts\chart\radar.js" />
+    <Content Include="Scripts\ECharts\chart\scatter.js" />
+    <Content Include="Scripts\ECharts\chart\tree.js" />
+    <Content Include="Scripts\ECharts\chart\treemap.js" />
+    <Content Include="Scripts\ECharts\chart\venn.js" />
+    <Content Include="Scripts\ECharts\chart\wordCloud.js" />
+    <Content Include="Scripts\ECharts\echarts-all.js" />
+    <Content Include="Scripts\ECharts\echarts.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -370,6 +392,7 @@
     <Content Include="Views\Checks\Edit.cshtml" />
     <Content Include="Views\Checks\Index.cshtml" />
     <Content Include="Views\Checks\InStockCheck.cshtml" />
+    <Content Include="Views\Flow\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

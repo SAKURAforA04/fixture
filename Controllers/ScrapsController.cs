@@ -202,9 +202,9 @@ namespace Fixture02.Controllers
                 scrap.ScrapState = "退回";
                 scrap.BackNote = backnote;
             }
-            scrap.FirstReviewDate = DateTime.Now;
-            scrap.FirstReviewUserID = "011";
-            scrap.FirstReviewUserName = "llggxx";
+            scrap.SecondReviewDate = DateTime.Now;
+            scrap.SecondReviewUserID = "011";
+            scrap.SecondReviewUserName = "llggxx";
             db.SaveChanges();
             return RedirectToAction("SecondScrap");
         }
