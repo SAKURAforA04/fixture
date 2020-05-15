@@ -58,6 +58,9 @@
 
             @foreach (var item in Model)
             {
+                ViewBag.workcellId = Session["workcellId"];
+                if (item.WorkcellID == ViewBag.workcellId)
+                {
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.Code)
@@ -88,6 +91,7 @@
                         @Html.ActionLink("详情", "Details", new { id = item.ItemID })
                     </td>
                 </tr>
+                }
             }
         </table>
         @Html.PagedListPager((IPagedList)Model, x => Url.Action("FixtureItemFind", new { page = x }))

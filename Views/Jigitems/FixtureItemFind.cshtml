@@ -64,6 +64,9 @@
 
             @foreach (var item in Model)
             {
+                ViewBag.workcellId = Session["workcellId"];
+                if (item.WorkcellID == ViewBag.workcellId)
+                {
                 <tr>
                     @*<td>
                         @Html.DisplayFor(modelItem => item.ItemID)
@@ -96,6 +99,7 @@
                         @Html.ActionLink("详情", "Details", new { id = item.ItemID })
                     </td>
                 </tr>
+                }
             }
 
         </table>

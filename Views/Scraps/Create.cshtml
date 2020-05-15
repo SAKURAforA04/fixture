@@ -24,6 +24,9 @@
 
     @foreach (var item in Model)
     {
+        ViewBag.workcellId = Session["workcellId"];
+        if (item.WorkcellID == ViewBag.workcellId)
+        {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.JigitemCode)
@@ -47,6 +50,7 @@
                        familyname1="@item.FamilyName" model1="@item.Model" partno1="@item.PartNo" usedcount1="@item.UsedCount" workcellid1="@item.WorkcellID" value="选择" />
             </td>
         </tr>
+        }
     }
 
 </table>

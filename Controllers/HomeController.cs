@@ -114,6 +114,7 @@ namespace Fixture02.Controllers
                 else
                 {
                     System.Web.HttpContext.Current.Session.Add("user", userID);
+                    System.Web.HttpContext.Current.Session.Add("workcellId", userID.WorkcellID);
                     return RedirectToAction("Index", "Home");
                 }
             }

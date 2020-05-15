@@ -44,6 +44,9 @@
 
     @foreach (var item in Model)
     {
+        ViewBag.workcellId = Session["workcellId"];
+        if (item.WorkcellID == ViewBag.workcellId)
+        {
 
         <tr>
             <td>
@@ -128,6 +131,7 @@
                 </div>
             </td>
         </tr>
+        }
     }
 </table>
 

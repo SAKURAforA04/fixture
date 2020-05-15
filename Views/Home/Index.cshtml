@@ -117,8 +117,11 @@
 
                             @foreach (var item in Model.listJig)
                             {
-                                if (item.State == "新增")
+                                ViewBag.workcellId = Session["workcellId"];
+                                if (item.WorkcellID == ViewBag.workcellId)
                                 {
+                                    if (item.State == "新增")
+                                    {
                                     <div class="list-group-item">
                                         <h4 class="list-group-item-heading">
                                             您有一条对于 工夹具 @Html.DisplayFor(modelItem => item.Code) 的采购入库初审申请信息
@@ -127,9 +130,9 @@
                                             @Html.ActionLink("前往处理", "FirstReview", "Jigitems")
                                         </p>
                                     </div>
-                                }
-                                else if (item.State == "初审")
-                                {
+                                    }
+                                    else if (item.State == "初审")
+                                    {
                                     <div class="list-group-item">
                                         <h4 class="list-group-item-heading">
                                             您有一条对于 工夹具 @Html.DisplayFor(modelItem => item.Code) 的采购入库复审申请信息
@@ -138,6 +141,7 @@
                                             @Html.ActionLink("前往处理", "SecondReview", "Jigitems")
                                         </p>
                                     </div>
+                                    }
                                 }
 
                             }

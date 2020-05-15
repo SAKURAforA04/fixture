@@ -32,6 +32,9 @@
 
     @foreach (var item in Model)
     {
+        ViewBag.workcellId = Session["workcellId"];
+        if (item.WorkcellID == ViewBag.workcellId)
+        {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.JigitemCode)
@@ -54,6 +57,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.UsedCount)
             </td>
+         
 
 
             @*//点检无问题按钮*@
@@ -186,6 +190,7 @@
 
 
         </tr>
+        }
     }
 </table>
 

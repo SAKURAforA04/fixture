@@ -48,6 +48,9 @@
 
     @foreach (var item in Model)
     {
+        ViewBag.workcellId = Session["workcellId"];
+        if (item.WorkcellID == ViewBag.workcellId)
+        {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Code)
@@ -117,6 +120,7 @@
             </div>
         </td>
       </tr>
+        }
     }
 </table>
 

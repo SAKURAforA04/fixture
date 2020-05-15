@@ -73,6 +73,9 @@
     </tr>
 
 @foreach (var item in Model) {
+    ViewBag.workcellId = Session["workcellId"];
+    if (item.WorkcellID == ViewBag.workcellId)
+    {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
@@ -132,11 +135,12 @@
             @Html.DisplayFor(modelItem => item.Remark)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Code }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Code }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Code })
+            @Html.ActionLink("Edit", "Edit", new { id = item.Code }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Code }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Code })
         </td>
     </tr>
+    }
 }
 
 </table>

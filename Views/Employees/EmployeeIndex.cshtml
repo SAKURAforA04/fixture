@@ -66,7 +66,10 @@
             {
                 foreach (var emp in list)
                 {
-                    var id = emp.EmployeeID;
+                    ViewBag.workcellId = Session["workcellId"];
+                    if (emp.WorkcellID == ViewBag.workcellId)
+                    {
+                        var id = emp.EmployeeID;
                     <tr>
                         <td>
                             @emp.EmployeeName
@@ -88,12 +91,16 @@
                             @Html.ActionLink("重置", "passwordReset", new { id = emp.EmployeeID })
                         </td>
                     </tr>
+                        }
+                    }
                 }
             }
-        }
 
         @foreach (var item in Model)
         {
+            ViewBag.workcellId = Session["workcellId"];
+            if (item.WorkcellID == ViewBag.workcellId)
+            {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.EmployeeID)
@@ -119,6 +126,7 @@
             @Html.ActionLink("删除", "Delete", new { id = item.EmployeeID })
         </td>
     </tr>
+            }
         }
 
     </table>

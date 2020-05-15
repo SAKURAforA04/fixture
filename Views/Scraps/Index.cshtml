@@ -113,6 +113,9 @@
 
     @foreach (var item in Model)
     {
+        ViewBag.workcellId = Session["workcellId"];
+        if (item.WorkcellID == ViewBag.workcellId)
+        {
 <tr>
     @*<td>
         @Html.DisplayFor(modelItem => item.RepairID)
@@ -185,9 +188,10 @@
     <td style=" text-align :left ;">
         @Html.ActionLink("Edit", "Edit", new { id = item.ScrapID }, new { @class = "btn btn-success" }) |
         @Html.ActionLink("Details", "Details", new { id = item.ScrapID }, new { @class = "btn btn-info" }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.ScrapID } ,new { @class = "btn btn-danger" })
+        @Html.ActionLink("Delete", "Delete", new { id = item.ScrapID }, new { @class = "btn btn-danger" })
     </td>
 </tr>
+        }
     }
 
 </table>
