@@ -16,10 +16,10 @@ namespace Fixture02.Controllers
         {
             var flow = (from c in db.Inout where c.Code.Contains(code) select new flower { Code = c.Code,State = c.State ,Date = c.AddDate })
                 .Union(from e in db.Jigitem where e.Code.Contains(code) select new flower { Code = e.Code, State = "库存", Date = e.AddDate })
-                .Union(from e in db.repair where e.Code.Contains(code) select new flower { Code = e.Code, State = "报修", Date = e.AddDate })
-                .Union(from e in db.repair where e.Code.Contains(code) select new flower { Code = e.Code, State = "库存", Date = e.RepairDate })
-                .Union(from e in db.ScrapSet where e.Code.Contains(code) && e.ScrapState.Contains("报废")select new flower { Code = e.Code, State = "报废", Date = e.SecondReviewDate })
-                .Union(from e in db.Check where e.Code.Contains(code) select new flower { Code = e.Code, State = "点检", Date = e.AddDate })
+                //.Union(from e in db.repair where e.Code.Contains(code) select new flower { Code = e.Code, State = "报修", Date = e.AddDate })
+                //.Union(from e in db.repair where e.Code.Contains(code) select new flower { Code = e.Code, State = "库存", Date = e.RepairDate })
+                //.Union(from h in db.ScrapSet where h.Code.Contains(code) && h.ScrapState.Contains("报废")select new flower { Code = h.Code, State = "报废", Date = h.SecondReviewDate })
+                //.Union(from e in db.Check where e.Code.Contains(code) select new flower { Code = e.Code, State = "点检", Date = e.AddDate })
                .OrderBy(t => t.Date)
                ;
 
@@ -27,6 +27,7 @@ namespace Fixture02.Controllers
             List<Nullable<System.DateTime>> Time = new List<Nullable<System.DateTime>>();
             List<int> State = new List<int>();
             flowerList.flowerModelList = new List<flower>();
+            //实验git
             foreach (var flowermodel in flow)
             {
                 flowerList.flowerModelList.Add(

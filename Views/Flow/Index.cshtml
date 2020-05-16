@@ -66,7 +66,8 @@
                         show: true
                     },
                     dataZoom: { //数据缩放视图
-                        show: true
+                        show: true,
+                         yAxisIndex: 'none'
                     },
                     saveAsImage: {//保存图片
                         show: true
@@ -82,9 +83,12 @@
             },
             xAxis: {
                 type: 'category',
-                data: @Html.Raw(Model.time)
-                    //["2019-03-20", "2019-03-21", "2019-03-22", "2019-03-23", "2019-03-24", "2019-03-25"]
+                data: @Html.Raw(Model.time),
+                //["2019-03-20", "2019-03-21", "2019-03-22", "2019-03-23", "2019-03-24", "2019-03-25"]
             },
+            axisPointer: {
+        link: {xAxisIndex: 'all'}
+    },
             yAxis: {
                 boundaryGap: false,
 
@@ -115,6 +119,18 @@
                     }
                 }
             },
+        
+      
+dataZoom: [                                      //区域缩放
+    {
+        id: 'dataZoomX',
+        show:true,                              //是否显示组件。如果设置为 false，不会显示，但是数据过滤的功能还存在。
+        backgroundColor:"rgba(47,69,84,0)",     //组件的背景颜色
+        type: 'slider',                         //slider表示有滑动块的，inside表示内置的
+                 //组件离容器下侧的距离,'20%'
+ 
+    }                //如何触发数据窗口平移。true：表示不按任何功能键，鼠标移动能触发数据窗口平移。false：表示鼠标滚轮不能触发缩放。'shift'：表示按住 shift 和鼠标移动能触发数据窗口平移。'ctrl'：表示按住 ctrl 和鼠标移动能触发数据窗口平移。'alt'：表示按住 alt 和鼠标移动能触发数据窗口平移。
+],
             series: [{
                 name: '状态',
                 type: 'line',
