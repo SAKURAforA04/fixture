@@ -28,6 +28,9 @@
 
         @foreach (var item in Model.Jig)
         {
+            ViewBag.workcellId = Session["workcellId"];
+            if (item.WorkcellID == ViewBag.workcellId)
+            {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Code)
@@ -58,6 +61,7 @@
                     <input type="button" class="btn btn-primary" onclick="Values(this)" selectcode="@item.Code" selectname="@item.Name" value="选择" />
                 </td>
             </tr>
+            }
         }
 
     </table>

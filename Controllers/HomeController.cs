@@ -1,4 +1,5 @@
 ﻿using Fixture02.Models;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,18 +8,6 @@ using System.Web.Mvc;
 
 namespace Fixture02.Controllers
 {
-    //public class HomeController : Controller
-    //{
-    //    Razor.Models.Product myProduct = new Models.Product { ProductID = 1, Name = "Book" };
-    //    Razor.Models.Person myPerson = new Models.Person { PersonID = "1", Name = "Jack" };
-
-    //    public ActionResult Index()
-    //    {
-    //        return View(Tuple.Create(myProduct, myPerson));  // 返回一个Tuple对象，Item1代表Product、Item2代表Person
-    //    }
-    //}
-
-
     public class HomeController : BaseController
     {
         private fixtureEntities db = new fixtureEntities();
@@ -116,7 +105,15 @@ namespace Fixture02.Controllers
             {
                 if(employee.Password != userID.Password)
                 {
-                    return Content("密码错误");
+                    var client = new RestClient("http://127.0.0.1:5000/?flag=1&num=2&data=1");
+                    var request = new RestRequest(Method.GET);
+                    request.AddHeader("postman-token", "3cdb8250-7e92-11bf-d52d-85c5a80cd65b");
+                    request.AddHeader("cache-control", "no-cache");
+                    IRestResponse response = client.Execute(request);
+                    
+                    return Content(response.Content + "");
+                    
+                    //return Content("密码错误");
                 }
                 else
                 {

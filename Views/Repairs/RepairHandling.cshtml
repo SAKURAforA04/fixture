@@ -100,7 +100,7 @@
 
                 @foreach (var item in Model)
                 {
-                    if (item.RepairState == "新增" || item.RepairState == "未修复")
+                    if ((item.RepairState == "新增" || item.RepairState == "未修复") && item.WorkcellID == ViewBag.workcellId)
                     {
                         <tr>
                             @*<td>
@@ -159,8 +159,6 @@
                         </tr>
 
                     }
-
-
                 }
 
             </table>

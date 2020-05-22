@@ -31,17 +31,6 @@
             text-align: center;
         }
 
-        /* .btn {
-            width: 45px;
-            height: 25px;
-            /* display: flex;
-            justify-content: center;
-            align-items: center;*/
-        /*      line-height: 10px;
-            padding-right: 40px;
-        }
-        */
-
         #footer {
             position: relative;
             left: 0;
@@ -136,6 +125,10 @@
 
                     @foreach (var item in Model)
                     {
+                        ViewBag.workcellId = Session["workcellId"];
+                        if (item.WorkcellID == ViewBag.workcellId)
+                        {
+
                         <tr>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Code)
@@ -166,6 +159,8 @@
                                 @Html.ActionLink("详情", "Details", new { id = item.ItemID }, new { @class = "btn btn-primary" })
                             </td>
                         </tr>
+
+                        }
                     }
                 </table>
             </div>

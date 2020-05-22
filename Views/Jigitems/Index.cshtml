@@ -20,28 +20,6 @@
 </script>
 
 <style>
-    /*  table {
-        border: 1px;
-        border-style: solid;
-    }
-
-    td {
-        border: 1px;
-        border-style: solid;
-        height: 20px;
-        text-align: center;
-        vertical-align: central;
-        left: 50%;
-        top: 50%;
-    }
-
-    th {
-        border: 1px;
-        border-style: solid;
-        text-align: center;
-        background-color: #508da3;
-        color: white;
-    }*/
     td {
         text-align: center;
     }
@@ -90,46 +68,6 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        @* <th style=" width:45px;text-align :center ;">
-                            夹具代码
-                            </th>
-
-                            <th style=" width:40px;">
-
-                                夹具名称
-                            </th>
-
-                            <th style=" width:55px;text-align :center ;">
-
-                                夹具序列号
-                            </th>
-                            <th style=" width:180px;text-align :center ;">
-
-                                采购单据号
-                            </th>
-                            <th style=" width:100px;text-align :center ;">
-
-                                入库日期
-                            </th>
-                            <th style=" width:80px;text-align :center ;">
-
-                                存放库位
-                            </th>
-                            <th style=" width:60px;text-align :center ;">
-
-                                状态
-                            </th>
-                            <th style=" width:100px;text-align :center ;">
-
-                                创建日期
-                            </th>
-                            <th style=" width:100px;text-align :center ;">
-
-                                退回原因
-                            </th>
-                            <th style=" width:180px;text-align :center  ;">
-                                操作
-                            </th>*@
                         <th>
                             夹具代码
                         </th>
@@ -165,12 +103,14 @@
 
                 @foreach (var item in Model)
                 {
+                    ViewBag.workcellId = Session["workcellId"];
+                    if (item.WorkcellID == ViewBag.workcellId)
+                    {
+
                     <tr>
                         <td>
                             @Html.DisplayFor(modelItem => item.Code)
                         </td>
-
-                        @*工夹具Code对应的Name*@
                         <td>
                             @Html.DisplayFor(modelItem => item.Jig.Name)
                         </td>
@@ -205,7 +145,9 @@
 
                         </td>
                     </tr>
+                    }
                 }
+
             </table>
         </div>
     </div>

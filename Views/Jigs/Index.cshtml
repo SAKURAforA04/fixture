@@ -32,6 +32,10 @@
 
                 @foreach (var item in Model)
                 {
+                    ViewBag.workcellId = Session["workcellId"];
+                    if (item.WorkcellID == ViewBag.workcellId)
+                    {
+
                     <tr>
                         <td>
                             @Html.DisplayFor(modelItem => item.Name)
@@ -64,6 +68,7 @@
                             <button class="btn btn-danger btn-sm">@Html.ActionLink("删除", "Delete", new { id = item.Code }, new { style = "color:white;" })</button>
                         </td>
                     </tr>
+                    }
                 }
 
             </table>

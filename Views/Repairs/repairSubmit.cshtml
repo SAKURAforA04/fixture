@@ -100,12 +100,10 @@
 
                 @foreach (var item in Model)
                 {
-                    if (true)
+                    ViewBag.workcellId = Session["workcellId"];
+                    if (item.WorkcellID == ViewBag.workcellId)
                     {
                         <tr>
-                            @*<td>
-                                    @Html.DisplayFor(modelItem => item.CheckID)
-                                </td>*@
                             <td>
                                 @Html.DisplayFor(modelItem => item.ItemID)
                             </td>

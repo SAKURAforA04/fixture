@@ -30,14 +30,6 @@
 <body>
     <h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :18px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21445" id="cgrk">系统管理</a>>>用户管理</h4>
 
-
-    @*<div class="btn-group" style="float:right;">
-            <button class="btn btn-warning" type="button" role="button"> @Html.ActionLink("创建用户", "Create", new { @class = "btn" }, new { style = "color:white;" }) </button>
-            <button type="button" class="btn btn-warning">刷新列表</button>
-        </div>
-        <br /><br />*@
-    @*>>>>>>> gy*@
-
     <!--查询块-->
     @using (Html.BeginForm("EmployeeIndex", "Employees", FormMethod.Get))
     {
@@ -113,6 +105,11 @@
                         {
                             foreach (var emp in list)
                             {
+                                ViewBag.workcellId = Session["workcellId"];
+                                if (emp.WorkcellID == ViewBag.workcellId)
+                                {
+
+
                                 var id = emp.EmployeeID;
                                 <tr>
                                     <td>
@@ -135,12 +132,18 @@
                                         @Html.ActionLink("重置", "passwordReset", new { id = emp.EmployeeID })
                                     </td>
                                 </tr>
+                                }
                             }
                         }
                     }
 
                     @foreach (var item in Model)
                     {
+                        ViewBag.workcellId = Session["workcellId"];
+                        if (item.WorkcellID == ViewBag.workcellId)
+                        {
+
+
                         <tr>
                             <td>
                                 @Html.DisplayFor(modelItem => item.EmployeeID)
@@ -199,6 +202,7 @@
                                 </div>
                             </td>
                         </tr>
+                        }
                     }
                 </table>
             </div>

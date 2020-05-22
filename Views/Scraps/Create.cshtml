@@ -21,24 +21,6 @@
            border-style: solid;
        }
 
-       /* td {
-           border: 1px;
-           border-style: solid;
-           height: 20px;
-           text-align: center;
-           vertical-align: central;
-           left: 50%;
-           top: 50%;
-       }
-
-    th {
-           border: 1px;
-           border-style: solid;
-           text-align: center;
-           background-color: #508da3;
-           color: white;
-       }
-          */
        th {
            text-align: center;
        }
@@ -51,18 +33,6 @@
            border: none;
            border-style: none;
        }
-
-
-       /* .btn {
-           width: 45px;
-           height: 25px;
-           /* display: flex;
-           justify-content: center;
-           align-items: center;*/
-       /*      line-height: 10px;
-           padding-right: 40px;
-       }
-       */
 
        #footer {
            position: relative;
@@ -97,6 +67,10 @@
 
                 @foreach (var item in Model)
                 {
+                    ViewBag.workcellId = Session["workcellId"];
+                    if (item.WorkcellID == ViewBag.workcellId)
+                    {
+
                     <tr>
                         <td>
                             @Html.DisplayFor(modelItem => item.JigitemCode)
@@ -120,6 +94,7 @@
                                    familyname1="@item.FamilyName" model1="@item.Model" partno1="@item.PartNo" usedcount1="@item.UsedCount" workcellid1="@item.WorkcellID" data-toggle="modal" data-target="#myModal" value="选择" />
                         </td>
                     </tr>
+                    }
                 }
 
             </table>
@@ -243,7 +218,7 @@
     </div>
 </div>
 
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            @*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
 
 
 <script>

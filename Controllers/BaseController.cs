@@ -12,12 +12,6 @@ namespace Fixture02.Controllers
 {
     public class BaseController : Controller
     {
-        // GET: Base
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
-
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
 

@@ -80,6 +80,9 @@
     <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="RestSharp, Version=106.11.2.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>packages\RestSharp.106.11.2\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -151,6 +154,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ApiController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ChecksController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
@@ -253,6 +257,9 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\htmleaf-demo.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\pic1.jpg" />
+    <Content Include="Content\pic2.jpg" />
+    <Content Include="Content\pic3.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\icomoon.svg" />
@@ -397,6 +404,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Upload\" />
+    <Folder Include="Views\Api\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
