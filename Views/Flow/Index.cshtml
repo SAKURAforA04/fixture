@@ -1,52 +1,56 @@
 ﻿@model Fixture02.Controllers.FlowerList
 
-@{
-    Layout = "~/Views/Shared/FixtureMaster.cshtml";
-}
+@{ Layout = "~/Views/Shared/FixtureMaster.cshtml"; }
 <h4><span class="glyphicon  glyphicon-record " style=" position:relative ;height  :20px;top :3px;" /> 当前位置: @Html.ActionLink("首页", "Index", "Home", new { }, new { style = "color:blue;" })>><a class="panel-title collapsed" style=" color :blue ;font-size :18px;" data-toggle="collapse" data-parent="#panel-756431" href="#panel-element-21442" id="cgrk">流程</a>>>流程视图</h4>
 <div class="container-fluid">
 
     @using (Html.BeginForm("Index", "Flow", FormMethod.Get))
     {
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">查询条件</h3>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">查询条件</h3>
+    </div>
+    <div class="panel-body">
+        <div id="queryFrom" class="search-form form-horizontal">
+            <div class="form-group row">
+                <label class="col-md-2 control-label" style="text-align:right; font-size:large;">夹具代码</label>
+                <div class="col-md-2">
+                    @Html.TextBox("code", "", new { @class = "input-sm form-control" })
+                </div>
+                <label class="col-md-2 control-label" style="text-align:right; font-size:large;">夹具名称</label>
+                <div class="col-md-2">
+                    @Html.TextBox("name", "", new { @class = "input-sm form-control" })
+                </div>
+                <label class="col-md-2 control-label" style="text-align:right; font-size:large;">夹具库位</label>
+                <div class="col-md-2">
+                    @Html.TextBox("location", "", new { @class = "input-sm form-control" })
+                </div>
             </div>
-            <div class="panel-body">
-                <div id="queryFrom" class="search-form form-horizontal">
-                    <div class="form-group row">
-                        <label class="col-md-2 control-label" style="text-align:right; font-size:large;">夹具代码</label>
-                        <div class="col-md-2">
-                            @Html.TextBox("code", "", new { @class = "input-sm form-control" })
-                        </div>
-                        <label class="col-md-2 control-label" style="text-align:right; font-size:large;">夹具名称</label>
-                        <div class="col-md-2">
-                            @Html.TextBox("name", "", new { @class = "input-sm form-control" })
-                        </div>
-                        <label class="col-md-2 control-label" style="text-align:right; font-size:large;">夹具库位</label>
-                        <div class="col-md-2">
-                            @Html.TextBox("location", "", new { @class = "input-sm form-control" })
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-md-2 control-label" style="text-align:right; font-size:large;">夹具模组</label>
-                        <div class="col-md-2">
-                            @Html.TextBox("model", "", new { @class = "input-sm form-control" })
-                        </div>
-                        <label class="col-md-2 control-label" style="text-align:right; font-size:large;">夹具料号</label>
-                        <div class="col-md-2">
-                            @Html.TextBox("partNO", "", new { @class = "input-sm form-control" })
-                        </div>
-                        <div class="col-md-4" style="text-align:center;">
-                            <button class="btn btn-info" type="submit">查询</button>
-                            <button type="reset" class="btn default reset">重置</button>
-                        </div>
-                    </div>
+            <div class="form-group row">
+                <label class="col-md-2 control-label" style="text-align:right; font-size:large;">夹具模组</label>
+                <div class="col-md-2">
+                    @Html.TextBox("model", "", new { @class = "input-sm form-control" })
+                </div>
+                <label class="col-md-2 control-label" style="text-align:right; font-size:large;">夹具料号</label>
+                <div class="col-md-2">
+                    @Html.TextBox("partNO", "", new { @class = "input-sm form-control" })
+                </div>
+                <div class="col-md-4" style="text-align:center;">
+                    <button class="btn btn-info" type="submit">查询</button>
+                    <button type="reset" class="btn default reset">重置</button>
                 </div>
             </div>
         </div>
-    }
-    <div id="main" style="width: 1200px;height:800px;"></div>
+    </div>
+</div>}
+    <div id="main" style="width: 1400px;height:800px;"></div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
     <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
@@ -55,7 +59,9 @@
             title: {
                 text: '工夹具流程图'
             },
-            tooltip: {},
+             tooltip: {
+            trigger: 'axis'
+             },
             toolbox: { //可视化的工具箱
                 show: true,
                 feature: {
@@ -66,7 +72,8 @@
                         show: true
                     },
                     dataZoom: { //数据缩放视图
-                        show: true
+                        show: true,
+                         yAxisIndex: 'none'
                     },
                     saveAsImage: {//保存图片
                         show: true
@@ -80,14 +87,25 @@
             legend: {
                 data: ['状态']
             },
+           dataZoom:
+        {
+            show: true,
+            realtime: true,
+            start: 10,
+            end: 80,
+            xAxisIndex: 0
+        },
             xAxis: {
                 type: 'category',
-                data: @Html.Raw(Model.time)
-                    //["2019-03-20", "2019-03-21", "2019-03-22", "2019-03-23", "2019-03-24", "2019-03-25"]
+                data: @Html.Raw(Model.time),
+                //["2019-03-20", "2019-03-21", "2019-03-22", "2019-03-23", "2019-03-24", "2019-03-25"]
             },
+            axisPointer: {
+                link: {xAxisIndex: 'all'}
+              },
             yAxis: {
                 boundaryGap: false,
-
+                max: 5,
                 axisLabel: {
                     formatter: function (value) {
                         var texts = [];
@@ -106,8 +124,11 @@
                         else if (value == 4) {
                             texts.push('报修');
                         }
-                        else {
+                        else if (value == 5) {
                             texts.push('点检');
+                        }
+                        else
+                       {
                         }
 
                         return texts;
